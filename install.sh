@@ -1,0 +1,45 @@
+#!/bin/bash
+
+FLAG=false
+
+while [[ $# -gt 0 ]]
+do
+  key="$1"
+
+  case $key in
+    -d | --dots)
+    FLAG=true
+    shift
+    ;;
+    *)
+      #unknown option
+    ;;
+esac
+shift #past argument or value
+done
+
+if $FLAG ; then
+  echo '=====Only Dotfiles====='
+  echo ''
+else
+  echo '=====Install All====='
+  echo ''
+fi
+
+if ! $FLAG; then
+  # install my file list
+  sudo apt-get install opam
+  opam list
+  sudo add-apt-repository ppa:neovim-ppa/unstable
+  sudo apt-get update
+  sudo apt-get install neovim
+fi
+
+# dotfiles setting
+mkdir ~/.config -p
+mkdir ~/.config/nvim -p
+
+cp ./nvim/init.vim ~/.config/nvim/
+
+cat ./bash/alias >> ~/.bashrc
+
