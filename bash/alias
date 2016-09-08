@@ -2,9 +2,7 @@ alias update='sudo apt-get update -y && sudo apt-get upgrade -y && opam update -
 alias count='ls | wc -l'
 alias cpuinfo='grep '"'"'model name'"'"' /proc/cpuinfo'
 alias version='cat /etc/*-release | uniq'
-alias garesult='grep '"""'Max cut'"""' -R ./ -h | sort -k 2'
 alias apacherestart='sudo /etc/init.d/apache2 restart'
-alias woojs='ssh woojs@woojs.net'
 alias vi='nvim'
 alias mem='cat /proc/meminfo | grep MemTotal'
 
