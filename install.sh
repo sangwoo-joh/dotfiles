@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e -u
 
 FLAG=false
 
@@ -29,7 +30,7 @@ fi
 if ! $FLAG; then
   # install my file list
   sudo apt-get install opam
-  opam list
+  opam init
   sudo add-apt-repository ppa:neovim-ppa/unstable
   sudo apt-get update
   sudo apt-get install neovim
