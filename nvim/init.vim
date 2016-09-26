@@ -15,6 +15,8 @@ set autowrite
 set cursorline
 set showcmd
 set nocompatible
+set colorcolumn=80
+set textwidth=80
 
 "status line"
 set ls=2
@@ -51,12 +53,15 @@ au BufReadPost *
 "set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\
 
 "for OCaml"
+"ocaml global setting"
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+
 filetype indent on
 filetype plugin on
 au BufRead,BufNewFile *.ml,*.mli compiler ocaml 
+au BufEnter *.ml,*.mli setf ocaml
 
 "OCaml merlin"
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
 let g:syntastic_ocaml_checkers = ['merlin']
 
@@ -67,19 +72,22 @@ else
   let s:editor_root=expand("~/.vim")
 endif
 
+"ocp-indent"
+execute "set rtp+=" . s:editor_root . "/ocp-indent-vim"
+
 "Vundle"
 "setting up"
 let vundle_installed=1
-let vundle_readme=s:editor_root . '/bundle/Vundle.vim/README.md'
+let vundle_readme=s:editor_root . '/Vundle.vim/README.md'
 if !filereadable(vundle_readme)
   echo "Installing Vundle..."
   echo ""
   silent call mkdir(s:editor_root , "p")
-  silent execute "!git clone https://github.com/gmarik/vundle " . s:editor_root . "/bundle/Vundle.vim"
+  silent execute "!git clone https://github.com/gmarik/vundle " . s:editor_root . "/Vundle.vim"
   let vundle_installed=0
 endif
 
-let &rtp = &rtp . ',' . s:editor_root . '/bundle/Vundle.vim/'
+let &rtp = &rtp . ',' . s:editor_root . '/Vundle.vim/'
 "call vundle#begin()
 call vundle#rc(s:editor_root)
 
@@ -90,6 +98,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'bling/vim-airline'
 Plugin 'The-NERD-Tree'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'let-def/ocp-indent-vim'
 
 if vundle_installed==0
   echo "Installing Plugins, please ignore key map error messages..."
