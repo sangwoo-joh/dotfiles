@@ -48,6 +48,7 @@ mkdir ~/.config -p
 mkdir ~/.config/nvim -p
 
 cp ./nvim/init.vim ~/.config/nvim/
+cp ./tmux/.tmux.conf ~/.tmux.conf
 
 cat ./bash/alias >> ~/.bashrc
 
