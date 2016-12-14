@@ -45,7 +45,7 @@ fi
 
 # need python nvim
 sudo apt-get install python-pip
-sudo pip install nvim
+sudo pip install neovim
 
 # dotfiles setting
 mkdir ~/.config -p
