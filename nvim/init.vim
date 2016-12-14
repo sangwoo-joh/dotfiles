@@ -92,7 +92,8 @@ let &rtp = &rtp . ',' . s:editor_root . '/Vundle.vim/'
 call vundle#rc(s:editor_root)
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-fugitive' "conflict with ocp-indent.. you should use git in
+"terminal
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/syntastic'
 Plugin 'bling/vim-airline'

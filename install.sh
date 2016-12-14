@@ -43,6 +43,10 @@ if ! $FLAG; then
   sudo apt-get install typora
 fi
 
+# need python nvim
+sudo apt-get install python-pip
+sudo pip install nvim
+
 # dotfiles setting
 mkdir ~/.config -p
 mkdir ~/.config/nvim -p
