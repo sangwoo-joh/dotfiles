@@ -111,7 +111,8 @@ Plugin 'tpope/vim-repeat'
 Plugin 'scrooloose/syntastic'
 Plugin 'let-def/ocp-indent-vim'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'Valloric/YouCompleteMe'
+" not familiar with this yet
+"Plugin 'Valloric/YouCompleteMe'
 
 "Plugin 'tpope/vim-fugitive' "conflict with ocp-indent.. you should use git in
 
@@ -199,4 +200,23 @@ elseif executable('ag')
   let g:unite_source_grep_default_opts = '-i --vimgrep --hidden --ignore ''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
   let g:unite_source_grep_recursive_opt = ''
 endif
+
+
+" ycm
+
+"" not familiar with this yet...
+"let g:ycm_confirm_extra_conf = 0
+"let g:EclimCompletionMethod = 'omnifunc'
+"let g:ycm_filetype_blacklist = {
+"  \ 'notes' : 1,
+"  \ 'markdown' : 1,
+"  \ 'text' : 1,
+"  \ 'unite' : 1
+"  \}
+
+
+" airline
+let g:airline_powerline_fonts = 1
+let g:airline_extensions = ['quickfix', 'syntastic']
+"let g:airline_section_c = airline#section#create_left(['%{getcwd()}','file'])
 
