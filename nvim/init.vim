@@ -1,4 +1,4 @@
-"encoding"
+set nocompatible
 set enc=utf-8
 
 " the basics "
@@ -14,9 +14,9 @@ set showmatch
 set autowrite
 set cursorline
 set showcmd
-set nocompatible
-set colorcolumn=80
-set textwidth=80
+set colorcolumn=120
+set textwidth=120
+set linebreak
 
 "status line"
 set ls=2
@@ -34,6 +34,15 @@ set incsearch
 set noimd
 set visualbell
 
+"auto complete
+set completeopt=longest,menuone
+set wildmode=list:longest,full
+set wildmenu
+set wildignore=*.o,*.obj,*~
+set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=*.cm*,*.o,*.native
+set wildignore+=*.so,*.swp,*.zip,*.pdf
+
 "auto correction for typo-prone words"
 ab fucntion function
 ab calss class
@@ -50,7 +59,7 @@ au BufReadPost *
 \ endif
 
 "show current point(x,y) of cursor"
-"set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\
+set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\
 
 "for OCaml"
 "ocaml global setting"
@@ -88,18 +97,30 @@ if !filereadable(vundle_readme)
 endif
 
 let &rtp = &rtp . ',' . s:editor_root . '/Vundle.vim/'
-"call vundle#begin()
+call vundle#begin()
 call vundle#rc(s:editor_root)
 
 Plugin 'VundleVim/Vundle.vim'
-"Plugin 'tpope/vim-fugitive' "conflict with ocp-indent.. you should use git in
-"terminal
-Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/syntastic'
 Plugin 'bling/vim-airline'
 Plugin 'The-NERD-Tree'
 Plugin 'altercation/vim-colors-solarized'
+
+" Syntax, Text
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'scrooloose/syntastic'
 Plugin 'let-def/ocp-indent-vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'Valloric/YouCompleteMe'
+
+"Plugin 'tpope/vim-fugitive' "conflict with ocp-indent.. you should use git in
+
+" Fuzzy search
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/unite-outline'
+Plugin 'Shougo/neomru.vim'
 
 if vundle_installed==0
   echo "Installing Plugins, please ignore key map error messages..."
@@ -121,6 +142,31 @@ let NERDTreeQuitOnOpen=1
 map <F2> <ESC>:NERDTree<CR>
 "nvim terminal"
 map <F3> <ESC>:vs<CR>:terminal<CR>
+
+" increment
+nnoremap + <C-a>
+nnoremap - <C-x>
+
+" in normal mode
+nnoremap <C-a> ^
+nnoremap <C-e> $
+nnoremap <C-f> :Ag
+nnoremap <C-p> :History<CR>
+
+nnoremap <C-b> :YcmCompleter GoTo<CR>
+
+" in command mode
+tnoremap <C-a> <home>
+tnoremap <C-e> <end>
+
+" traverse jumplist + realign screen
+nnoremap <C-o> <C-o>zzzv
+nnoremap <C-i> <C-i>zzzv
+
+"save
+map <C-s> <ESC>:w!<CR>
+
+" movement in terminal, split
 tnoremap <Esc> <C-\><C-n>
 tnoremap <C-s> <C-\><Esc>
 tnoremap <C-h> <C-\><C-n><C-w>h
@@ -131,13 +177,26 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-"rad map"
-map <C-a> ggVG
 
 
 "file types"
 autocmd Filetype html setlocal ts=2 sts=2 sw=2 omnifunc=htmlcomplete#CompleteTags
 autocmd Filetype xml set omnifunc=xmlcomplete#CompleteTags
 autocmd Filetype python setl et ts=2 sw=2 sts=2
-autocmd Filetype css setlocal ts=2 noet sw=2 omnifunc=csscomplete#CompleteCSS
+
+
+" grep
+if executable('ack-grep')
+  let g:unite_source_grep_command = 'ack-grep'
+  let g:unite_source_grep_default_opts = '-i --no-heading --no-color -a -H'
+  let g:unite_source_grep_recursive_opt = ''
+elseif executable('ack')
+  let g:unite_source_grep_command = 'ack'
+  let g:unite_source_grep_default_opts = '-i --no-heading --no-color -a -H'
+  let g:unite_source_grep_recursive_opt = ''
+elseif executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '-i --vimgrep --hidden --ignore ''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+  let g:unite_source_grep_recursive_opt = ''
+endif
 
