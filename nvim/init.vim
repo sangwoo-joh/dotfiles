@@ -119,6 +119,7 @@ Plugin 'terryma/vim-multiple-cursors'
 " Fuzzy search
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/goyo.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/unite-outline'
 Plugin 'Shougo/neomru.vim'
@@ -178,6 +179,17 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+
+" Merlin
+map <C-c><C-t> <ESC>:MerlinTypeOf<CR>
+map <C-c><C-l> <ESC>:MerlinLocate<CR>
+
+" FZF
+map <C-r> <ESC>:FZF<CR>
+
+" GOYO
+map <F4> <ESC>:Goyo<CR>
 
 
 "file types"
