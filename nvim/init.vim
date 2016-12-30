@@ -186,7 +186,7 @@ map <C-c><C-t> <ESC>:MerlinTypeOf<CR>
 map <C-c><C-l> <ESC>:MerlinLocate<CR>
 
 " FZF
-map <C-r> <ESC>:FZF<CR>
+map <S-r> <ESC>:FZF<CR>
 
 " GOYO
 map <F4> <ESC>:Goyo<CR>
