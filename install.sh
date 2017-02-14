@@ -53,6 +53,7 @@ mkdir ~/.config/nvim -p
 
 cp ./nvim/init.vim ~/.config/nvim/
 cp ./tmux/.tmux.conf ~/.tmux.conf
+cp ./emacs ~/.emacs
 
 cat ./bash/alias >> ~/.bashrc
 
