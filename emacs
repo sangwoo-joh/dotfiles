@@ -146,5 +146,11 @@
 ;; See https://github.com/zenorocha/dracula-theme
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
-;;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'solarized t)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+;;(load-theme 'solarized t)
+(load-theme 'dracula t)
+
+(add-to-list 'default-frame-alist '(font . D2Coding))
+(set-face-attribute 'default t :font D2Coding))
+
+(display-time)
