@@ -29,6 +29,7 @@ fi
 
 if ! $FLAG; then
   # install my file list
+  sudo apt-get install m4
   sudo apt-get install opam
   opam init
   # neovim
