@@ -1,3 +1,4 @@
+
 alias update='sudo apt-get update -y && sudo apt-get upgrade -y && opam update -y && opam upgrade -y && pip install --upgrade pip'
 alias count='wc -l'
 alias cpuinfo='grep '"'"'model name'"'"' /proc/cpuinfo'
@@ -7,5 +8,9 @@ alias vi='nvim'
 alias mem='cat /proc/meminfo | grep MemTotal'
 alias cursize='du -s -h'
 
+alias grep='grep --color=auto'
+alias png='dot -Tpng -O'
+
 
 eval `opam config env`
+

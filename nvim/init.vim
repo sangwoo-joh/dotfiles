@@ -14,9 +14,7 @@ set showmatch
 set autowrite
 set cursorline
 set showcmd
-set colorcolumn=120
-set textwidth=120
-set linebreak
+set colorcolumn=80
 
 "status line"
 set ls=2
