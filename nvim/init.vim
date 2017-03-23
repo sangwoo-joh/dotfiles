@@ -115,12 +115,13 @@ Plugin 'terryma/vim-multiple-cursors'
 "Plugin 'tpope/vim-fugitive' "conflict with ocp-indent.. you should use git in
 
 " Fuzzy search
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
+" These are too heavy... just goyo 
+"Plugin 'junegunn/fzf'
+"Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/goyo.vim'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/unite-outline'
-Plugin 'Shougo/neomru.vim'
+"Plugin 'Shougo/unite.vim'
+"Plugin 'Shougo/unite-outline'
+"Plugin 'Shougo/neomru.vim'
 
 if vundle_installed==0
   echo "Installing Plugins, please ignore key map error messages..."

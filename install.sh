@@ -32,7 +32,7 @@ if ! $FLAG; then
   sudo apt-get install m4
   sudo apt-get install opam
   opam init
-  sudo apt-get install silversearcher-ag tmux emacs texlive-full ko.tex-base
+  sudo apt-get install silversearcher-ag tmux emacs texlive-full ko.tex-base graphviz openjdk-8-jdk filezilla clang
   # neovim
   sudo add-apt-repository ppa:neovim-ppa/unstable
   # typora

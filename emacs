@@ -153,4 +153,6 @@
 (add-to-list 'default-frame-alist '(font . D2Coding))
 (set-face-attribute 'default t :font D2Coding))
 
+;; NOTE: tuareg is installed from opam, and after that you should follow the tuaret output to .emacs file like (load "path-to-git-checkout-dir/tuareg-site-file")
+
 (display-time)
