@@ -96,6 +96,10 @@
 (global-set-key (kbd "C-`") 'up-down-case-char)
 (global-set-key (kbd "M-Q") 'unfill-paragraph)
 
+;; Bookmarks
+(global-set-key (kbd "C-x p") 'bookmark-jump)
+(global-set-key (kbd "C-x P") 'bookmark-set)
+
 (when window-system			; Disable suspend
   (global-unset-key (kbd "C-z")))
 
@@ -141,6 +145,7 @@
 (add-hook 'caml-mode-hook 'merlin-mode t)
 (setq merlin-use-auto-complete-mode 'easy)
 (setq merlin-command 'opam)
+(load (concat opam-share "/emacs/site-lisp/tuareg-site-file"))
 
 ;; auto-complete
 ;; See https://marmalade-repo.org/
@@ -158,9 +163,6 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;;(load-theme 'solarized t)
 (load-theme 'dracula t)
-
-(add-to-list 'default-frame-alist '(font . D2Coding))
-(set-face-attribute 'default t :font D2Coding))
 
 ;; NOTE: tuareg is installed from opam, and after that you should follow the tuaret output to .emacs file like (load "path-to-git-checkout-dir/tuareg-site-file")
 
@@ -189,17 +191,3 @@
   (add-to-list 'load-path (concat support-base-dir "/share/emacs/site-lisp"))
   (setq refmt-command (concat support-base-dir "/bin/refmt")))
 
-(require 'reason-mode)
-(require 'merlin)
-(add-hook 'reason-mode-hook (lambda ()
-                              (add-hook 'before-save-hook 'refmt-before-save)
-                              (merlin-mode)))
-
-(setq merlin-ac-setup t)
-
-(require 'merlin-iedit)
-(defun evil-custom-merlin-iedit ()
-  (interactive)
-  (if iedit-mode (iedit-mode)
-    (merlin-iedit-occurrences)))
-(define-key merlin-mode-map (kbd "C-c C-e") 'evil-custom-merlin-iedit)
