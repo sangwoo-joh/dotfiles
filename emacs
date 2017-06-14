@@ -134,7 +134,25 @@
 
 (global-set-key (kbd "C-=") 'er/expand-region)
 
-;; OPAM packages: ocp-indent & merlin
+;; auto highlight
+(defun highlight-and-mark ()
+  "Highlight all symbols that are same with under the cursor and mark it."
+  (interactive)
+  (progn
+    (highlight-symbol-at-point)
+    (forward-sexp)
+    (backward-sexp)
+    (mark-sexp)))
+
+(defun unhighlight-all ()
+  "Remove all highlights made by `hi-lock' from the current buffer."
+  (interactive)
+  (unhighlight-regexp t))
+
+(global-set-key (kbd "C-c h") 'highlight-and-mark)
+(global-set-key (kbd "C-c H") 'unhighlight-all)
+
+;; OPAM packages: ocp-indent & merlin & tuareg
 ;; NOTE: they share a load path.
 
 (setq opam-share (substring (shell-command-to-string "opam config var share 2> /dev/null") 0 -1))
@@ -164,6 +182,7 @@
 ;;(load-theme 'solarized t)
 (load-theme 'dracula t)
 
+
 ;; NOTE: tuareg is installed from opam, and after that you should follow the tuaret output to .emacs file like (load "path-to-git-checkout-dir/tuareg-site-file")
 
 (display-time)
@@ -191,3 +210,17 @@
   (add-to-list 'load-path (concat support-base-dir "/share/emacs/site-lisp"))
   (setq refmt-command (concat support-base-dir "/bin/refmt")))
 
+;(require 'reason-mode)
+(require 'merlin)
+;(add-hook 'reason-mode-hook (lambda ()
+;                              (add-hook 'before-save-hook 'refmt-before-save)
+;                              (merlin-mode)))
+;
+;(setq merlin-ac-setup t)
+
+;(require 'merlin-iedit)
+;(defun evil-custom-merlin-iedit ()
+;  (interactive)
+;  (if iedit-mode (iedit-mode)
+;    (merlin-iedit-occurrences)))
+;(define-key merlin-mode-map (kbd "C-c C-e") 'evil-custom-merlin-iedit)
