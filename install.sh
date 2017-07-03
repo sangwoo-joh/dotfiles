@@ -43,6 +43,7 @@ if ! $FLAG; then
 
   sudo apt-get install neovim
   sudo apt-get install typora
+  sudo apt-get install plank 
 fi
 
 # need python nvim
