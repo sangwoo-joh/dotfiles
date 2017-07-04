@@ -210,6 +210,7 @@
   (add-to-list 'load-path (concat support-base-dir "/share/emacs/site-lisp"))
   (setq refmt-command (concat support-base-dir "/bin/refmt")))
 
+<<<<<<< HEAD
 ;(require 'reason-mode)
 (require 'merlin)
 ;(add-hook 'reason-mode-hook (lambda ()
@@ -224,3 +225,15 @@
 ;  (if iedit-mode (iedit-mode)
 ;    (merlin-iedit-occurrences)))
 ;(define-key merlin-mode-map (kbd "C-c C-e") 'evil-custom-merlin-iedit)
+=======
+(defun my-web-mode-hook ()
+  "Hooks for Web mode."
+    (setq web-mode-markup-indent-offset 2)
+    (setq web-mode-css-indent-offset 2)
+    (setq web-mode-code-indent-offset 2)
+    (setq web-mode-indent-style 2)
+)
+(add-hook 'web-mode-hook  'my-web-mode-hook)
+(add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
+>>>>>>> 4fd654cb574b6eaa3bf092dc28b4641aade54822
