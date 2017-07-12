@@ -73,3 +73,4 @@ cat ./bash/alias >> ~/.bashrc
 # global nautilus setting
 gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 gsettings set org.gnome.nautilus.preferences default-sort-order 'type'
+gsettings set org.gnome.nautilus.preferences show-hidden-files false
