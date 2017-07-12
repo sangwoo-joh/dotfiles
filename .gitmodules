@@ -1,0 +1,6 @@
+[submodule "icons"]
+	path = Arc-OSX-Icons
+	url = https://github.com/LinxGem33/Arc-OSX-Icons.git
+[submodule "fzf"]
+	path = fzf
+	url = https://github.com/junegunn/fzf.git

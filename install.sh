@@ -28,11 +28,6 @@ else
 fi
 
 if ! $FLAG; then
-  # install my file list
-  sudo apt-get install m4
-  sudo apt-get install opam
-  opam init
-  sudo apt-get install silversearcher-ag tmux emacs texlive-full ko.tex-base graphviz openjdk-8-jdk filezilla clang
   # neovim
   sudo add-apt-repository ppa:neovim-ppa/unstable
   # typora
@@ -40,15 +35,26 @@ if ! $FLAG; then
   sudo add-apt-repository 'deb https://typora.io ./linux/'
 
   sudo apt-get update
+  
+  # install my file list
+  sudo apt-get install m4 -y
+  sudo apt-get install opam -y
+  opam init
+  
+  sudo apt-get install silversearcher-ag tmux emacs texlive-full ko.tex-base graphviz openjdk-8-jdk \
+       filezilla clang plank python-pip neovim typora thunderbird thunderbird-locale-ko gnome-tweak-tool -y
+  sudo pip install neovim
 
-  sudo apt-get install neovim
-  sudo apt-get install typora
-  sudo apt-get install plank 
+  # download fonts
+  mkdir ./fonts -p
+  wget https://github.com/naver/d2codingfont/releases/download/VER1.21/D2Coding-1.2.zip -P ./fonts
+
+  # download themes
+  mkdir ./themes -p
+  wget https://github.com/LinxGem33/OSX-Arc-White/releases/download/v1.4.3/osx-arc-collection_1.4.3_amd64.deb -P ./themes
+  
 fi
 
-# need python nvim
-sudo apt-get install python-pip
-sudo pip install neovim
 
 # dotfiles setting
 mkdir ~/.config -p
