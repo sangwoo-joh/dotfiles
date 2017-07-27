@@ -63,6 +63,9 @@ mkdir ~/.config/nvim -p
 cp ./nvim/init.vim ~/.config/nvim/
 cp ./tmux/.tmux.conf ~/.tmux.conf
 
+mkdir ~/.ssh -P
+cp ./ssh/config ~/.ssh/
+
 mkdir ~/.emacs.d
 mkdir ~/.emacs.d/themes
 cp dracula-theme.el ~/.emacs.d/themes/

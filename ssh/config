@@ -1,0 +1,11 @@
+Host ropas
+  HostName ropas.snu.ac.kr
+  Port 22
+  User swjoh
+  ForwardX11 yes
+
+Host woojs
+  HostName woojs.net
+  Port 2222
+  User woojs
+  ForwardX11 yes

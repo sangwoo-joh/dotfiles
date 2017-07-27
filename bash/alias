@@ -7,14 +7,9 @@ alias apacherestart='sudo /etc/init.d/apache2 restart'
 alias vi='nvim'
 alias mem='cat /proc/meminfo | grep MemTotal'
 alias cursize='du -s -h'
-
 alias grep='grep --color=auto'
 alias png='dot -Tpng -O'
 alias dotclear='rm -rf *.dot *.png'
-
-alias woojs='ssh 115.71.238.64 -p 2222 -l woojs'
-alias ds='ssh 147.46.114.94 -p 7000 -l student13 -X'
-alias ropas='ssh swjoh@ropas.snu.ac.kr -X'
 
 eval `opam config env`
 
