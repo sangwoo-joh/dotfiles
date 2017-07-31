@@ -35,14 +35,14 @@ if ! $FLAG; then
   sudo add-apt-repository 'deb https://typora.io ./linux/'
 
   sudo apt-get update
-  
+
   # install my file list
   sudo apt-get install m4 -y
   sudo apt-get install opam -y
   opam init
-  
-  sudo apt-get install silversearcher-ag tmux emacs texlive-full ko.tex-base graphviz openjdk-8-jdk \
-       filezilla clang plank python-pip neovim typora thunderbird thunderbird-locale-ko gnome-tweak-tool -y
+
+  sudo apt-get install silversearcher-ag tmux emacs texlive-full ko.tex-base graphviz \
+       filezilla plank python-pip neovim typora thunderbird thunderbird-locale-ko -y
   sudo pip install neovim
 
   # download fonts
@@ -52,7 +52,7 @@ if ! $FLAG; then
   # download themes
   mkdir ./themes -p
   wget https://github.com/LinxGem33/OSX-Arc-White/releases/download/v1.4.3/osx-arc-collection_1.4.3_amd64.deb -P ./themes
-  
+
 fi
 
 
@@ -63,13 +63,13 @@ mkdir ~/.config/nvim -p
 cp ./nvim/init.vim ~/.config/nvim/
 cp ./tmux/.tmux.conf ~/.tmux.conf
 
-mkdir ~/.ssh -P
+mkdir ~/.ssh -p
 cp ./ssh/config ~/.ssh/
 
 mkdir ~/.emacs.d
 mkdir ~/.emacs.d/themes
 cp dracula-theme.el ~/.emacs.d/themes/
-cp ./emacs ~/.emacs
+cp ./emacs ~/.emacs.d/init.el
 
 cat ./bash/alias >> ~/.bashrc
 
