@@ -68,8 +68,8 @@ cp ./ssh/config ~/.ssh/
 
 mkdir ~/.emacs.d
 mkdir ~/.emacs.d/themes
-cp dracula-theme.el ~/.emacs.d/themes/
-cp ./emacs ~/.emacs.d/init.el
+cp ./emacs/dracula-theme.el ~/.emacs.d/themes/
+cp ./emacs/init.el ~/.emacs.d/
 
 cat ./bash/alias >> ~/.bashrc
 
