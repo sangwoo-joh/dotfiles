@@ -62,5 +62,5 @@ function smile_prompt
   RC="${BWHITE}"
   #default color
   DF='\[\e[0m\]'
-  PS1="${UC}\u${RC}@${HC}\h ${RC}[\W${DF}]$RED\$(parse_git_branch) ${SC}${DF} \$ "
+  PS1="${UC}\u${RC}@${HC}\h ${RC}[\w${DF}]$RED\$(parse_git_branch) ${SC}${DF} \$ "
 }
