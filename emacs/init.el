@@ -142,9 +142,12 @@
 (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
 (require 'ocp-indent)
 (require 'merlin)
-(require 'ocp-index)
+;(require 'ocp-index)
 (add-hook 'tuareg-mode-hook 'merlin-mode t)
 (add-hook 'caml-mode-hook 'merlin-mode t)
+;install rainbow-delimiters
+(add-hook 'tuareg-mode-hook 'rainbow-delimiters-mode t)
+(add-hook 'caml-mode-hook 'rainbow-delimiters-mode t)
 (setq merlin-use-auto-complete-mode 'easy)
 (setq merlin-command 'opam)
 (load (concat opam-share "/emacs/site-lisp/tuareg-site-file"))
