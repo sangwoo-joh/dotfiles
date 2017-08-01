@@ -1,7 +1,7 @@
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+(require 'package)
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+
 (package-initialize)
  (require 'desktop)
   (desktop-save-mode 1)
@@ -11,9 +11,6 @@
     (if (eq (desktop-owner) (emacs-pid))
         (desktop-save desktop-dirname)))
   (add-hook 'auto-save-hook 'my-desktop-save)
-
-
-;; Function definitions
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -52,10 +49,7 @@
   (interactive "nSize: ")
   (set-face-attribute 'default nil :height (* size 12)))
 
-
-
 ;; Default settings
-
 (set-fontset-font "fontset-default" 'latin "D2Coding")
 (set-fontset-font "fontset-default" 'hangul "D2Coding")
 (set-face-attribute 'default nil :font "fontset-default")
@@ -109,30 +103,19 @@
 
 (global-linum-mode 1)
 
-
 ;; Package settings
 
 ;; multiple-cursors
-;; See https://marmalade-repo.org/
-;; marmalade package repository
-;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-;;(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (global-set-key (kbd "C-x C-g") 'magit-status)
 (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 
-
-
 ;; multiple-cursors
-;; See https://marmalade-repo.org/
-
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 ;; expand-region
-;; See https://marmalade-repo.org/
-
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 ;; auto highlight
@@ -155,7 +138,6 @@
 
 ;; OPAM packages: ocp-indent & merlin & tuareg
 ;; NOTE: they share a load path.
-
 (setq opam-share (substring (shell-command-to-string "opam config var share 2> /dev/null") 0 -1))
 (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
 (require 'ocp-indent)
@@ -167,9 +149,6 @@
 (load (concat opam-share "/emacs/site-lisp/tuareg-site-file"))
 
 ;; auto-complete
-;; See https://marmalade-repo.org/
-;; NOTE: the popup package is installed together.
-
 (add-to-list 'load-path "~/.emacs.d/elpa/popup-0.5")
 (add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-1.4")
 (require 'auto-complete)
@@ -177,24 +156,13 @@
 
 ;; Color theme: dracula
 ;; See https://github.com/zenorocha/dracula-theme
-
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;;(load-theme 'solarized t)
 (load-theme 'dracula t)
 
-
 ;; NOTE: tuareg is installed from opam, and after that you should follow the tuaret output to .emacs file like (load "path-to-git-checkout-dir/tuareg-site-file")
-
 (display-time)
-
-
-;;----------------------------------------------------------------------------
-;; Reason setup
-;; Expects reason-cli to be installed:
-;; npm install -g git://github.com/reasonml/reason-cli.git
-;;----------------------------------------------------------------------------
-
 (defun chomp-end (str)
   "Chomp tailing whitespace from STR."
   (replace-regexp-in-string (rx (* (any " \t\n")) eos)
@@ -211,21 +179,6 @@
   (add-to-list 'load-path (concat support-base-dir "/share/emacs/site-lisp"))
   (setq refmt-command (concat support-base-dir "/bin/refmt")))
 
-;(require 'reason-mode)
-(require 'merlin)
-;(add-hook 'reason-mode-hook (lambda ()
-;                              (add-hook 'before-save-hook 'refmt-before-save)
-;                              (merlin-mode)))
-;
-;(setq merlin-ac-setup t)
-
-;(require 'merlin-iedit)
-;(defun evil-custom-merlin-iedit ()
-;  (interactive)
-;  (if iedit-mode (iedit-mode)
-;    (merlin-iedit-occurrences)))
-;(define-key merlin-mode-map (kbd "C-c C-e") 'evil-custom-merlin-iedit)
-
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
     (setq web-mode-markup-indent-offset 2)
@@ -236,5 +189,8 @@
 (add-hook 'web-mode-hook  'my-web-mode-hook)
 (add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
+
+; smt2 syntax checker for z3
+;(setq flycheck-z3-smt2-executable "/home/swjoh/git/AA/z3")
 
 (setq tramp-default-method "sshx")
