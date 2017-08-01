@@ -142,6 +142,7 @@
 (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
 (require 'ocp-indent)
 (require 'merlin)
+(require 'ocp-index)
 (add-hook 'tuareg-mode-hook 'merlin-mode t)
 (add-hook 'caml-mode-hook 'merlin-mode t)
 (setq merlin-use-auto-complete-mode 'easy)
@@ -156,7 +157,6 @@
 
 ;; Color theme: dracula
 ;; See https://github.com/zenorocha/dracula-theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;;(load-theme 'solarized t)
 (load-theme 'dracula t)
