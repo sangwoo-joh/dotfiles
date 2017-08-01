@@ -72,6 +72,7 @@ cp ./emacs/dracula-theme.el ~/.emacs.d/themes/
 cp ./emacs/init.el ~/.emacs.d/
 
 cat ./bash/alias >> ~/.bashrc
+cat ./bash/rc >> ~/.bashrc
 
 # global nautilus setting
 gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
