@@ -140,7 +140,7 @@
   :ensure t
   :bind ("C-=" . er/expand-region))
 
-(use-package rainbow-delimeters
+(use-package rainbow-delimiters
   :ensure t)
 
 (use-package popup
