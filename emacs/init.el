@@ -124,41 +124,28 @@
 ;; Package settings
 ;; use use-package
 ;; to automatically setup & load package & setup package in the same block
+(use-package rainbow-delimiters :ensure t)
+(use-package popup :ensure t)
+(use-package markdown-mode :ensure t)
 (use-package multiple-cursors
   :ensure t
   :bind (("C-S-c C-S-c" . mc/edit-lines)
 	 ("C->" . mc/mark-next-like-this)
 	 ("C-<" . mc/mark-previous-like-this)
 	 ("C-c C-<" . mc/mark-all-like-this)))
-
 (use-package magit
   :ensure t
   :bind (("C-x C-g" . magit-status)
 	 ("C-x M-g" . magit-dispatch-popup)))
-
 (use-package expand-region
   :ensure t
   :bind ("C-=" . er/expand-region))
-
-(use-package rainbow-delimiters
-  :ensure t)
-
-(use-package popup
-  :ensure t)
-
-(use-package markdown-mode
-  :ensure t)
-
 (use-package auto-complete
   :ensure t
   :bind ("C-c <tab>" . ac-complete-merlin))
-
-;; Color theme: dracula
-;; See https://github.com/zenorocha/dracula-theme
 (use-package dracula-theme
   :ensure t)
 (load-theme 'dracula t)
-
 (use-package web-mode
   :ensure t
   :init
@@ -166,7 +153,6 @@
   (setq web-mode-css-indent-offset 2)
   (setq web-mode-code-indent-offset 2)
   (setq web-mode-indent-style 2))
-
 (add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
 
