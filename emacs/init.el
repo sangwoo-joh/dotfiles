@@ -124,6 +124,11 @@
 ;; Package settings
 ;; use use-package
 ;; to automatically setup & load package & setup package in the same block
+(use-package hungry-delete
+  :ensure t
+  :init (global-hungry-delete-mode)
+  :bind (("S-<backspace>" . hungry-delete-backward)
+	 ("S-<delete>" . hungry-delete-forward)))
 (use-package rainbow-delimiters :ensure t)
 (use-package popup :ensure t)
 (use-package markdown-mode :ensure t)
