@@ -148,8 +148,9 @@
 (use-package auto-complete
   :ensure t
   :bind ("C-c <tab>" . ac-complete-merlin))
-(use-package dracula-theme
-  :ensure t)
+;; (use-package dracula-theme
+;;   :ensure t)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'dracula t)
 (use-package web-mode
   :ensure t
