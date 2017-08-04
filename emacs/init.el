@@ -140,8 +140,7 @@
 	 ("C-c C-<" . mc/mark-all-like-this)))
 (use-package magit
   :ensure t
-  :bind (("C-x C-g" . magit-status)
-	 ("C-x M-g" . magit-dispatch-popup)))
+  :bind ("C-x g" . magit-status))
 (use-package expand-region
   :ensure t
   :bind ("C-=" . er/expand-region))
