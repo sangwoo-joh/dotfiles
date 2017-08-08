@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e -u
+set -e -u -x
 
 FLAG=false
 
@@ -16,7 +16,7 @@ do
       #unknown option
     ;;
 esac
-shift #past argument or value
+#shift #past argument or value
 done
 
 if $FLAG ; then
@@ -66,8 +66,8 @@ cp ./tmux/.tmux.conf ~/.tmux.conf
 mkdir ~/.ssh -p
 cp ./ssh/config ~/.ssh/
 
-mkdir ~/.emacs.d
-mkdir ~/.emacs.d/themes
+mkdir ~/.emacs.d -p
+mkdir ~/.emacs.d/themes -p
 cp ./emacs/dracula-theme.el ~/.emacs.d/themes/
 cp ./emacs/init.el ~/.emacs.d/
 
