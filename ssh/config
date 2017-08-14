@@ -9,3 +9,9 @@ Host woojs
   Port 2222
   User woojs
   ForwardX11 yes
+
+Host lab
+  HostName 147.46.78.149
+  Port 22
+  User swjoh
+  ForwardX11 yes
