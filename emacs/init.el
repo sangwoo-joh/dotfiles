@@ -181,3 +181,9 @@
 (display-time)
 (defun chomp-end (str)
   (replace-regexp-in-string (rx (* (any " \t\n")) eos) "" str))
+
+;; my local setting for z3 smt2 syntax
+;; (use-package flycheck :ensure t)
+;; (use-package boogie-friends :ensure t)
+;; (setq flycheck-z3-smt2-executable "/home/falcon/git/AA/z3")
+;; (add-hook 'z3-smt2-mode-hook 'rainbow-delimiters-mode t)
