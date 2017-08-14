@@ -131,7 +131,13 @@
 	 ("S-<delete>" . hungry-delete-forward)))
 (use-package rainbow-delimiters :ensure t)
 (use-package popup :ensure t)
-(use-package markdown-mode :ensure t)
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+	 ("\\.md\\'" . markdown-mode)
+	 ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
 (use-package multiple-cursors
   :ensure t
   :bind (("C-S-c C-S-c" . mc/edit-lines)
