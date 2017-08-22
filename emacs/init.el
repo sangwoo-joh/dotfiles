@@ -166,6 +166,9 @@
   (setq web-mode-indent-style 2))
 (add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
+(use-package auctex
+  :defer t
+  :ensure t)
 
 ;; OPAM packages: ocp-indent & merlin & tuareg
 ;; NOTE: they share a load path.
