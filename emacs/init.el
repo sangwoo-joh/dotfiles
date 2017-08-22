@@ -196,3 +196,11 @@
 ;; (use-package boogie-friends :ensure t)
 ;; (setq flycheck-z3-smt2-executable "/home/falcon/git/AA/z3")
 ;; (add-hook 'z3-smt2-mode-hook 'rainbow-delimiters-mode t)
+(defun increment-number-at-point ()
+  (interactive)
+  (skip-chars-backward "0-9")
+  (or (looking-at "[0-9]+")
+      (error "No number at point"))
+  (replace-match (number-to-string (1+ (string-to-number (match-string 0))))))
+(global-set-key (kbd "C-c +") 'increment-number-at-point)
+
