@@ -204,3 +204,9 @@
   (replace-match (number-to-string (1+ (string-to-number (match-string 0))))))
 (global-set-key (kbd "C-c +") 'increment-number-at-point)
 
+;; Disable Eshell's scroll feature
+;; from https://emacs.stackexchange.com/questions/28819/eshell-goes-to-the-bottom-of-the-page-after-executing-a-command
+(add-hook 'eshell-mode-hook
+          (defun chunyang-eshell-mode-setup ()
+            (remove-hook 'eshell-output-filter-functions
+                         'eshell-postoutput-scroll-to-bottom)))
