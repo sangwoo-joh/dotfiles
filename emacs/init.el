@@ -152,7 +152,7 @@
   :bind ("C-=" . er/expand-region))
 (use-package auto-complete
   :ensure t
-  :bind ("C-c <tab>" . ac-complete-merlin))
+  :bind ("C-c <tab>" . ocamlformat))
 ;; (use-package dracula-theme
 ;;   :ensure t)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
