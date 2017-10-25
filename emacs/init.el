@@ -186,6 +186,9 @@
 (setq merlin-use-auto-complete-mode 'easy)
 (setq merlin-command 'opam)
 (load (concat opam-share "/emacs/site-lisp/tuareg-site-file"))
+;; ocamlformat setting
+(load (concat opam-share "/emacs/site-lisp/ocamlformat"))
+(add-hook 'before-save-hook 'ocamlformat-before-save)
 
 (display-time)
 (defun chomp-end (str)
