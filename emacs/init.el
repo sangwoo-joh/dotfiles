@@ -131,6 +131,8 @@
 	 ("S-<delete>" . hungry-delete-forward)))
 (use-package rainbow-delimiters :ensure t)
 (use-package popup :ensure t)
+(use-package yaml-mode :ensure t)
+(use-package toml-mode :ensure t)
 (use-package markdown-mode
   :ensure t
   :commands (markdown-mode gfm-mode)
