@@ -199,6 +199,9 @@
         (setq tab-width 2)
         (setq python-indent 2)))
 
+;; rust formatting: need to install `cargo install rustfmt` and add path `export PATH="$PATH:$HOME/.cargo/bin"
+(setq rust-format-on-save t)
+
 (display-time)
 (defun chomp-end (str)
   (replace-regexp-in-string (rx (* (any " \t\n")) eos) "" str))
