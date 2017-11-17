@@ -193,6 +193,12 @@
 (load (concat opam-share "/emacs/site-lisp/ocamlformat"))
 (add-hook 'before-save-hook 'ocamlformat-before-save)
 
+(add-hook 'python-mode-hook
+      (lambda ()
+        (setq indent-tabs-mode t)
+        (setq tab-width 2)
+        (setq python-indent 2)))
+
 (display-time)
 (defun chomp-end (str)
   (replace-regexp-in-string (rx (* (any " \t\n")) eos) "" str))
