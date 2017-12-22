@@ -81,6 +81,7 @@
 (setq query-replace-highlight t)
 (setq TeX-PDF-mode t)
 (setq tramp-default-method "sshx")
+(add-to-list 'tramp-remote-process-environment "JEKYLL_ENV=production")
 
 ;; auto highlight
 (defun highlight-and-mark ()
