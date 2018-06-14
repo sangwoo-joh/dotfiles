@@ -42,11 +42,6 @@ if ! $FLAG; then
        filezilla plank python-pip neovim thunderbird thunderbird-locale-ko \
        cargo tree -y
   sudo pip install neovim
-
-  # download fonts
-  mkdir ./fonts -p
-  wget https://github.com/naver/d2codingfont/releases/download/VER1.21/D2Coding-1.2.zip -P ./fonts
-
 fi
 
 git submodule init
