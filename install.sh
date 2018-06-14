@@ -50,9 +50,6 @@ git submodule update
 pushd . > /dev/null
 trap "popd > /dev/null" EXIT
 
-chmod +x z/z.sh
-echo ". $(pwd)/z.sh" >> ~/.bashrc
-
 # dotfiles setting
 mkdir ~/.config -p
 mkdir ~/.config/nvim -p
