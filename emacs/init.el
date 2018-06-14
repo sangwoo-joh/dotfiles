@@ -226,3 +226,18 @@
           (defun chunyang-eshell-mode-setup ()
             (remove-hook 'eshell-output-filter-functions
                          'eshell-postoutput-scroll-to-bottom)))
+;; for C++
+(use-package company
+  :ensure t)
+
+(use-package irony
+  :ensure t)
+
+(use-package company-irony
+  :ensure t)
+
+(use-package flycheck
+  :ensure t)
+
+(use-package clang-format
+  :ensure t)
