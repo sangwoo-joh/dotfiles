@@ -1,3 +1,6 @@
 [submodule "fzf"]
 	path = fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule "d2codingfont"]
+	path = d2codingfont
+	url = https://github.com/naver/d2codingfont.git
