@@ -30,9 +30,6 @@ fi
 if ! $FLAG; then
   # neovim
   sudo add-apt-repository ppa:neovim-ppa/unstable
-  # typora
-  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE
-  sudo add-apt-repository 'deb https://typora.io ./linux/'
 
   sudo apt-get update
 
@@ -42,7 +39,7 @@ if ! $FLAG; then
   opam init
 
   sudo apt-get install silversearcher-ag tmux emacs texlive-full ko.tex-base graphviz \
-       filezilla plank python-pip neovim typora thunderbird thunderbird-locale-ko \
+       filezilla plank python-pip neovim thunderbird thunderbird-locale-ko \
        cargo tree -y
   sudo pip install neovim
 
