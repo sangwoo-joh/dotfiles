@@ -47,10 +47,6 @@ if ! $FLAG; then
   mkdir ./fonts -p
   wget https://github.com/naver/d2codingfont/releases/download/VER1.21/D2Coding-1.2.zip -P ./fonts
 
-  # download themes
-  mkdir ./themes -p
-  wget https://github.com/LinxGem33/OSX-Arc-White/releases/download/v1.4.3/osx-arc-collection_1.4.3_amd64.deb -P ./themes
-
 fi
 
 git submodule init
