@@ -246,7 +246,7 @@
   :ensure t
   :init
   (progn
-    (unless (irony--find-server-executable) (call-interactively #'irony-install-server))
+    ;; (unless (irony--find-server-executable) (call-interactively #'irony-install-server))
     (add-hook 'c-mode-hook 'irony-mode)
     (add-hook 'c++-mode-hook 'irony-mode)
     (setq-default irony-cdb-compilation-databases '(irony-cdb-libclang irony-cdb-clang-complete))
