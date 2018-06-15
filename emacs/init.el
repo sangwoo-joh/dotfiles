@@ -282,3 +282,14 @@
 (use-package clang-format
   :ensure t
   :bind (("C-c C-f" . clang-format-buffer)))
+
+(defun set-key-c++-mode ()
+  (interactive)
+  (define-key c++-mode-map (kbd "C-c ;") 'comment-line)
+  (define-key c++-mode-map (kbd "C-c :") 'uncomment-region)
+  (define-key c-mode-map (kbd "C-c ;") 'comment-line)
+  (define-key c-mode-map (kbd "C-c :") 'uncomment-region))
+
+(progn
+  (add-hook 'c-mode-hook 'set-key-c++-mode)
+  (add-hook 'c++-mode-hook 'set-key-c++-mode))
