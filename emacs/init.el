@@ -227,6 +227,13 @@
             (remove-hook 'eshell-output-filter-functions
                          'eshell-postoutput-scroll-to-bottom)))
 ;; for C++
+(use-package autopair
+  :ensure t
+  :init
+  (progn
+    (add-hook 'c-mode-hook 'autopair-mode)
+    (add-hook 'c++-mode-hook 'autopair-mode)))
+
 (use-package company
   :ensure t
   :init
