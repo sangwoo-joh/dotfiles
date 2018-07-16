@@ -72,3 +72,7 @@ cat ./bash/rc >> ~/.bashrc
 gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 gsettings set org.gnome.nautilus.preferences default-sort-order 'type'
 gsettings set org.gnome.nautilus.preferences show-hidden-files false
+
+# global keyboard speed setting
+gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
+gsettings set org.gnome.desktop.peripherals.keyboard delay 210
