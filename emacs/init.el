@@ -174,6 +174,9 @@
   :defer t
   :ensure t)
 
+(use-package graphviz-dot-mode
+  :ensure t)
+
 ;; OPAM packages: ocp-indent & merlin & tuareg
 ;; NOTE: they share a load path.
 ;; NOTE2: opam package cannot be set up by use-package...
