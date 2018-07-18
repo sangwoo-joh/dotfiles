@@ -175,7 +175,10 @@
   :ensure t)
 
 (use-package graphviz-dot-mode
-  :ensure t)
+  :ensure t
+  :init
+  (setq graphviz-dot-indent-width 2)
+  (setq graphviz-dot-complete-word t))
 
 ;; OPAM packages: ocp-indent & merlin & tuareg
 ;; NOTE: they share a load path.
