@@ -39,7 +39,7 @@ if ! $FLAG; then
   opam init
 
   sudo apt-get install silversearcher-ag tmux emacs texlive-full ko.tex-base graphviz \
-       filezilla plank python-pip neovim thunderbird thunderbird-locale-ko \
+       python-pip neovim thunderbird thunderbird-locale-ko \
        cargo tree -y
   sudo pip install neovim
 fi
