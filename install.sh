@@ -40,7 +40,7 @@ if ! $FLAG; then
 
   sudo apt-get install silversearcher-ag tmux emacs texlive-full ko.tex-base graphviz \
        python-pip neovim thunderbird thunderbird-locale-ko \
-       ruby ruby-dev \
+       ruby ruby-dev htop\
        cargo tree -y
   sudo pip install neovim
 fi
