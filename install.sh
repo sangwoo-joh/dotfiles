@@ -31,6 +31,9 @@ if ! $FLAG; then
   # neovim
   sudo add-apt-repository ppa:neovim-ppa/unstable
 
+  # emacs >= 25
+  sudo add-apt-repository ppa:kelleyk/emacs
+
   sudo apt-get update
 
   # install my file list
@@ -38,9 +41,10 @@ if ! $FLAG; then
   sudo apt-get install opam -y
   opam init
 
-  sudo apt-get install silversearcher-ag tmux emacs texlive-full ko.tex-base graphviz \
+  sudo apt-get install emacs25 silversearcher-ag \
+       tmux texlive-full ko.tex-base graphviz \
        python-pip neovim thunderbird thunderbird-locale-ko \
-       ruby ruby-dev htop\
+       ruby ruby-dev htop \
        cargo tree -y
   sudo pip install neovim
 fi
