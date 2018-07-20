@@ -80,8 +80,10 @@
 (setq search-highlight t)
 (setq query-replace-highlight t)
 (setq TeX-PDF-mode t)
-(setq tramp-default-method "sshx")
-(add-to-list 'tramp-remote-process-environment "JEKYLL_ENV=production")
+
+;; don't know why, but currently this tramp setting is not working...
+;; (setq tramp-default-method "sshx")
+;; (add-to-list 'tramp-remote-process-environment "JEKYLL_ENV=production")
 
 ;; auto highlight
 (defun highlight-and-mark ()
