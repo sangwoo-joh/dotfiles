@@ -1,11 +1,4 @@
 ;; initial package setup
-(require 'package)
-(setq package-enable-at-startup nil)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(package-initialize)
-(when (not (package-installed-p 'use-package))
-  (package-refresh-contents)
-  (package-install 'use-package))
 
 (require 'desktop)
 (desktop-save-mode 1)
