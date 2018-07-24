@@ -62,3 +62,13 @@
   :init
   (setq graphviz-dot-indent-width 2)
   (setq graphviz-dot-complete-word t))
+
+(use-package smart-mode-line
+  :ensure t)
+
+(use-package smart-mode-line-powerline-theme
+  :ensure t
+  :init
+  (setq sml/no-confirm-load-theme t) ;; for ignoring y/n question. move custom-variables to the top of init.el is proper solution, but its bothering.
+  (sml/setup)
+  (sml/apply-theme 'powerline))
