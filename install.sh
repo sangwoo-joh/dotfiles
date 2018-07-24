@@ -65,10 +65,13 @@ cp ./tmux/.tmux.conf ~/.tmux.conf
 mkdir ~/.ssh -p
 cp ./ssh/config ~/.ssh/
 
+# emacs setting
 mkdir ~/.emacs.d -p
 mkdir ~/.emacs.d/themes -p
+mkdir ~/.emacs.d/config -p
 cp ./emacs/dracula-theme.el ~/.emacs.d/themes/
 cp ./emacs/init.el ~/.emacs.d/
+cp ./emacs/config/* ~/.emacs.d/config/
 
 cat ./bash/alias >> ~/.bashrc
 cat ./bash/rc >> ~/.bashrc
