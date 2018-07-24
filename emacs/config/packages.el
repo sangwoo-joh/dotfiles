@@ -41,7 +41,10 @@
   :ensure t
   :bind ("C-=" . er/expand-region))
 
-(use-package auto-complete :ensure t)
+(use-package auto-complete
+  :ensure t
+  :init (global-auto-complete-mode t)
+  (ac-set-trigger-key "C-c <tab"))
 
 (use-package web-mode
   :ensure t
@@ -94,7 +97,9 @@
 (use-package yasnippet-classic-snippets :ensure t)
 (use-package yasnippet
   :ensure t
-  :init (yas-global-mode t))
+  :init
+  (yas-global-mode t)
+  (add-hook 'prog-mode-hook #'yas-minor-mode))
 
 (use-package undo-tree
   :ensure t
