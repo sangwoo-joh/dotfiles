@@ -69,9 +69,12 @@ cp ./ssh/config ~/.ssh/
 mkdir ~/.emacs.d -p
 mkdir ~/.emacs.d/themes -p
 mkdir ~/.emacs.d/config -p
+mkdir ~/.emacs.d/snippets/c++-mode -p
+
 cp ./emacs/dracula-theme.el ~/.emacs.d/themes/
 cp ./emacs/init.el ~/.emacs.d/
 cp ./emacs/config/* ~/.emacs.d/config/
+cp ./emacs/snippets/c++-mode/* ~/.emacs.d/snippets/c++-mode/
 
 cat ./bash/alias >> ~/.bashrc
 cat ./bash/rc >> ~/.bashrc

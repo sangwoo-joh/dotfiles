@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: problem solving
+# key: ps
+# --
+
+#include <stdio.h>
+typedef long long int bigint;
+typedef double real;
+
+int main(){
+  int T;
+  scanf("%d", &T);
+  for(int tc = 1; tc <= T; ++tc){
+
+  }
+  return 0;
+}
