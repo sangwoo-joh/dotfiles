@@ -6,7 +6,13 @@
   :init (global-hungry-delete-mode)
   :bind (("S-<backspace>" . hungry-delete-backward)
 	 ("S-<delete>" . hungry-delete-forward)))
-(use-package rainbow-delimiters :ensure t)
+
+(use-package rainbow-delimiters
+  :ensure t
+  :init
+  (progn
+    (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)))
+
 (use-package popup :ensure t)
 (use-package yaml-mode :ensure t)
 (use-package toml-mode :ensure t)
