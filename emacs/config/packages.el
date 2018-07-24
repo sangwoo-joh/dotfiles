@@ -95,3 +95,7 @@
 (use-package yasnippet
   :ensure t
   :init (yas-global-mode t))
+
+(use-package undo-tree
+  :ensure t
+  :bind (("C-z" . undo-tree-visualize)))
