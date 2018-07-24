@@ -89,3 +89,9 @@
 	 ;; ("C-x 4 m" . switch-window-then-compose-mail)
 	 ;; ("C-x 4 r" . switch-window-then-find-file-read-only)
 	 ("C-x 4 0" . switch-window-then-kill-buffer)))
+
+(use-package yasnippet-snippets :ensure t)
+(use-package yasnippet-classic-snippets :ensure t)
+(use-package yasnippet
+  :ensure t
+  :init (yas-global-mode t))
