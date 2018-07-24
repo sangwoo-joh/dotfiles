@@ -4,6 +4,7 @@
 # --
 
 #include <stdio.h>
+#define nullptr 0
 typedef long long int bigint;
 typedef double real;
 
