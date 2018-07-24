@@ -72,3 +72,20 @@
   (setq sml/no-confirm-load-theme t) ;; for ignoring y/n question. move custom-variables to the top of init.el is proper solution, but its bothering.
   (sml/setup)
   (sml/apply-theme 'powerline))
+
+(use-package switch-window
+  :ensure t
+  :init
+  (setq switch-window-shortcut-style 'qwerty)
+  (setq switch-window-qwerty-shortcuts
+	'("a" "s" "d" "f" "j" "k" "l" ";" "q" "w" "e" "r" "i" "o" "z" "x" "c" "v"))
+  :bind (("C-x o" . switch-window)
+	 ("C-x 1" . switch-window-then-maximize)
+	 ("C-x 2" . switch-window-then-split-below)
+	 ("C-x 3" . switch-window-then-split-right)
+	 ("C-x 0" . switch-window-then-delete)
+	 ("C-x 4 d" . switch-window-then-dired)
+	 ("C-x 4 f" . switch-window-then-find-file)
+	 ;; ("C-x 4 m" . switch-window-then-compose-mail)
+	 ;; ("C-x 4 r" . switch-window-then-find-file-read-only)
+	 ("C-x 4 0" . switch-window-then-kill-buffer)))
