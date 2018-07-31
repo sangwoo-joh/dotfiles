@@ -104,3 +104,6 @@
 (use-package undo-tree
   :ensure t
   :bind (("C-z" . undo-tree-visualize)))
+
+(use-package ag
+  :ensure t)
