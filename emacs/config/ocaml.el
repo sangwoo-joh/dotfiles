@@ -7,16 +7,21 @@
 (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
 (require 'ocp-indent)
 (require 'merlin)
-(add-hook 'tuareg-mode-hook 'merlin-mode t)
-(add-hook 'caml-mode-hook 'merlin-mode t)
-(add-hook 'tuareg-mode-hook 'rainbow-delimiters-mode t)
-(add-hook 'caml-mode-hook 'rainbow-delimiters-mode t)
 (setq merlin-use-auto-complete-mode 'easy)
 (setq merlin-command 'opam)
+
+(require 'tuareg)
+(add-hook 'tuareg-mode-hook 'merlin-mode t)
+(add-hook 'tuareg-mode-hook 'rainbow-delimiters-mode t)
+
+(add-hook 'caml-mode-hook 'merlin-mode t)
+(add-hook 'caml-mode-hook 'rainbow-delimiters-mode t)
 (load (concat opam-share "/emacs/site-lisp/tuareg-site-file"))
 ;; ocamlformat setting
 (load (concat opam-share "/emacs/site-lisp/ocamlformat"))
 (add-hook 'before-save-hook 'ocamlformat-before-save)
+(use-package auto-complete
+  :ensure t
+  :bind
+  (("C-c <tab>" . ac-complete-merlin)))
 
-(require 'auto-complete)
-(define-key ac-complete-mode-map "C-c <tab>" 'ac-complete-merlin)
