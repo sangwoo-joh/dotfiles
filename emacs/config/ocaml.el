@@ -25,3 +25,4 @@
   :bind
   (("C-c <tab>" . ac-complete-merlin)))
 
+(global-set-key (kbd "C-c C-f") 'ocamlformat)
