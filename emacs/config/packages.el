@@ -107,3 +107,7 @@
 
 (use-package ag
   :ensure t)
+
+(use-package neotree
+  :ensure t
+  :bind (("C-c C-l" . neotree)))
