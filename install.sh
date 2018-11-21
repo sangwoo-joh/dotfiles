@@ -71,6 +71,7 @@ mkdir ~/.emacs.d/themes -p
 mkdir ~/.emacs.d/config -p
 mkdir ~/.emacs.d/snippets/c++-mode -p
 
+cp ./emacs/.editorconfig ~/
 cp ./emacs/dracula-theme.el ~/.emacs.d/themes/
 cp ./emacs/init.el ~/.emacs.d/
 cp ./emacs/config/* ~/.emacs.d/config/
