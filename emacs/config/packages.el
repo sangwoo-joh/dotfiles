@@ -111,3 +111,5 @@
 (use-package neotree
   :ensure t
   :bind (("C-c C-l" . neotree)))
+
+(use-package editorconfig :ensutre t)
