@@ -10,6 +10,7 @@ Options
   help              Print this message
   -d|--dot-only     Set dotfiles only
   -i|--install-only Install my setup only
+  -r|--rtags        Setup rtags env
   -a|--all          Run all config(default)
 EOF
 }
@@ -17,6 +18,7 @@ EOF
 ALL=yes
 DOT_ONLY=
 INSTALL_ONLY=
+RTAGS=
 
 while [[ $# -gt 0 ]]
 do
@@ -31,6 +33,11 @@ do
     -i|--install-only)
       ALL=no
       INSTALL_ONLY=yes
+      shift
+      ;;
+    -r|--rtags)
+      ALL=no
+      RTAGS=yes
       shift
       ;;
     -a|--all)
@@ -114,10 +121,22 @@ function dot_only {
   gsettings set org.gnome.desktop.peripherals.keyboard delay 210
 }
 
+function rtags {
+  git clone --recursive https://github.com/Andersbakken/rtags.git
+  pushd rtags
+  cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .
+  make -j4
+  mkdir -p ~/bin/rtags
+  cp bin/* ~/bin/rtags/
+  echo "export PATH=\$PATH:\$HOME/bin/rtags" >> ~/.bashrc
+  popd
+}
+
 # check all first
 if [ "$ALL" = "yes" ]; then
   install_only
   dot_only
+  rtags
   exit 0
 fi
 
@@ -129,4 +148,8 @@ fi
 
 if [ "$DOT_ONLY" = "yes" ]; then
   dot_only
+fi
+
+if [ "$RTAGS" = "yes" ]; then
+  rtags
 fi
