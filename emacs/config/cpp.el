@@ -21,8 +21,9 @@
     ;; (unless (irony--find-server-executable) (call-interactively #'irony-install-server))
     (add-hook 'c-mode-hook 'irony-mode)
     (add-hook 'c++-mode-hook 'irony-mode)
-    (setq-default irony-cdb-compilation-databases '(irony-cdb-libclang irony-cdb-clang-complete))
-    (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)))
+    ;; (setq-default irony-cdb-compilation-databases '(irony-cdb-libclang irony-cdb-clang-complete))
+    ;; (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+    ))
 
 (use-package flycheck
   :ensure t)
@@ -65,3 +66,30 @@
 (progn
   (add-hook 'c-mode-hook 'set-key-c++-mode)
   (add-hook 'c++-mode-hook 'set-key-c++-mode))
+
+;; (use-package ivy
+;;   :ensure t
+;;   :init
+;;   (progn
+;;     (add-hook 'c-mode-hook 'ivy-mode)
+;;     (add-hook 'c++-mode-hook 'ivy-mode)))
+
+(use-package rtags
+  :ensure t
+  :init (setq rtags-path "~/bin/rtags")
+  :bind
+  (("C-c C-r C-t" . rtags-symbol-type)
+    ("C-c C-r C-l" . rtags-find-symbol-at-point)
+    ("C-c C-r l" . rtags-find-reference-at-point)
+    ("C-c C-r C-." . rtags-location-stack-forward) ;; >
+    ("C-c C-r C-," . rtags-location-stack-back) ;; <
+    ("C-c C-r C-z" . rtags-location-stack-visualize)
+    ("C-c C-r C-r" . rtags-rename-symbol) ;; rename all reachable symbols
+    ("C-c C-r C-s" . rtags-display-summary) ;; symbol description
+    ("C-c C-r C-d" . rtags-dependency-tree) ;; show dependency at point
+    ("C-c C-r C-f" . rtags-reference-tree) ;; show reference at point
+    )
+  )
+
+;; (use-package ivy-rtags
+;;   :ensure t)
