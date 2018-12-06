@@ -73,8 +73,9 @@ function install_only {
   git submodule init
   git submodule update
 
-  pushd . > /dev/null
-  trap "popd > /dev/null" EXIT
+  # I don't know what this means
+#  pushd . > /dev/null
+#  trap "popd > /dev/null" EXIT
 }
 
 function dot_only {
