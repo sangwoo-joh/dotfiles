@@ -60,6 +60,8 @@ function install_opam_2.0 {
   # require sudoer
   sh <(curl -sL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)
   opam init
+
+  opam switch create local 4.05.0 -j6
 }
 
 function install_anaconda {
