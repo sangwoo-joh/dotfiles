@@ -62,6 +62,10 @@ function install_opam_2.0 {
   opam init
 }
 
+function install_anaconda {
+  sh <(curl -sL https://repo.anaconda.com/archive/Anaconda3-5.3.1-Linux-x86_64.sh)
+}
+
 function install_only {
   # neovim
   sudo add-apt-repository ppa:neovim-ppa/unstable
@@ -74,15 +78,16 @@ function install_only {
   # install my file list
   sudo apt-get install m4 emacs25 silversearcher-ag \
        tmux texlive-full ko.tex-base graphviz \
-       python-pip neovim thunderbird thunderbird-locale-ko \
        ruby ruby-dev htop \
+       neovim thunderbird thunderbird-locale-ko \
        cargo tree -y
-  sudo pip install neovim
 
   git submodule init
   git submodule update
 
   install_opam_2.0
+  install_anaconda
+  pip install neovim
 }
 
 function dot_only {
