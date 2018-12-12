@@ -86,6 +86,7 @@ function install_only {
        tmux texlive-full ko.tex-base graphviz \
        neovim thunderbird thunderbird-locale-ko \
        ruby ruby-dev htop openssh-server \
+       neofetch \
        cargo tree -y
 
   git submodule init
