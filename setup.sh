@@ -56,6 +56,12 @@ do
   #shift #past argument or value
 done
 
+function install_opam_2.0 {
+  # require sudoer
+  sh <(curl -sL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)
+  opam init
+}
+
 function install_only {
   # neovim
   sudo add-apt-repository ppa:neovim-ppa/unstable
@@ -66,11 +72,7 @@ function install_only {
   sudo apt-get update
 
   # install my file list
-  sudo apt-get install m4 -y
-  sudo apt-get install opam -y
-  opam init
-
-  sudo apt-get install emacs25 silversearcher-ag \
+  sudo apt-get install m4 emacs25 silversearcher-ag \
        tmux texlive-full ko.tex-base graphviz \
        python-pip neovim thunderbird thunderbird-locale-ko \
        ruby ruby-dev htop \
@@ -79,6 +81,8 @@ function install_only {
 
   git submodule init
   git submodule update
+
+  install_opam_2.0
 }
 
 function dot_only {
