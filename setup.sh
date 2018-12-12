@@ -56,6 +56,10 @@ do
   #shift #past argument or value
 done
 
+function install_opam_packages {
+  opam install -y merlin tuareg ocp-indent ocamlformat
+}
+
 function install_opam_2.0 {
   # require sudoer
   sh <(curl -sL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)
