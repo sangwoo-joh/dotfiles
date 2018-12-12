@@ -78,8 +78,8 @@ function install_only {
   # install my file list
   sudo apt-get install m4 emacs25 silversearcher-ag \
        tmux texlive-full ko.tex-base graphviz \
-       ruby ruby-dev htop \
        neovim thunderbird thunderbird-locale-ko \
+       ruby ruby-dev htop openssh-server \
        cargo tree -y
 
   git submodule init
