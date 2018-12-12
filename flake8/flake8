@@ -2,4 +2,6 @@
 max-line-length = 100
 ignore =
   # prefer 2-space
-  E111
+  E111,
+  E121,
+  E114
