@@ -81,8 +81,10 @@
   (("C-c C-r C-t" . rtags-symbol-type)
     ("C-c C-r C-l" . rtags-find-symbol-at-point)
     ("C-c C-r l" . rtags-find-reference-at-point)
-    ("C-c C-r C-." . rtags-location-stack-forward) ;; >
-    ("C-c C-r C-," . rtags-location-stack-back) ;; <
+    ;; ("C-c C-r C-." . rtags-location-stack-forward) ;; >
+    ("C-," . rtags-location-stack-forward)
+    ;; ("C-c C-r C-," . rtags-location-stack-back) ;; <
+    ("M-," . rtags-location-stack-back)
     ("C-c C-r C-z" . rtags-location-stack-visualize)
     ("C-c C-r C-r" . rtags-rename-symbol) ;; rename all reachable symbols
     ("C-c C-r C-s" . rtags-display-summary) ;; symbol description
