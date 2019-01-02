@@ -79,7 +79,8 @@
   :init (setq rtags-path "~/bin/rtags")
   :bind
   (("C-c C-r C-t" . rtags-symbol-type)
-    ("C-c C-r C-l" . rtags-find-symbol-at-point)
+    ;; ("C-c C-r C-l" . rtags-find-symbol-at-point)
+    ("M-." . rtags-find-symbol-at-point)
     ("C-c C-r l" . rtags-find-reference-at-point)
     ;; ("C-c C-r C-." . rtags-location-stack-forward) ;; >
     ("C-," . rtags-location-stack-forward)
