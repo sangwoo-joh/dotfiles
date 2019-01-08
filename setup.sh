@@ -11,6 +11,7 @@ Options
   -d|--dot-only     Set dotfiles only
   -i|--install-only Install my setup only
   -r|--rtags        Setup rtags env
+  -z|--z            Setup z env
   -a|--all          Run all config(default)
 EOF
 }
@@ -18,6 +19,7 @@ EOF
 ALL=yes
 DOT_ONLY=
 INSTALL_ONLY=
+Z=
 RTAGS=
 
 while [[ $# -gt 0 ]]
@@ -38,6 +40,11 @@ do
     -r|--rtags)
       ALL=no
       RTAGS=yes
+      shift
+      ;;
+    -z|--z)
+      ALL=no
+      Z=yes
       shift
       ;;
     -a|--all)
@@ -97,6 +104,15 @@ function install_only {
   pip install neovim
 }
 
+function setup_z {
+  # z setup
+  # https://github.com/rupa/z.git
+  git clone --recursive https://github.com/rupa/z.git
+  mkdir ~/.config -p
+  mv z ~/.config/
+  echo ". \$HOME/.config/z/z.sh" >> ~/.bashrc
+}
+
 function dot_only {
   # dotfiles setting
   mkdir ~/.config -p
@@ -151,6 +167,7 @@ function rtags {
 if [ "$ALL" = "yes" ]; then
   install_only
   dot_only
+  setup_z
   rtags
   exit 0
 fi
@@ -163,6 +180,10 @@ fi
 
 if [ "$DOT_ONLY" = "yes" ]; then
   dot_only
+fi
+
+if [ "$Z" = "yes" ]; then
+  setup_z
 fi
 
 if [ "$RTAGS" = "yes" ]; then
