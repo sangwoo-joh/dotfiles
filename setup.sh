@@ -150,6 +150,9 @@ function dot_only {
 
   # flake8 config for emacs
   cp ./flake8/flake8 ~/.config/flake8
+
+  # always print neofetch
+  echo "neofetch" >> ~/.bashrc
 }
 
 function rtags {
