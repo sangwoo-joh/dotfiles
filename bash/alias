@@ -1,4 +1,3 @@
-
 alias update='sudo apt-get update -y && sudo apt-get upgrade -y && opam update -y && opam upgrade -y && sudo pip install --upgrade pip'
 alias count='wc -l'
 alias cpuinfo='grep '"'"'model name'"'"' /proc/cpuinfo'
@@ -12,4 +11,4 @@ alias png='dot -Tpng -O'
 alias dotclear='rm -rf *.dot *.png'
 
 eval `opam config env`
-
+alias here='nautilus --broswer .'
