@@ -120,6 +120,8 @@ function install_only {
 
   # install rustup instead of debian cargo package
   install_rustup
+  # install useful cargo package
+  cargo install dutree loc
 }
 
 function setup_z {
