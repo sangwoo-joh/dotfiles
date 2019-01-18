@@ -89,6 +89,10 @@ function install_my_neofetch {
   echo "neofetch --memory_percent on" >> ~/.bashrc
 }
 
+function install_rustup {
+  curl https://sh.rustup.rs -sSf | sh
+}
+
 function install_only {
   # neovim
   sudo add-apt-repository ppa:neovim-ppa/unstable
@@ -103,7 +107,7 @@ function install_only {
        tmux texlive-full ko.tex-base graphviz \
        neovim thunderbird thunderbird-locale-ko \
        ruby ruby-dev htop openssh-server \
-       cargo tree -y
+       tree -y
 
   git submodule init
   git submodule update
@@ -113,6 +117,9 @@ function install_only {
   pip install neovim
 
   install_my_neofetch
+
+  # install rustup instead of debian cargo package
+  install_rustup
 }
 
 function setup_z {
