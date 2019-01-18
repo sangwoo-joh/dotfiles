@@ -79,6 +79,16 @@ function install_anaconda {
   sh <(curl -sL https://repo.anaconda.com/archive/Anaconda3-5.3.1-Linux-x86_64.sh)
 }
 
+function install_my_neofetch {
+  git clone https://github.com/skicombinator/neofetch
+  pushd neofetch
+  sudo make install
+  popd
+
+  # always print neofetch with memory usage %
+  echo "neofetch --memory_percent on" >> ~/.bashrc
+}
+
 function install_only {
   # neovim
   sudo add-apt-repository ppa:neovim-ppa/unstable
@@ -93,7 +103,6 @@ function install_only {
        tmux texlive-full ko.tex-base graphviz \
        neovim thunderbird thunderbird-locale-ko \
        ruby ruby-dev htop openssh-server \
-       neofetch \
        cargo tree -y
 
   git submodule init
@@ -102,6 +111,8 @@ function install_only {
   install_opam_2.0
   install_anaconda
   pip install neovim
+
+  install_my_neofetch
 }
 
 function setup_z {
@@ -150,9 +161,6 @@ function dot_only {
 
   # flake8 config for emacs
   cp ./flake8/flake8 ~/.config/flake8
-
-  # always print neofetch with memory usage %
-  echo "neofetch --memory_percent on" >> ~/.bashrc
 }
 
 function rtags {
