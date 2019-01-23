@@ -62,7 +62,9 @@ function smile_prompt
   RC="${BWHITE}"
   #default color
   DF='\[\e[0m\]'
-  PS1="${UC}\u${RC}@${HC}\h ${RC}[\w]${DF}$RED\$(parse_git_branch) ${SC}${DF} \$ "
+  # timestamp color
+  TC="${BMAGENTA}"
+  PS1="${TC}(\D{%F %T})${UC}\u${RC}@${HC}\h ${RC}[\w]${DF}$RED\$(parse_git_branch) ${SC}${DF} \$ "
 }
 
 # Install Ruby Gems to ~/gems
