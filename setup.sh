@@ -107,7 +107,7 @@ function install_only {
        tmux texlive-full ko.tex-base graphviz \
        neovim thunderbird thunderbird-locale-ko \
        ruby ruby-dev htop openssh-server \
-       tree -y
+       tree etckeeper -y
 
   git submodule init
   git submodule update
