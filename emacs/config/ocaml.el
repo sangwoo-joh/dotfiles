@@ -13,16 +13,18 @@
 (require 'tuareg)
 (add-hook 'tuareg-mode-hook 'merlin-mode t)
 (add-hook 'tuareg-mode-hook 'rainbow-delimiters-mode t)
+(add-hook 'tuareg-mode-hook
+  (lambda ()
+    (define-key tuareg-mode-map (kbd "C-c C-f") #'ocamlformat)
+    (add-hook 'before-save-hook #'ocamlformat-before-save)))
 
 (add-hook 'caml-mode-hook 'merlin-mode t)
 (add-hook 'caml-mode-hook 'rainbow-delimiters-mode t)
 (load (concat opam-share "/emacs/site-lisp/tuareg-site-file"))
 ;; ocamlformat setting
 (load (concat opam-share "/emacs/site-lisp/ocamlformat"))
-(add-hook 'before-save-hook 'ocamlformat-before-save)
+
 (use-package auto-complete
   :ensure t
   :bind
   (("C-c <tab>" . ac-complete-merlin)))
-
-(global-set-key (kbd "C-c C-f") 'ocamlformat)
