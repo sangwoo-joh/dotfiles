@@ -130,3 +130,8 @@
   :ensure t
   :bind (("C-c C-s" . swiper)
           ("C-c C-a" . swiper-all)))
+
+(use-package which-key
+  :ensure t
+  :init
+  (add-hook 'prog-mode-hook #'which-key-mode))
