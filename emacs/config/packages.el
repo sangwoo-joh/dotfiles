@@ -133,3 +133,9 @@
 (use-package which-key
   :ensure t
   :init (add-hook 'prog-mode-hook #'which-key-mode))
+
+(use-package projectile
+  :ensure t
+  :init (add-hook 'prog-mode-hook #'projectile-mode)
+  :bind (("C-c C-p" . projectile-find-regexp)
+          ("C-x f" . projectile-find-file)))
