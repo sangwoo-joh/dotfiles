@@ -117,8 +117,7 @@
 ;; found amazing pacakge; just like work space
 (use-package eyebrowse
   :ensure t
-  :init
-  (add-hook 'prog-mode-hook #'eyebrowse-mode)
+  :init (add-hook 'prog-mode-hook #'eyebrowse-mode)
   :bind (("C-0" . eyebrowse-switch-to-window-config-0)
           ("C-1" . eyebrowse-switch-to-window-config-1)
           ("C-2" . eyebrowse-switch-to-window-config-2)
@@ -133,5 +132,4 @@
 
 (use-package which-key
   :ensure t
-  :init
-  (add-hook 'prog-mode-hook #'which-key-mode))
+  :init (add-hook 'prog-mode-hook #'which-key-mode))
