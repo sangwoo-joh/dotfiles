@@ -124,3 +124,9 @@
           ("C-2" . eyebrowse-switch-to-window-config-2)
           ("C-3" . eyebrowse-switch-to-window-config-3)
           ("C-4" . eyebrowse-switch-to-window-config-4)))
+
+;; little alternative for grep?
+(use-package swiper
+  :ensure t
+  :bind (("C-c C-s" . swiper)
+          ("C-c C-a" . swiper-all)))
