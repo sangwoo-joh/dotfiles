@@ -143,3 +143,8 @@
 (use-package iedit
   :ensure t
   :bind (("C-c C-a" . iedit-mode)))
+
+;; Usage: grep some keywords, and C-c C-p in result buffer.
+;; After editing, just save with C-x C-s as usual file in the buffer.
+(use-package wgrep
+  :ensure t)
