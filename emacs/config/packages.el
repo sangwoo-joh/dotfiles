@@ -113,3 +113,14 @@
   :bind (("C-c C-l" . neotree)))
 
 (use-package editorconfig :ensure t)
+
+;; found amazing pacakge; just like work space
+(use-package eyebrowse
+  :ensure t
+  :init
+  (add-hook 'prog-mode-hook #'eyebrowse-mode)
+  :bind (("C-0" . eyebrowse-switch-to-window-config-0)
+          ("C-1" . eyebrowse-switch-to-window-config-1)
+          ("C-2" . eyebrowse-switch-to-window-config-2)
+          ("C-3" . eyebrowse-switch-to-window-config-3)
+          ("C-4" . eyebrowse-switch-to-window-config-4)))
