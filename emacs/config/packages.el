@@ -139,3 +139,7 @@
   :init (add-hook 'prog-mode-hook #'projectile-mode)
   :bind (("C-c C-p" . projectile-find-regexp)
           ("C-x f" . projectile-find-file)))
+
+(use-package iedit
+  :ensure t
+  :bind (("C-c C-a" . iedit-mode)))
