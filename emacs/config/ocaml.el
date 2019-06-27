@@ -16,6 +16,8 @@
 (add-hook 'tuareg-mode-hook
   (lambda ()
     (define-key tuareg-mode-map (kbd "C-c C-f") #'ocamlformat)
+    (define-key tuareg-mode-map (kbd "M-.") #'merlin-locate)
+    (define-key tuareg-mode-map (kbd "M-,") #'merlin-pop-stack)
     (add-hook 'before-save-hook #'ocamlformat-before-save)))
 
 (add-hook 'caml-mode-hook 'merlin-mode t)
