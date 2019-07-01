@@ -148,3 +148,6 @@
 ;; After editing, just save with C-x C-s as usual file in the buffer.
 (use-package wgrep
   :ensure t)
+
+(use-package wakatime-mode
+  :ensure t)
