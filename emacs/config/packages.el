@@ -127,7 +127,7 @@
           ("C-M-1" . eyebrowse-switch-to-window-config-6)
           ("C-M-2" . eyebrowse-switch-to-window-config-7)
           ("C-M-3" . eyebrowse-switch-to-window-config-8)
-          ("C-M-5" . eyebrowse-switch-to-window-config-9)))
+          ("C-M-4" . eyebrowse-switch-to-window-config-9)))
 
 ;; little alternative for grep?
 (use-package swiper
