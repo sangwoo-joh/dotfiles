@@ -185,6 +185,7 @@ function rtags {
 
 # check all first
 if [ "$ALL" = "yes" ]; then
+  sudo apt-get install git  # git must included
   install_only
   dot_only
   setup_z
