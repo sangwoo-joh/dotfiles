@@ -95,10 +95,10 @@ function install_rustup {
 
 function install_only {
   # neovim
-  sudo add-apt-repository ppa:neovim-ppa/unstable
+  sudo add-apt-repository ppa:neovim-ppa/unstable --yes
 
   # emacs >= 25
-  sudo add-apt-repository ppa:kelleyk/emacs
+  sudo add-apt-repository ppa:kelleyk/emacs --yes
 
   sudo apt-get update
 
