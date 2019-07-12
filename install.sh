@@ -8,7 +8,7 @@ Usage: $_ [option]
 
 Options
   help              Print this message
-  d2coding          Install d2coding fonts
+  fonts             Install d2coding, powerline fonts
   dot               Install dotfiles
   pkg               Install packages
   rtags             Install rtags env
@@ -19,7 +19,7 @@ EOF
 }
 
 ALL=yes
-D2CODING=
+FONTS=
 DOT=
 PKG=
 ZSH=
@@ -33,7 +33,7 @@ do
   case $key in
     d2coding)
       ALL=no
-      D2CODING=yes
+      FONTS=yes
       shift
       ;;
     dot)
@@ -158,16 +158,26 @@ function install_z {
   echo ". \$HOME/.config/z/z.sh" >> ~/.bashrc
 }
 
-function install_d2coding {
+function install_fonts {
+  # prerequirements
   sudo apt-get install zip --yes
   git submodule init
   git submodule update
+
+  # d2coding
   pushd d2codingfont
   # 1.3.2 is latest
   unzip D2Coding-Ver1.3.2-20180524.zip
   cp D2Coding/*.ttf ~/.local/share/fonts/
-  fc-cache -vf ~/.local/share/fonts/
   popd
+
+  # powerline
+  pushd powerline
+  ./install.sh
+  popd
+
+  # load fonts
+  fc-cache -vf ~/.local/share/fonts/
 }
 
 function install_dot {
@@ -228,7 +238,7 @@ if [ "$ALL" = "yes" ]; then
   install_zsh
   install_z
   install_rtags
-  install_d2coding
+  install_fonts
   exit 0
 fi
 
@@ -242,8 +252,8 @@ if [ "$DOT" = "yes" ]; then
   install_dot
 fi
 
-if [ "$D2CODING" = "yes" ]; then
-  install_d2coding
+if [ "$FONTS" = "yes" ]; then
+  install_fonts
 fi
 
 if [ "$ZSH" = "yes" ]; then
