@@ -11,6 +11,7 @@ Options
   dot               Install dotfiles
   pkg               Install packages
   rtags             Install rtags env
+  zsh               Install zsh
   z                 Install z env
   all               Install all above (default)
 EOF
@@ -19,6 +20,7 @@ EOF
 ALL=yes
 DOT_ONLY=
 INSTALL_ONLY=
+ZSH=
 Z=
 RTAGS=
 
@@ -40,6 +42,11 @@ do
     rtags)
       ALL=no
       RTAGS=yes
+      shift
+      ;;
+    zsh)
+      ALL=no
+      ZSH=yes
       shift
       ;;
     z)
@@ -124,6 +131,17 @@ function install_only {
   cargo install dutree loc
 }
 
+function install_zsh {
+  sudo apt-get install zsh curl --yes
+  curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+
+  git clone https://github.com/bhilburn/powerlevel9k ~/.oh-my-zsh/custom/themes/powerlevel9k
+  echo "ZSH_THEME=\"powerlevel9k/powerlevel9k\"" >> ~/.zshrc
+
+  cat ./zsh/alias >> ~/.zshrc
+  cat ./zsh/rc >> ~/.zshrc
+}
+
 function setup_z {
   # z setup
   # https://github.com/rupa/z.git
@@ -188,6 +206,7 @@ if [ "$ALL" = "yes" ]; then
   sudo apt-get install git  # git must included
   install_only
   dot_only
+  install_zsh
   setup_z
   rtags
   exit 0
@@ -201,6 +220,10 @@ fi
 
 if [ "$DOT_ONLY" = "yes" ]; then
   dot_only
+fi
+
+if [ "$ZSH" = "yes" ]; then
+  install_zsh
 fi
 
 if [ "$Z" = "yes" ]; then
