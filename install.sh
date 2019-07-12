@@ -8,11 +8,11 @@ Usage: $_ [option]
 
 Options
   help              Print this message
-  -d|--dot-only     Set dotfiles only
-  -i|--install-only Install my setup only
-  -r|--rtags        Setup rtags env
-  -z|--z            Setup z env
-  -a|--all          Run all config(default)
+  dot               Install dotfiles
+  pkg               Install packages
+  rtags             Install rtags env
+  z                 Install z env
+  all               Install all above (default)
 EOF
 }
 
@@ -27,27 +27,27 @@ do
   key="$1"
 
   case $key in
-    -d|--dot-only)
+    dot)
       ALL=no
       DOT_ONLY=yes
       shift
       ;;
-    -i|--install-only)
+    pkg)
       ALL=no
       INSTALL_ONLY=yes
       shift
       ;;
-    -r|--rtags)
+    rtags)
       ALL=no
       RTAGS=yes
       shift
       ;;
-    -z|--z)
+    z)
       ALL=no
       Z=yes
       shift
       ;;
-    -a|--all)
+    all)
       ALL=yes
       shift
       ;;
