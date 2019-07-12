@@ -101,6 +101,7 @@ function install_my_neofetch {
 
   # always print neofetch with memory usage %
   echo "neofetch --memory_percent on" >> ~/.bashrc
+  echo "neofetch --memory_percent on" >> ~/.zshrc
 }
 
 function install_rustup {
@@ -228,6 +229,7 @@ function install_rtags {
   mkdir -p ~/bin/rtags
   cp bin/* ~/bin/rtags/
   echo "export PATH=\$PATH:\$HOME/bin/rtags" >> ~/.bashrc
+  echo "export PATH=\$PATH:\$HOME/bin/rtags" >> ~/.zshenv
   popd
 }
 
