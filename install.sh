@@ -100,7 +100,7 @@ function install_rustup {
   curl https://sh.rustup.rs -sSf | sh
 }
 
-function install_only {
+function install_packages {
   # neovim
   sudo add-apt-repository ppa:neovim-ppa/unstable --yes
 
@@ -204,8 +204,8 @@ function rtags {
 # check all first
 if [ "$ALL" = "yes" ]; then
   sudo apt-get install git  # git must included
-  install_only
   dot_only
+  install_packages
   install_zsh
   rtags
   install_z
@@ -215,7 +215,7 @@ fi
 
 # if both option is on respectively, check install first
 if [ "$PKG" = "yes" ]; then
-  install_only
+  install_packages
 fi
 
 if [ "$DOT" = "yes" ]; then
