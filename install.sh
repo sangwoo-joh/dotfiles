@@ -156,6 +156,7 @@ function install_z {
   mkdir ~/.config -p
   mv z ~/.config/
   echo ". \$HOME/.config/z/z.sh" >> ~/.bashrc
+  echo ". \$HOME/.config/z/z.sh" >> ~/.zshrc
 }
 
 function install_fonts {
