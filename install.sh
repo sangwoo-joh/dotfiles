@@ -151,7 +151,7 @@ function install_z {
   echo ". \$HOME/.config/z/z.sh" >> ~/.bashrc
 }
 
-function dot_only {
+function install_dot {
   # dotfiles setting
   mkdir ~/.config -p
   mkdir ~/.config/nvim -p
@@ -204,8 +204,8 @@ function rtags {
 # check all first
 if [ "$ALL" = "yes" ]; then
   sudo apt-get install git  # git must included
-  dot_only
   install_packages
+  install_dot
   install_zsh
   rtags
   install_z
@@ -219,7 +219,7 @@ if [ "$PKG" = "yes" ]; then
 fi
 
 if [ "$DOT" = "yes" ]; then
-  dot_only
+  install_dot
 fi
 
 if [ "$ZSH" = "yes" ]; then
