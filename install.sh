@@ -18,8 +18,8 @@ EOF
 }
 
 ALL=yes
-DOT_ONLY=
-INSTALL_ONLY=
+DOT=
+PKG=
 ZSH=
 Z=
 RTAGS=
@@ -31,12 +31,12 @@ do
   case $key in
     dot)
       ALL=no
-      DOT_ONLY=yes
+      DOT=yes
       shift
       ;;
     pkg)
       ALL=no
-      INSTALL_ONLY=yes
+      PKG=yes
       shift
       ;;
     rtags)
@@ -214,11 +214,11 @@ fi
 
 
 # if both option is on respectively, check install first
-if [ "$INSTALL_ONLY" = "yes" ]; then
+if [ "$PKG" = "yes" ]; then
   install_only
 fi
 
-if [ "$DOT_ONLY" = "yes" ]; then
+if [ "$DOT" = "yes" ]; then
   dot_only
 fi
 
