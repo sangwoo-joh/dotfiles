@@ -1,6 +1,6 @@
 [submodule "d2codingfont"]
 	path = d2codingfont
 	url = https://github.com/naver/d2codingfont.git
-[submodule "powerline"]
+[submodule "powerlinefont"]
 	path = powerline
 	url = https://github.com/powerline/fonts.git
