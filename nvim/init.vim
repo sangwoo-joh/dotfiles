@@ -59,28 +59,12 @@ au BufReadPost *
 "show current point(x,y) of cursor"
 set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\
 
-"for OCaml"
-"ocaml global setting"
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-
-filetype indent on
-filetype plugin on
-au BufRead,BufNewFile *.ml,*.mli compiler ocaml 
-au BufEnter *.ml,*.mli setf ocaml
-
-"OCaml merlin"
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
-let g:syntastic_ocaml_checkers = ['merlin']
-
 "vim/nvim root"
 if has('nvim')
   let s:editor_root=expand("~/.config/nvim")
 else
   let s:editor_root=expand("~/.vim")
 endif
-
-"ocp-indent"
-execute "set rtp+=" . s:editor_root . "/ocp-indent-vim"
 
 "Vundle"
 "setting up"
@@ -107,12 +91,10 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'scrooloose/syntastic'
-Plugin 'let-def/ocp-indent-vim'
 Plugin 'terryma/vim-multiple-cursors'
 " not familiar with this yet
 "Plugin 'Valloric/YouCompleteMe'
 
-"Plugin 'tpope/vim-fugitive' "conflict with ocp-indent.. you should use git in
 
 " Fuzzy search
 " These are too heavy... just goyo 
@@ -178,11 +160,6 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
-
-" Merlin
-map <C-c><C-t> <ESC>:MerlinTypeOf<CR>
-map <C-c><C-l> <ESC>:MerlinLocate<CR>
 
 " FZF
 map <S-r> :FZF<CR>
