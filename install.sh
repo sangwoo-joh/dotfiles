@@ -142,7 +142,7 @@ function install_zsh {
   cat ./zsh/rc >> ~/.zshrc
 }
 
-function setup_z {
+function install_z {
   # z setup
   # https://github.com/rupa/z.git
   git clone --recursive https://github.com/rupa/z.git
@@ -207,8 +207,8 @@ if [ "$ALL" = "yes" ]; then
   install_only
   dot_only
   install_zsh
-  setup_z
   rtags
+  install_z
   exit 0
 fi
 
@@ -227,7 +227,7 @@ if [ "$ZSH" = "yes" ]; then
 fi
 
 if [ "$Z" = "yes" ]; then
-  setup_z
+  install_z
 fi
 
 if [ "$RTAGS" = "yes" ]; then
