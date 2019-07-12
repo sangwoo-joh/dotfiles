@@ -190,7 +190,7 @@ function install_dot {
   cp ./flake8/flake8 ~/.config/flake8
 }
 
-function rtags {
+function install_rtags {
   git clone --recursive https://github.com/Andersbakken/rtags.git
   pushd rtags
   cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .
@@ -207,8 +207,8 @@ if [ "$ALL" = "yes" ]; then
   install_packages
   install_dot
   install_zsh
-  rtags
   install_z
+  install_rtags
   exit 0
 fi
 
@@ -231,5 +231,5 @@ if [ "$Z" = "yes" ]; then
 fi
 
 if [ "$RTAGS" = "yes" ]; then
-  rtags
+  install_rtags
 fi
