@@ -31,7 +31,7 @@ do
   key="$1"
 
   case $key in
-    d2coding)
+    fonts)
       ALL=no
       FONTS=yes
       shift
