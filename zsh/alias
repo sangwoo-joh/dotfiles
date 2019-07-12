@@ -11,3 +11,4 @@ alias png='dot -Tpng -O'
 alias dotclear='rm -rf *.dot *.png'
 alias here='nautilus --broswer .'
 alias diff='diff -u --color=auto'
+
