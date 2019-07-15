@@ -144,7 +144,7 @@ function install_zsh {
   curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
   git clone https://github.com/bhilburn/powerlevel9k ~/.oh-my-zsh/custom/themes/powerlevel9k
-  sed 's/^ZSH_THEME=\"\(.*\)\"/ZSH_THEME=\"powerlevel9k/powerlevel9k\"/g' -i ~/.zshrc
+  sed 's/^ZSH_THEME=\"\(.*\)\"/ZSH_THEME=\"powerlevel9k\/powerlevel9k\"/g' -i ~/.zshrc
 
   cat ./zsh/alias >> ~/.zshrc
   cat ./zsh/rc >> ~/.zshrc
