@@ -1,6 +1,6 @@
 # dotfiles
 
- My personal `*nix` configurations.
+ My personal configurations for debian distribution.
 
  - Mostly emacs
  - Useful packages
