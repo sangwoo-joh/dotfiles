@@ -8,6 +8,7 @@ Usage: $_ [option]
 
 Options
   help              Print this message
+  caml              Install OCaml-related things
   fonts             Install d2coding, powerline fonts
   dot               Install dotfiles
   pkg               Install packages
@@ -19,6 +20,7 @@ EOF
 }
 
 ALL=yes
+CAML=
 FONTS=
 DOT=
 PKG=
@@ -31,6 +33,11 @@ do
   key="$1"
 
   case $key in
+    caml)
+      ALL=no
+      CAML=yes
+      shift
+      ;;
     fonts)
       ALL=no
       FONTS=yes
@@ -269,4 +276,9 @@ fi
 
 if [ "$RTAGS" = "yes" ]; then
   install_rtags
+fi
+
+if [ "$CAML" = "yes" ]; then
+  install_opam_2.0
+  install_opam_packages
 fi
