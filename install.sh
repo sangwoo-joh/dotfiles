@@ -127,7 +127,6 @@ function install_packages {
   git submodule init
   git submodule update
 
-  install_opam_2.0
   install_anaconda
   pip install neovim
 
@@ -242,6 +241,7 @@ if [ "$ALL" = "yes" ]; then
   install_z
   install_rtags
   install_fonts
+  install_opam_2.0
   exit 0
 fi
 
