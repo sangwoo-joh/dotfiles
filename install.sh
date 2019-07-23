@@ -14,6 +14,7 @@ Options
   dot               Install dotfiles
   pkg               Install packages
   rtags             Install rtags env
+  rust		    Install rust env
   zsh               Install zsh
   z                 Install z env
   all               Install all above (default)
@@ -29,6 +30,7 @@ PKG=
 ZSH=
 Z=
 RTAGS=
+RUST=
 
 while [[ $# -gt 0 ]]
 do
@@ -63,6 +65,11 @@ do
     rtags)
       ALL=no
       RTAGS=yes
+      shift
+      ;;
+    rust)
+      ALL=no
+      RUST=yes
       shift
       ;;
     zsh)
@@ -147,11 +154,6 @@ function install_packages {
   git submodule update
 
   install_my_neofetch
-
-  # install rustup instead of debian cargo package
-  install_rustup
-  # install useful cargo package
-  cargo install dutree loc
 }
 
 function install_zsh {
@@ -257,6 +259,7 @@ if [ "$ALL" = "yes" ]; then
   install_zsh
   install_z
   install_rtags
+  install_rustup
   install_fonts
   install_opam_2.0
   install_anaconda
@@ -296,4 +299,11 @@ fi
 
 if [ "$CONDA" = "yes" ]; then
   install_anaconda
+fi
+
+if [ "$RUST" = "yes" ]; then
+  # install rustup instead of debian cargo package
+  install_rustup
+  # install useful cargo package
+  cargo install dutree loc
 fi
