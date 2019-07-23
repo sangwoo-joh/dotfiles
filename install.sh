@@ -108,6 +108,7 @@ function install_anaconda {
   chmod +x conda.sh
   ./conda.sh -b
   echo "source ~/anaconda3/etc/profile.d/conda.sh" >> ~/.bashrc
+  source ~/anaconda3/etc/profile.d/conda.sh
 }
 
 function install_my_neofetch {
@@ -123,6 +124,7 @@ function install_my_neofetch {
 function install_rustup {
   curl https://sh.rustup.rs -sSf | sh
   echo "source ~/.cargo/env" >> ~/.bashrc
+  source ~/.cargo/env
 }
 
 function install_packages {
