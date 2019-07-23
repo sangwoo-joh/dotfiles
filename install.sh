@@ -118,7 +118,6 @@ function install_my_neofetch {
 
   # always print neofetch with memory usage %
   echo "neofetch --memory_percent on" >> ~/.bashrc
-  echo "neofetch --memory_percent on" >> ~/.zshrc
 }
 
 function install_rustup {
@@ -162,6 +161,9 @@ function install_zsh {
 
   cat ./zsh/alias >> ~/.zshrc
   cat ./zsh/rc >> ~/.zshrc
+
+  # change zsh as default shell
+  chsh -s $(which zsh)
 }
 
 function install_z {
