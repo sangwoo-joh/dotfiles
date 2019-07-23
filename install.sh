@@ -9,6 +9,7 @@ Usage: $_ [option]
 Options
   help              Print this message
   caml              Install OCaml-related things
+  conda             Install Anaconda
   fonts             Install d2coding, powerline fonts
   dot               Install dotfiles
   pkg               Install packages
@@ -20,6 +21,7 @@ EOF
 }
 
 ALL=yes
+CONDA=
 CAML=
 FONTS=
 DOT=
@@ -36,6 +38,11 @@ do
     caml)
       ALL=no
       CAML=yes
+      shift
+      ;;
+    conda)
+      ALL=no
+      CONDA=yes
       shift
       ;;
     fonts)
@@ -97,7 +104,10 @@ function install_opam_2.0 {
 }
 
 function install_anaconda {
-  sh <(curl -sL https://repo.anaconda.com/archive/Anaconda3-5.3.1-Linux-x86_64.sh)
+  wget https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh -O conda.sh
+  chmod +x conda.sh
+  ./conda.sh -b
+  echo "source ~/anaconda3/etc/profile.d/conda.sh" >> ~/.bashrc
 }
 
 function install_my_neofetch {
@@ -128,14 +138,11 @@ function install_packages {
   sudo apt-get install m4 emacs25 silversearcher-ag \
        tmux texlive-full ko.tex-base graphviz \
        neovim thunderbird thunderbird-locale-ko \
-       ruby ruby-dev htop openssh-server \
+       ruby ruby-dev htop openssh-server curl\
        tree etckeeper gcc make cmake -y
 
   git submodule init
   git submodule update
-
-  install_anaconda
-  pip install neovim
 
   install_my_neofetch
 
@@ -241,7 +248,7 @@ function install_rtags {
 
 # check all first
 if [ "$ALL" = "yes" ]; then
-  sudo apt-get install git  # git must included
+  #sudo apt-get install git  # git must included
   install_packages
   install_dot
   install_zsh
@@ -249,6 +256,7 @@ if [ "$ALL" = "yes" ]; then
   install_rtags
   install_fonts
   install_opam_2.0
+  install_anaconda
   exit 0
 fi
 
@@ -281,4 +289,8 @@ fi
 if [ "$CAML" = "yes" ]; then
   install_opam_2.0
   install_opam_packages
+fi
+
+if [ "$CONDA" = "yes" ]; then
+  install_anaconda
 fi
