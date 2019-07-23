@@ -66,7 +66,3 @@ function smile_prompt
   TC="${BMAGENTA}"
   PS1="${TC}(\D{%F %T})${UC}\u${RC}@${HC}\h ${RC}[\w]${DF}$RED\$(parse_git_branch) ${SC}${DF} \$ "
 }
-
-# Install Ruby Gems to ~/gems
-export GEM_HOME=$HOME/gems
-export PATH=$HOME/gems/bin:$PATH
