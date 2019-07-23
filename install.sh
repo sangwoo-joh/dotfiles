@@ -258,7 +258,7 @@ if [ "$ALL" = "yes" ]; then
   install_dot
   install_zsh
   install_z
-  install_rtags
+  # install_rtags
   install_rustup
   install_fonts
   install_opam_2.0
