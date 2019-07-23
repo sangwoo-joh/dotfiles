@@ -123,6 +123,7 @@ function install_my_neofetch {
 
 function install_rustup {
   curl https://sh.rustup.rs -sSf | sh
+  echo "source ~/.cargo/env" >> ~/.bashrc
 }
 
 function install_packages {
@@ -153,7 +154,7 @@ function install_packages {
 }
 
 function install_zsh {
-  sudo apt-get install zsh curl --yes
+  sudo apt-get install zsh cmake --yes
   curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
   git clone https://github.com/bhilburn/powerlevel9k ~/.oh-my-zsh/custom/themes/powerlevel9k
@@ -175,6 +176,7 @@ function install_z {
 
 function install_fonts {
   # prerequirements
+  mkdir -p ~/.local/share/fonts
   sudo apt-get install zip --yes
   git submodule init
   git submodule update
@@ -202,9 +204,6 @@ function install_dot {
 
   cp ./nvim/init.vim ~/.config/nvim/
   cp ./tmux/.tmux.conf ~/.tmux.conf
-
-  mkdir ~/.ssh -p
-  cp ./ssh/config ~/.ssh/
 
   # emacs setting
   mkdir ~/.emacs.d -p
