@@ -14,7 +14,7 @@ Options
   dot               Install dotfiles
   pkg               Install packages
   rtags             Install rtags env
-  rust		    Install rust env
+  rust              Install rust env
   zsh               Install zsh
   z                 Install z env
   all               Install all above (default)
