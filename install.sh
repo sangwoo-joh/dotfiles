@@ -169,6 +169,10 @@ function install_zsh {
   cat ./zsh/alias >> ~/.zshrc
   cat ./zsh/rc >> ~/.zshrc
 
+  # oh-my-zsh git package is too slow for big repo...
+  git config --global oh-my-zsh.hide-dirty 1
+  git config --global oh-my-zsh.hide-status 1
+
   # change zsh as default shell
   chsh -s $(which zsh)
 }
