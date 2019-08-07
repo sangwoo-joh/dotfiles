@@ -86,6 +86,7 @@
 (setq query-replace-highlight t)
 (setq TeX-PDF-mode t)
 (setq tramp-default-method "sshx")
+(setq password-cache-expiry nil) ;; to disable password expiration
 ;; (add-to-list 'tramp-remote-process-environment "JEKYLL_ENV=production")
 
 ;; auto highlight
