@@ -13,3 +13,5 @@ if [[ $#h -gt 0 ]]; then
    zstyle ':completion:*:ssh:*' hosts $h
 fi
 
+setopt nonomatch
+
