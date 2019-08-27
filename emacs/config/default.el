@@ -122,7 +122,7 @@
 (global-set-key (kbd "C-x P") 'bookmark-set)
 (global-set-key (kbd "C-c n") 'make-frame)
 (global-set-key (kbd "C-c k") 'delete-frame)
-(global-set-key (kbd "C-c <tab>") 'other-frame)
+(global-set-key (kbd "C-c o") 'other-frame)
 
 (when window-system			; Disable suspend
   (global-unset-key (kbd "C-z")))
