@@ -10,9 +10,11 @@
     (setq-default py-indent-tabs-mode t)
     (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
 
+;; M-r : find reference
+;; M-. : find definition
+;; M-, : goto previous
 (use-package anaconda-mode
   :ensure t
-  :bind (("C-c <tab>" . anaconda-mode-complete))
   :init
   (add-hook 'python-mode-hook 'anaconda-mode)
   (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
