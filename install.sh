@@ -173,6 +173,11 @@ function install_zsh {
   git config --global oh-my-zsh.hide-dirty 1
   git config --global oh-my-zsh.hide-status 1
 
+  # turn off auto-less
+  # -F: quit if the content is less than one screen
+  # -X: do not reset screen
+  git config --global --replace-all core.pager "less -F -X"
+
   # change zsh as default shell
   chsh -s $(which zsh)
 }
