@@ -44,7 +44,7 @@
 (use-package auto-complete
   :ensure t
   :init (global-auto-complete-mode t)
-  (ac-set-trigger-key "C-c <tab"))
+  (ac-set-trigger-key "C-c <tab>"))
 
 (use-package web-mode
   :ensure t
