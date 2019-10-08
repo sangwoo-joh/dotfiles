@@ -10,6 +10,6 @@ alias df='df --type=ext4 -h'
 alias grep='grep --color=auto'
 alias png='dot -Tpng -O'
 alias dotclear='rm -rf *.dot *.png'
-alias here='nautilus --broswer .'
+alias here='nautilus --browser .'
 alias diff='diff -u --color=auto'
 
