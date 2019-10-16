@@ -15,6 +15,8 @@
 (require 'merlin)
 (setq merlin-command 'opam)
 ;; merlin can use company-mode for TabNine autocompletion
+(with-eval-after-load 'company
+  (add-to-list 'company-backends 'merlin-company-backend))
 (add-hook 'merlin-mode-hook 'company-mode)
 
 ;; merlin can use auto-complete
