@@ -44,7 +44,7 @@
 (defun set-font-size (size)
   "Set font size."
   (interactive "nSize: ")
-  (set-face-attribute 'default nil :height (* size 12)))
+  (set-face-attribute 'default nil :height (* size 11)))
 
 (display-time)
 (defun chomp-end (str)
@@ -127,8 +127,8 @@
 (when window-system			; Disable suspend
   (global-unset-key (kbd "C-z")))
 (if (eq system-type 'darwin)
-    (set-font-size 13)
-  (set-font-size 11))
+    (set-font-size 14)
+  (set-font-size 12))
 (global-linum-mode 1)
 
 ;; Disable Eshell's scroll feature
