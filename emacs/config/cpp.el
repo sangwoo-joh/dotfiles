@@ -10,6 +10,7 @@
   :ensure t
   :init
   (setq company-idle-delay 0)
+  (setq company-show-numbers t)
   (progn
   (add-hook 'c-mode-hook 'company-mode)
   (add-hook 'c++-mode-hook 'company-mode)))
