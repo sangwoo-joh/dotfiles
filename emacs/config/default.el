@@ -127,8 +127,8 @@
 (when window-system			; Disable suspend
   (global-unset-key (kbd "C-z")))
 (if (eq system-type 'darwin)
-    (set-font-size 18)
-  (set-font-size 14))
+    (set-font-size 13)
+  (set-font-size 11))
 (global-linum-mode 1)
 
 ;; Disable Eshell's scroll feature
