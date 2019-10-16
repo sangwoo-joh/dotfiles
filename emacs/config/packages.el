@@ -156,3 +156,7 @@
 
 (use-package wakatime-mode
   :ensure t)
+
+(use-package company-tabnine
+  :ensure t
+  :init (add-to-list 'company-backends #'company-tabnine))
