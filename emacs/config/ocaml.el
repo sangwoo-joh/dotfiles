@@ -29,6 +29,12 @@
 (require 'tuareg)
 (add-hook 'tuareg-mode-hook 'merlin-mode t)
 (add-hook 'tuareg-mode-hook 'rainbow-delimiters-mode t)
+(setq tuareg-highlight-all-operators t)
+(setq tuareg-prettify-symbols-full t)
+(setq tuareg-match-patterns-aligned t)
+(add-hook 'tuareg-mode-hook (lambda ()
+                              (when (functionp 'prettify-symbols-mode)
+                                (prettify-symbols-mode))))
 (add-hook 'tuareg-mode-hook
   (lambda ()
     (define-key tuareg-mode-map (kbd "C-c C-f") #'ocamlformat)
