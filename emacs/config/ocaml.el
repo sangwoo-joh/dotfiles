@@ -26,7 +26,10 @@
   :bind (("C-c <tab>" . auto-complete)))
 
 ;; Tuareg mode is augmented mode for caml-mode
+(load (concat opam-share "/emacs/site-lisp/tuareg-site-file"))
 (require 'tuareg)
+(add-to-list 'auto-mode-alist '("\\.mly$" . tuareg-mode))
+(add-to-list 'auto-mode-alist '("\\.mll" . tuareg-mode))
 (add-hook 'tuareg-mode-hook 'merlin-mode t)
 (add-hook 'tuareg-mode-hook 'rainbow-delimiters-mode t)
 (setq tuareg-highlight-all-operators t)
@@ -45,4 +48,3 @@
 
 (add-hook 'caml-mode-hook 'merlin-mode t)
 (add-hook 'caml-mode-hook 'rainbow-delimiters-mode t)
-(load (concat opam-share "/emacs/site-lisp/tuareg-site-file"))
