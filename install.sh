@@ -151,7 +151,7 @@ function install_packages {
        tmux texlive-full ko.tex-base graphviz \
        neovim thunderbird thunderbird-locale-ko \
        ruby ruby-dev htop openssh-server curl\
-       tree etckeeper gcc make cmake moreutils
+       tree etckeeper gcc make cmake moreutils libtext-multimarkdown-perl
 
   git submodule init
   git submodule update
