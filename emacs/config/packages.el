@@ -140,17 +140,24 @@
 ;; found amazing pacakge; just like work space
 (use-package eyebrowse
   :ensure t
-  :init (add-hook 'prog-mode-hook #'eyebrowse-mode)
-  :bind (("C-0" . eyebrowse-switch-to-window-config-0)
-          ("C-1" . eyebrowse-switch-to-window-config-1)
-          ("C-2" . eyebrowse-switch-to-window-config-2)
-          ("C-3" . eyebrowse-switch-to-window-config-3)
-          ("C-4" . eyebrowse-switch-to-window-config-4)
-          ("C-5" . eyebrowse-switch-to-window-config-5)
-          ("C-M-1" . eyebrowse-switch-to-window-config-6)
-          ("C-M-2" . eyebrowse-switch-to-window-config-7)
-          ("C-M-3" . eyebrowse-switch-to-window-config-8)
-          ("C-M-4" . eyebrowse-switch-to-window-config-9)))
+  :init (eyebrowse-mode t)
+  :config
+  (setq eyebrowse-mode-line-style 'always)
+  (setq eyebrowse-mode-line-separator "; ")
+  (custom-set-faces
+    '(eyebrowse-mode-line-active
+       ((t (:foreground "black" :background "gold" :inherit (mode-line-emphasis))))
+       ))
+  :bind (("M-0" . eyebrowse-switch-to-window-config-0)
+          ("M-1" . eyebrowse-switch-to-window-config-1)
+          ("M-2" . eyebrowse-switch-to-window-config-2)
+          ("M-3" . eyebrowse-switch-to-window-config-3)
+          ("M-4" . eyebrowse-switch-to-window-config-4)
+          ("M-5" . eyebrowse-switch-to-window-config-5)
+          ("M-6" . eyebrowse-switch-to-window-config-6)
+          ("M-7" . eyebrowse-switch-to-window-config-7)
+          ("M-8" . eyebrowse-switch-to-window-config-8)
+          ("M-9" . eyebrowse-switch-to-window-config-9)))
 
 ;; little alternative for grep?
 (use-package swiper
