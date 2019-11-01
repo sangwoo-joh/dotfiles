@@ -7,6 +7,7 @@
   ;; Don't call desktop-save-in-desktop-dir, as it prints a message.
   (if (eq (desktop-owner) (emacs-pid))
       (desktop-save desktop-dirname)))
+(setq desktop-auto-save-timeout 300)
 (add-hook 'auto-save-hook 'my-desktop-save)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
