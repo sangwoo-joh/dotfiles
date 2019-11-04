@@ -137,6 +137,22 @@ function install_rustup {
   source ~/.cargo/env
 }
 
+function install_rust_packages {
+  cargo install dutree loc bat exa eva hexyl hyperfine mdcat titlecase bb
+  ## Got hint from https://www.wezm.net/technical/2019/10/useful-command-line-tools/
+  # dutree: fast du + tree
+  # loc: fast line counter (order of magnitude faster than cloc)
+  # bat: cat + syntax highlight
+  # exa: evolved ls
+  # eva: calculator
+  # hexyl: hex viewer + highlight
+  # hyperfine: command line benchmarking tool
+  # mdcat: terminal markdown renderer
+  # titlecase: make pharagraph as title (capitalize)
+  # bb: evolved top (system monitor)
+}
+
+
 function install_packages {
   # neovim
   sudo add-apt-repository ppa:neovim-ppa/unstable --yes
@@ -317,5 +333,6 @@ if [ "$RUST" = "yes" ]; then
   # install rustup instead of debian cargo package
   install_rustup
   # install useful cargo package
-  cargo install dutree loc
+  install_rust_packages
+  cat "alias ls=exa" >> ~/.zshrc
 fi
