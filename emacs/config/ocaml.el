@@ -44,6 +44,7 @@
     (define-key tuareg-mode-map (kbd "M-.") #'merlin-locate)
     (define-key tuareg-mode-map (kbd "M-,") #'merlin-pop-stack)
     (define-key tuareg-mode-map (kbd "C-c C-o") #'merlin-occurrences)
+    (define-key tuareg-mode-map (kbd "C-M-b") #'backward-sexp)
     (add-hook 'before-save-hook #'ocamlformat-before-save)))
 
 (add-hook 'caml-mode-hook 'merlin-mode t)
