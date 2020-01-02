@@ -169,7 +169,7 @@ function install_packages {
   sudo apt-get install --yes m4 emacs25 silversearcher-ag \
        tmux texlive-full ko.tex-base graphviz \
        neovim thunderbird thunderbird-locale-ko \
-       ruby ruby-dev htop openssh-server curl\
+       ruby ruby-dev htop openssh-server curl rsync \
        tree etckeeper gcc make cmake moreutils libtext-multimarkdown-perl
 
   git submodule init
