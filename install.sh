@@ -99,7 +99,7 @@ do
 done
 
 function install_opam_packages {
-  opam install -y merlin tuareg ocp-indent ocamlformat
+  opam install -y merlin tuareg ocp-indent ocamlformat depext
 }
 
 function install_opam_2.0 {
