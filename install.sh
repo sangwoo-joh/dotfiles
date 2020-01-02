@@ -173,7 +173,7 @@ function install_packages {
        neovim thunderbird thunderbird-locale-ko \
        ruby ruby-dev htop openssh-server curl rsync \
        tree etckeeper gcc make cmake moreutils libtext-multimarkdown-perl \
-       tar bzip2 gzip zip
+       tar bzip2 gzip zip autoconf
 
   git submodule init
   git submodule update
