@@ -104,7 +104,9 @@ function install_opam_packages {
 
 function install_opam_2.0 {
   # opam dependencies
-  sudo apt-get install m4 zip bubblewrap -y # bubblewrap is only available on Ubuntu 18.04~
+  # bubblewrap is only available after Ubuntu 18.04.
+  # if your system is less than or 16.04, just manually install via `dpkg -i` http://security.ubuntu.com/ubuntu/pool/main/b/bubblewrap/<binary-for-your-machine>
+  sudo apt-get install m4 zip bubblewrap -y
 
   # require sudoer
   sh <(curl -sL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)
