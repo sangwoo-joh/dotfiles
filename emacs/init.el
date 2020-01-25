@@ -8,6 +8,15 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+
+;; key bindings - for macos
+(when (eq system-type 'darwin) ;; mac specific settings
+  (setq mac-option-modifier 'alt)
+  (setq mac-command-modifier 'meta)
+  ;;(global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
+  )
+
+
 ;; default: desktop env, shortcuts, fonts, etc
 (load "~/.emacs.d/config/default.el")
 
