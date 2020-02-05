@@ -190,3 +190,6 @@
 (use-package company-tabnine
   :ensure t
   :init (add-to-list 'company-backends #'company-tabnine))
+
+(use-package docker-tramp
+  :ensure t)
