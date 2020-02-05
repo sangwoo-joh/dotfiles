@@ -192,5 +192,6 @@
   :init (add-to-list 'company-backends #'company-tabnine))
 
 ;; use as //docker:<container-id>
+;; for remote: /sshx:<remote>|docker:<container-name>:<path> is fantastic. MAGIC CHARM.
 (use-package docker-tramp
   :ensure t)
