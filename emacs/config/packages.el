@@ -191,5 +191,6 @@
   :ensure t
   :init (add-to-list 'company-backends #'company-tabnine))
 
+;; use as //docker:<container-id>
 (use-package docker-tramp
   :ensure t)
