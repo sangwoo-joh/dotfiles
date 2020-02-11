@@ -181,6 +181,14 @@
 
 ;; Usage: grep some keywords, and C-c C-p in result buffer.
 ;; After editing, just save with C-x C-s as usual file in the buffer.
+;; Others:
+;; C-c C-e: Apply changes to file buffers
+;; C-c C-u: All changes are unmarked and ignored
+;; C-c C-d: Mark as delete to current line
+;; C-c C-r: Remove the changes in the region
+;; C-c C-p: Toggle read-only area
+;; C-c C-k: Discard all changes and exit
+;; C-c C-q: Exit wgrep mode
 (use-package wgrep
   :ensure t)
 
