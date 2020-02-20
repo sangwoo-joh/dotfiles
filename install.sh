@@ -294,6 +294,7 @@ if [ "$ALL" = "yes" ]; then
   install_rustup
   install_fonts
   install_opam_2.0
+  install_opam_packages
   install_anaconda
   exit 0
 fi
