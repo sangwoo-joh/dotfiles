@@ -31,6 +31,3 @@
 
 ;; setting for rust
 (load "~/.emacs.d/config/rust.el")
-
-;; setting for ocaml
-(load "~/.emacs.d/config/ocaml.el")
