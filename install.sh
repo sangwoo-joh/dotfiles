@@ -114,9 +114,6 @@ function install_opam_2.0 {
   opam init
 
   opam switch create local 4.08.0 -j6
-
-  # setup ocamlinit
-  cat ./ocaml/ocamlinit >> ~/.ocamlinit
 }
 
 function install_anaconda {
