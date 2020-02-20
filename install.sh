@@ -113,7 +113,7 @@ function install_opam_2.0 {
   sh <(curl -sL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)
   opam init
 
-  opam switch create local 4.08.0 -j6
+  opam switch create local ocaml-base-compiler.4.09.0
 }
 
 function install_anaconda {
