@@ -57,20 +57,20 @@
   :init (setq rtags-path "~/bin/rtags")
   :bind
   (("C-c C-r C-t" . rtags-symbol-type)
-    ;; ("C-c C-r C-l" . rtags-find-symbol-at-point)
-    ("M-." . rtags-find-symbol-at-point)
+    ("C-c C-r ." . rtags-find-symbol-at-point)
+    ;; ("M-." . rtags-find-symbol-at-point)
     ("C-c C-r C-l" . rtags-find-reference-at-point)
     ;; ("C-c C-r C-." . rtags-location-stack-forward) ;; >
     ("C-," . rtags-location-stack-forward)
     ;; ("C-c C-r C-," . rtags-location-stack-back) ;; <
-    ("M-," . rtags-location-stack-back)
+    ("C-c C-r ," . rtags-location-stack-back)
     ("C-c C-r C-z" . rtags-location-stack-visualize)
     ("C-c C-r C-r" . rtags-rename-symbol) ;; rename all reachable symbols
     ("C-c C-r C-s" . rtags-display-summary) ;; symbol description
     ("C-c C-r C-d" . rtags-dependency-tree) ;; show dependency at point
     ("C-c C-r C-f" . rtags-reference-tree) ;; show reference at point
     )
-  )
+)
 
 ;; (use-package ivy-rtags
 ;;   :ensure t)
