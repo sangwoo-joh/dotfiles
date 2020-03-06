@@ -135,7 +135,9 @@
   :ensure t
   :bind (("C-c C-l" . neotree)))
 
-(use-package editorconfig :ensure t)
+(use-package editorconfig
+  :ensure t
+  :config (editorconfig-mode t))
 
 ;; found amazing pacakge; just like work space
 (use-package eyebrowse
