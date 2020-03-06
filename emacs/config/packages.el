@@ -203,3 +203,11 @@
 ;; for remote: /sshx:<remote>|docker:<container-name>:<path> is fantastic. MAGIC CHARM.
 (use-package docker-tramp
   :ensure t)
+
+(use-package helpful
+  :ensure t
+  :bind
+  ("C-h f" . helpful-function)
+  ("C-h F" . helpful-command)
+  ("C-h v" . helpful-variable)
+  ("C-h o" . helpful-symbol))
