@@ -218,3 +218,15 @@
   (dashboard-setup-startup-hook)
   (setq dashboard-itmes '((recents . 10)
                            (bookmarks . 10))))
+
+(use-package google-translate
+  :ensure t
+  :init
+  (require 'google-translate)
+  (require 'google-translate-smooth-ui)
+  (setq google-translate-translation-directions-alist '(("en" . "ko") ("ko" . "en")))
+  (setq google-translate-pop-up-buffer-set-focus t)
+  (setq google-translate-output-destination 'echo-area)
+  (setq max-mini-window-height 0.5)
+  :bind
+  ("C-c C-g" . google-translate-smooth-translate))
