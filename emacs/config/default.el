@@ -60,8 +60,8 @@
 (global-set-key (kbd "C-c +") 'increment-number-at-point)
 
 ;; default font settings
-(set-fontset-font "fontset-default" 'latin "D2Coding")
-(set-fontset-font "fontset-default" 'hangul "D2Coding")
+(set-fontset-font "fontset-default" 'latin "Ubuntu Mono")
+(set-fontset-font "fontset-default" 'hangul "Ubuntu Mono")
 (set-face-attribute 'default nil :font "fontset-default")
 
 (setq inhibit-startup-message t)
