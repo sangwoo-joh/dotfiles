@@ -230,3 +230,5 @@
   (setq max-mini-window-height 0.5)
   :bind
   ("C-c C-g" . google-translate-smooth-translate))
+
+(use-package json-mode :ensure t)
