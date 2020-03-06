@@ -211,3 +211,10 @@
   ("C-h F" . helpful-command)
   ("C-h v" . helpful-variable)
   ("C-h o" . helpful-symbol))
+
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook)
+  (setq dashboard-itmes '((recents . 10)
+                           (bookmarks . 10))))
