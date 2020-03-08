@@ -16,6 +16,13 @@
   ;;(global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
   )
 
+;; Install exec-path-from-shell here
+(when (not (package-installed-p 'use-package))
+  (package-refresh-contents)
+  (package-install 'exec-path-from-shell))
+
+;; Initialize - OS X compatible
+(exec-path-from-shell-initialize)
 
 ;; default: desktop env, shortcuts, fonts, etc
 (load "~/.emacs.d/config/default.el")
