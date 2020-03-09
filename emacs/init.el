@@ -17,7 +17,7 @@
   )
 
 ;; Install exec-path-from-shell here
-(when (not (package-installed-p 'use-package))
+(when (not (package-installed-p 'exec-path-from-shell))
   (package-refresh-contents)
   (package-install 'exec-path-from-shell))
 
