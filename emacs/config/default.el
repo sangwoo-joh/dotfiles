@@ -61,7 +61,7 @@
 
 ;; default font settings
 (set-fontset-font "fontset-default" 'latin "Ubuntu Mono")
-(set-fontset-font "fontset-default" 'hangul "Ubuntu Mono")
+(set-fontset-font "fontset-default" 'hangul "D2Coding")
 (set-face-attribute 'default nil :font "fontset-default")
 
 (setq inhibit-startup-message t)
