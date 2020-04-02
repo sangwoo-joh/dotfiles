@@ -240,3 +240,8 @@
   ("C-c C-g" . google-translate-smooth-translate))
 
 (use-package json-mode :ensure t)
+
+(use-package scroll-restore
+  :ensure t
+  :init (scroll-restore-mode t)
+  :bind ("C-c b" . scroll-restore-jump-back))
