@@ -45,13 +45,6 @@
   (add-hook 'c-mode-hook 'set-key-c++-mode)
   (add-hook 'c++-mode-hook 'set-key-c++-mode))
 
-;; (use-package ivy
-;;   :ensure t
-;;   :init
-;;   (progn
-;;     (add-hook 'c-mode-hook 'ivy-mode)
-;;     (add-hook 'c++-mode-hook 'ivy-mode)))
-
 (use-package rtags
   :ensure t
   :init (setq rtags-path "~/bin/rtags")
@@ -69,8 +62,4 @@
     ("C-c C-r C-s" . rtags-display-summary) ;; symbol description
     ("C-c C-r C-d" . rtags-dependency-tree) ;; show dependency at point
     ("C-c C-r C-f" . rtags-reference-tree) ;; show reference at point
-    )
-)
-
-;; (use-package ivy-rtags
-;;   :ensure t)
+    ))
