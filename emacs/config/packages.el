@@ -192,8 +192,6 @@
 ;; C-c C-q: Exit wgrep mode
 (use-package wgrep :ensure t)
 
-(use-package wakatime-mode :ensure t)
-
 (use-package company-tabnine
   :ensure t
   :init (add-to-list 'company-backends #'company-tabnine))
