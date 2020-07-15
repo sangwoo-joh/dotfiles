@@ -125,6 +125,7 @@
 (global-set-key (kbd "C-c m") 'bookmark-jump)
 (global-set-key (kbd "C-c M") 'bookmark-set)
 (global-set-key (kbd "C-c L") 'list-bookmarks)
+(global-set-key (kbd "C-c C-d") 'delete-trailing-whitespace)
 
 (when window-system			; Disable suspend
   (global-unset-key (kbd "C-z")))
