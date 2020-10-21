@@ -166,7 +166,7 @@ function install_packages {
   sudo apt-get update
 
   # install my file list
-  sudo apt-get install --yes m4 emacs25 silversearcher-ag \
+  sudo apt-get install --yes m4 emacs27 silversearcher-ag \
        tmux texlive-full ko.tex-base graphviz \
        neovim thunderbird thunderbird-locale-ko \
        ruby ruby-dev htop openssh-server curl rsync \
