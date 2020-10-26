@@ -32,6 +32,8 @@ Z=
 RTAGS=
 RUST=
 
+PWD=$(cd $(dirname "$0"); pwd -P)
+
 while [[ $# -gt 0 ]]
 do
   key="$1"
@@ -126,7 +128,7 @@ function install_anaconda {
 
 function install_my_neofetch {
   git clone https://github.com/skicombinator/neofetch
-  pushd neofetch
+  pushd "$PWD"/neofetch
   sudo make install
   popd
 
@@ -186,8 +188,8 @@ function install_zsh {
   git clone https://github.com/romkatv/powerlevel10k ~/.oh-my-zsh/custom/themes/powerlevel10k
   sed 's/^ZSH_THEME=\"\(.*\)\"/ZSH_THEME=\"powerlevel10k\/powerlevel10k\"/g' -i ~/.zshrc
 
-  cat ./zsh/alias >> ~/.zshrc
-  cat ./zsh/rc >> ~/.zshrc
+  cat "$PWD"/zsh/alias >> ~/.zshrc
+  cat "$PWD"/zsh/rc >> ~/.zshrc
 
   # oh-my-zsh git package is too slow for big repo...
   git config --global oh-my-zsh.hide-dirty 1
@@ -220,14 +222,14 @@ function install_fonts {
   git submodule update
 
   # d2coding
-  pushd d2codingfont
+  pushd "$PWD"/d2codingfont
   # 1.3.2 is latest
   unzip D2Coding-Ver1.3.2-20180524.zip
   cp D2Coding/*.ttf ~/.local/share/fonts/
   popd
 
   # powerline
-  pushd powerline
+  pushd "$PWD"/powerline
   ./install.sh
   popd
 
@@ -240,8 +242,8 @@ function install_dot {
   mkdir ~/.config -p
   mkdir ~/.config/nvim -p
 
-  cp ./nvim/init.vim ~/.config/nvim/
-  cp ./tmux/.tmux.conf ~/.tmux.conf
+  cp "$PWD"/nvim/init.vim ~/.config/nvim/
+  cp "$PWD"/tmux/.tmux.conf ~/.tmux.conf
 
   # emacs setting
   mkdir ~/.emacs.d -p
@@ -249,14 +251,14 @@ function install_dot {
   mkdir ~/.emacs.d/config -p
   mkdir ~/.emacs.d/snippets/c++-mode -p
 
-  cp ./emacs/.editorconfig ~/
-  cp ./emacs/dracula-theme.el ~/.emacs.d/themes/
-  cp ./emacs/init.el ~/.emacs.d/
-  cp ./emacs/config/* ~/.emacs.d/config/
-  cp ./emacs/snippets/c++-mode/* ~/.emacs.d/snippets/c++-mode/
+  cp "$PWD"/emacs/.editorconfig ~/
+  cp "$PWD"/emacs/dracula-theme.el ~/.emacs.d/themes/
+  cp "$PWD"/emacs/init.el ~/.emacs.d/
+  cp "$PWD"/emacs/config/* ~/.emacs.d/config/
+  cp "$PWD"/emacs/snippets/c++-mode/* ~/.emacs.d/snippets/c++-mode/
 
-  cat ./bash/alias >> ~/.bashrc
-  cat ./bash/rc >> ~/.bashrc
+  cat "$PWD"/bash/alias >> ~/.bashrc
+  cat "$PWD"/bash/rc >> ~/.bashrc
 
   # global nautilus setting
   gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
@@ -268,12 +270,12 @@ function install_dot {
   gsettings set org.gnome.desktop.peripherals.keyboard delay 210
 
   # flake8 config for emacs
-  cp ./flake8/flake8 ~/.config/flake8
+  cp "$PWD"/flake8/flake8 ~/.config/flake8
 }
 
 function install_rtags {
   git clone --recursive https://github.com/Andersbakken/rtags.git
-  pushd rtags
+  pushd "$PWD"/rtags
   cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .
   make -j4
   mkdir -p ~/bin/rtags
