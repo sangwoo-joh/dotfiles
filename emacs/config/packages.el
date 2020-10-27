@@ -200,6 +200,8 @@
 ;; for remote: /sshx:<remote>|docker:<container-name>:<path> is fantastic. MAGIC CHARM.
 (use-package docker-tramp :ensure t)
 
+(use-package dockerfile-mode :ensure t)
+
 (use-package helpful
   :ensure t
   :bind
