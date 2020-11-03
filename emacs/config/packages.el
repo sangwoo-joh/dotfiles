@@ -241,3 +241,7 @@
   :ensure t
   :init (scroll-restore-mode t)
   :bind ("C-c b" . scroll-restore-jump-back))
+
+(use-package minimap
+  :ensure t
+  :bind ("C-c C-m" . minimap-mode))
