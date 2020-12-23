@@ -6,7 +6,7 @@
   (interactive)
   ;; Don't call desktop-save-in-desktop-dir, as it prints a message.
   (if (eq (desktop-owner) (emacs-pid))
-      (desktop-save desktop-dirname)))
+    (desktop-save desktop-dirname)))
 (setq desktop-auto-save-timeout 300)
 (add-hook 'auto-save-hook 'my-desktop-save)
 
@@ -60,7 +60,7 @@
 (global-set-key (kbd "C-c +") 'increment-number-at-point)
 
 ;; default font settings
-(set-fontset-font "fontset-default" 'latin "Ubuntu Mono")
+(set-fontset-font "fontset-default" 'latin "Ubuntu Mono derivative Powerline")
 (set-fontset-font "fontset-default" 'hangul "D2Coding")
 (set-face-attribute 'default nil :font "fontset-default")
 

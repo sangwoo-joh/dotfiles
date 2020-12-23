@@ -30,11 +30,11 @@
 ;; packages: basic necessary package setting
 (load "~/.emacs.d/config/packages.el")
 
-;; setting for c/c++
-(load "~/.emacs.d/config/cpp.el")
-
 ;; setting for python
 (load "~/.emacs.d/config/python.el")
 
-;; setting for rust
-(load "~/.emacs.d/config/rust.el")
+;; setting for c/c++
+(load "~/.emacs.d/config/cpp.el")
+
+;; setting for others
+(load "~/.emacs.d/config/others.el")
