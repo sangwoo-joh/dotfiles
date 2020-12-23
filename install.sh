@@ -102,7 +102,6 @@ done
 
 function install_opam_packages {
   opam install -y merlin tuareg ocp-indent ocamlformat depext base dune core utop
-  opam user-setup install # The easiest way to setup ocaml emacs!
 }
 
 function install_opam_2.0 {
