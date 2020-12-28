@@ -1,6 +1,6 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Other modes
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; others.el --- Other languages settings.
+;;; Commentary:
+;;; Code:
 (use-package yaml-mode :ensure t)
 
 (use-package markdown-mode
@@ -47,3 +47,5 @@
   :init
   (eval-after-load 'flycheck
     '(add-hook 'flycheck-mode-hook #'flycheck-cask-setup)))
+
+;;; others.el ends here
