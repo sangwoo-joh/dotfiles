@@ -25,6 +25,11 @@
   :defer t
   :ensure t)
 
+(use-package company-auctex
+  :ensure t
+  :init
+  (company-auctex-init))
+
 (use-package graphviz-dot-mode
   :ensure t
   :init
