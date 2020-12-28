@@ -1,3 +1,7 @@
+;;; python.el --- Personal python settings.
+;;; Commentary:
+;;; Code:
+
 (use-package python-mode
   :ensure t
   :init
@@ -19,3 +23,5 @@
 (use-package elpy
   :ensure t
   :init (elpy-enable))
+
+;;; python.el ends here
