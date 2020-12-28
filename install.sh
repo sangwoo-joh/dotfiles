@@ -13,10 +13,7 @@ Options
   fonts             Install d2coding, powerline fonts
   dot               Install dotfiles
   pkg               Install packages
-  rtags             Install rtags env
-  rust              Install rust env
   zsh               Install zsh
-  z                 Install z env
   all               Install all above (default)
 EOF
 }
@@ -28,9 +25,6 @@ FONTS=
 DOT=
 PKG=
 ZSH=
-Z=
-RTAGS=
-RUST=
 
 PWD=$(cd $(dirname "$0"); pwd -P)
 
@@ -64,24 +58,9 @@ do
       PKG=yes
       shift
       ;;
-    rtags)
-      ALL=no
-      RTAGS=yes
-      shift
-      ;;
-    rust)
-      ALL=no
-      RUST=yes
-      shift
-      ;;
     zsh)
       ALL=no
       ZSH=yes
-      shift
-      ;;
-    z)
-      ALL=no
-      Z=yes
       shift
       ;;
     all)
@@ -100,11 +79,11 @@ do
   #shift #past argument or value
 done
 
-function install_opam_packages {
+function _install_opam_packages {
   opam install -y merlin tuareg ocp-indent ocamlformat depext base dune core utop
 }
 
-function install_opam_2.0 {
+function _install_opam_2.0 {
   # opam dependencies
   # bubblewrap is only available after Ubuntu 18.04.
   # if your system is less than or 16.04, just manually install via `dpkg -i` http://security.ubuntu.com/ubuntu/pool/main/b/bubblewrap/<binary-for-your-machine>
@@ -114,10 +93,15 @@ function install_opam_2.0 {
   sh <(curl -sL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)
   opam init
 
-  opam switch create local ocaml-base-compiler.4.11.1
+  opam switch create kernel ocaml-base-compiler.4.11.1
 }
 
-function install_anaconda {
+function install_caml {
+  _install_opam_2.0
+  _install_opam_packages
+}
+
+function install_conda {
   wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh -O conda.sh
   chmod +x conda.sh
   ./conda.sh -b
@@ -125,7 +109,7 @@ function install_anaconda {
   source ~/anaconda3/etc/profile.d/conda.sh
 }
 
-function install_my_neofetch {
+function _install_my_neofetch {
   git clone https://github.com/skicombinator/neofetch
   pushd "$PWD"/neofetch
   sudo make install
@@ -135,14 +119,16 @@ function install_my_neofetch {
   echo "neofetch --memory_percent on" >> ~/.bashrc
 }
 
-function install_rustup {
+function _install_rustup {
   curl https://sh.rustup.rs -sSf | sh
   echo "source ~/.cargo/env" >> ~/.bashrc
   source ~/.cargo/env
 }
 
-function install_rust_packages {
+function _install_rust_packages {
   cargo install dutree loc bat exa eva hexyl hyperfine mdcat titlecase bb
+  cat "alias ls=exa" >> ~/.zshrc
+  cat "alias ls=exa" >> ~/.bashrc
   ## Got hint from https://www.wezm.net/technical/2019/10/useful-command-line-tools/
   # dutree: fast du + tree
   # loc: fast line counter (order of magnitude faster than cloc)
@@ -156,8 +142,18 @@ function install_rust_packages {
   # bb: evolved top (system monitor)
 }
 
+function _install_z {
+  # z setup
+  # https://github.com/rupa/z.git
+  git clone --recursive https://github.com/rupa/z.git
+  mkdir ~/.config -p
+  mv z ~/.config/
+  echo ". \$HOME/.config/z/z.sh" >> ~/.bashrc
+  echo ". \$HOME/.config/z/z.sh" >> ~/.zshrc
+}
 
-function install_packages {
+
+function install_pkg {
   # neovim
   sudo add-apt-repository ppa:neovim-ppa/unstable --yes
 
@@ -178,7 +174,10 @@ function install_packages {
   git submodule init
   git submodule update
 
-  install_my_neofetch
+  _install_my_neofetch
+  _install_rustup
+  _install_rust_packages
+  _install_z
 }
 
 function install_zsh {
@@ -202,16 +201,6 @@ function install_zsh {
 
   # change zsh as default shell
   chsh -s $(which zsh)
-}
-
-function install_z {
-  # z setup
-  # https://github.com/rupa/z.git
-  git clone --recursive https://github.com/rupa/z.git
-  mkdir ~/.config -p
-  mv z ~/.config/
-  echo ". \$HOME/.config/z/z.sh" >> ~/.bashrc
-  echo ". \$HOME/.config/z/z.sh" >> ~/.zshrc
 }
 
 function install_fonts {
@@ -273,73 +262,40 @@ function install_dot {
   cp "$PWD"/flake8/flake8 ~/.config/flake8
 }
 
-function install_rtags {
-  git clone --recursive https://github.com/Andersbakken/rtags.git
-  pushd "$PWD"/rtags
-  cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .
-  make -j4
-  mkdir -p ~/bin/rtags
-  cp bin/* ~/bin/rtags/
-  echo "export PATH=\$PATH:\$HOME/bin/rtags" >> ~/.bashrc
-  echo "export PATH=\$PATH:\$HOME/bin/rtags" >> ~/.zshenv
-  popd
-}
-
 # check all first
 if [ "$ALL" = "yes" ]; then
   #sudo apt-get install git  # git must included
-  install_packages
-  install_dot
+  install_pkg
   install_zsh
-  install_z
-  # install_rtags
-  install_rustup
   install_fonts
-  install_opam_2.0
-  install_opam_packages
-  install_anaconda
+  install_caml
+  install_dot
+  install_conda
   exit 0
 fi
 
 
 # if both option is on respectively, check install first
-if [ "$PKG" = "yes" ]; then
-  install_packages
+if [ "$CAML" = "yes" ]; then
+  install_caml
 fi
 
-if [ "$DOT" = "yes" ]; then
-  install_dot
+if [ "$CONDA" = "yes" ]; then
+  install_conda
 fi
 
 if [ "$FONTS" = "yes" ]; then
   install_fonts
 fi
 
+if [ "$DOT" = "yes" ]; then
+  install_dot
+fi
+
+if [ "$PKG" = "yes" ]; then
+  install_pkg
+fi
+
 if [ "$ZSH" = "yes" ]; then
   install_zsh
-fi
-
-if [ "$Z" = "yes" ]; then
-  install_z
-fi
-
-if [ "$RTAGS" = "yes" ]; then
-  install_rtags
-fi
-
-if [ "$CAML" = "yes" ]; then
-  install_opam_2.0
-  install_opam_packages
-fi
-
-if [ "$CONDA" = "yes" ]; then
-  install_anaconda
-fi
-
-if [ "$RUST" = "yes" ]; then
-  # install rustup instead of debian cargo package
-  install_rustup
-  # install useful cargo package
-  install_rust_packages
-  cat "alias ls=exa" >> ~/.zshrc
 fi
