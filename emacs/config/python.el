@@ -5,9 +5,7 @@
 (use-package python-mode
   :ensure t
   :config
-  (setq-default tab-width 4)
-  (setq-default py-indent-tabs-mode t)
-  (add-to-list 'write-file-functions 'delete-trailing-whitespace))
+  (setq-default tab-width 4))
 
 (use-package elpy
   :ensure t
