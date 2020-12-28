@@ -10,11 +10,6 @@
   :config
   (dashboard-setup-startup-hook)
   (setq dashboard-banner-logo-title "Emacs, the only true, genuine, and beloved editor")
-  (setq dashboard-itmes '((recents . 10)
-                           (bookmarks . 10)
-                           (projects . 10)
-                           (agenda . 10)
-                           (registers . 10)))
   (setq dashboard-set-navigator t)
   (setq dashboard-set-init-info t))
 
