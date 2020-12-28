@@ -68,8 +68,8 @@
   (with-eval-after-load 'company
     (add-to-list 'company-backends #'merlin-company-backend))
   (add-hook 'merlin-mode-hook #'company-mode)
-  (define-key tuareg-mode-map (kbd "M-." #'merlin-locate))
-  (define-key tuareg-mode-map (kdb "M.," #'merlin-pop-stack)))
+  (define-key tuareg-mode-map (kbd "M-.") #'merlin-locate)
+  (define-key tuareg-mode-map (kbd "M-,") #'merlin-pop-stack))
 
 (defun ocaml/setup-ocp-indent ()
   "setup ocp-indent"
@@ -86,7 +86,7 @@
   (opam/load-site-lisp current-lisp-path)
   (ocaml/setup-tuareg current-lisp-path)
   (ocaml/setup-merlin current-lisp-path)
-  (ocaml/setup-ocn-indent)
+  (ocaml/setup-ocp-indent)
   (ocaml/setup-ocamlformat current-lisp-path))
 
 (defun ocaml/auto-setup ()
