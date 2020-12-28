@@ -39,22 +39,22 @@
 
 (use-package which-key
   :ensure t
-  :init
+  :config
   (add-hook 'prog-mode-hook #'which-key-mode))
 
 (use-package flycheck
   :ensure t
-  :init (global-flycheck-mode))
+  :config (global-flycheck-mode))
 
 (use-package flycheck-color-mode-line
   :ensure t
-  :init
+  :config
   (eval-after-load "flycheck"
     '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)))
 
 (use-package flycheck-pos-tip
   :ensure t
-  :init
+  :config
   (with-eval-after-load 'flycheck
     (flycheck-pos-tip-mode)))
 
@@ -63,11 +63,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package autopair
   :ensure t
-  :init (autopair-global-mode))
+  :config (autopair-global-mode))
 
 (use-package company
   :ensure t
-  :init
+  :config
   (setq company-idle-delay 0)
   (setq company-show-numbers t)
   (progn
@@ -96,7 +96,7 @@
 
 (use-package hungry-delete
   :ensure t
-  :init (global-hungry-delete-mode)
+  :config (global-hungry-delete-mode)
   :bind (("S-<backspace>" . hungry-delete-backward)
 	 ("S-<delete>" . hungry-delete-forward)))
 
@@ -114,7 +114,7 @@
 
 (use-package switch-window
   :ensure t
-  :init
+  :config
   (setq switch-window-shortcut-style 'qwerty)
   (setq switch-window-qwerty-shortcuts
 	'("a" "s" "d" "f" "j" "k" "l" ";" "q" "w" "e" "r" "i" "o" "z" "x" "c" "v"))
@@ -131,8 +131,8 @@
 
 (use-package eyebrowse
   :ensure t
-  :init (eyebrowse-mode t)
   :config
+  (eyebrowse-mode t)
   (setq eyebrowse-mode-line-style 'always)
   (setq eyebrowse-mode-line-separator "; ")
   (custom-set-faces
@@ -155,13 +155,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package rainbow-delimiters
   :ensure t
-  :init
+  :config
   (progn
     (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)))
 
 (use-package smart-mode-line
   :ensure t
-  :init
+  :config
   ;; for ignoring y/n question.
   ;; move custom-variables to the top of init.el is proper solution, but it's bothersome.
   (setq sml/no-confirm-load-theme t)
@@ -171,7 +171,7 @@
 
 (use-package smart-mode-line-powerline-theme
   :ensure t
-  :init
+  :config
   (sml/apply-theme 'powerline))
 
 ;;; packages.el ends here

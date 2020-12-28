@@ -49,7 +49,7 @@
 ;; flycheck emacs
 (use-package flycheck-cask
   :ensure t
-  :init
+  :config
   (eval-after-load 'flycheck
     '(add-hook 'flycheck-mode-hook #'flycheck-cask-setup)))
 
