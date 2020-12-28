@@ -9,6 +9,7 @@ Usage: $_ [option]
 Options
   help              Print this message
   caml              Install OCaml-related things
+  emacs             Install Emacs settings
   conda             Install Anaconda
   fonts             Install d2coding, powerline fonts
   dot               Install dotfiles
@@ -21,6 +22,7 @@ EOF
 ALL=yes
 CONDA=
 CAML=
+EMACS=
 FONTS=
 DOT=
 PKG=
@@ -36,6 +38,11 @@ do
     caml)
       ALL=no
       CAML=yes
+      shift
+      ;;
+    emacs)
+      ALL=no
+      EMACS=yes
       shift
       ;;
     conda)
@@ -101,6 +108,28 @@ function install_caml {
   _install_opam_packages
 }
 
+function install_emacs {
+  # emacs >= 25
+  sudo add-apt-repository ppa:kelleyk/emacs --yes
+
+  sudo apt-get install emacs-27
+
+  # emacs setting
+  mkdir ~/.emacs.d -p
+  mkdir ~/.emacs.d/themes -p
+  mkdir ~/.emacs.d/config -p
+  mkdir ~/.emacs.d/snippets/c++-mode -p
+
+  cp "$PWD"/emacs/.editorconfig ~/
+  cp "$PWD"/emacs/dracula-theme.el ~/.emacs.d/themes/
+  cp "$PWD"/emacs/init.el ~/.emacs.d/
+  cp "$PWD"/emacs/config/* ~/.emacs.d/config/
+  cp "$PWD"/emacs/snippets/c++-mode/* ~/.emacs.d/snippets/c++-mode/
+
+  # flake8 config for emacs
+  cp "$PWD"/flake8/flake8 ~/.config/flake8
+}
+
 function install_conda {
   wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh -O conda.sh
   chmod +x conda.sh
@@ -157,13 +186,10 @@ function install_pkg {
   # neovim
   sudo add-apt-repository ppa:neovim-ppa/unstable --yes
 
-  # emacs >= 25
-  sudo add-apt-repository ppa:kelleyk/emacs --yes
-
   sudo apt-get update
 
   # install my file list
-  sudo apt-get install --yes m4 emacs27 silversearcher-ag \
+  sudo apt-get install --yes m4 silversearcher-ag \
        tmux texlive-full ko.tex-base graphviz \
        neovim thunderbird thunderbird-locale-ko \
        ruby ruby-dev htop openssh-server curl rsync \
@@ -234,18 +260,6 @@ function install_dot {
   cp "$PWD"/nvim/init.vim ~/.config/nvim/
   cp "$PWD"/tmux/.tmux.conf ~/.tmux.conf
 
-  # emacs setting
-  mkdir ~/.emacs.d -p
-  mkdir ~/.emacs.d/themes -p
-  mkdir ~/.emacs.d/config -p
-  mkdir ~/.emacs.d/snippets/c++-mode -p
-
-  cp "$PWD"/emacs/.editorconfig ~/
-  cp "$PWD"/emacs/dracula-theme.el ~/.emacs.d/themes/
-  cp "$PWD"/emacs/init.el ~/.emacs.d/
-  cp "$PWD"/emacs/config/* ~/.emacs.d/config/
-  cp "$PWD"/emacs/snippets/c++-mode/* ~/.emacs.d/snippets/c++-mode/
-
   cat "$PWD"/bash/alias >> ~/.bashrc
   cat "$PWD"/bash/rc >> ~/.bashrc
 
@@ -257,9 +271,6 @@ function install_dot {
   # global keyboard speed setting
   gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
   gsettings set org.gnome.desktop.peripherals.keyboard delay 210
-
-  # flake8 config for emacs
-  cp "$PWD"/flake8/flake8 ~/.config/flake8
 }
 
 # check all first
@@ -276,6 +287,10 @@ fi
 
 
 # if both option is on respectively, check install first
+if [ "$EMACS" = "yes" ]; then
+  install_emacs
+fi
+
 if [ "$CAML" = "yes" ]; then
   install_caml
 fi
