@@ -70,12 +70,7 @@
   :ensure t
   :config
   (setq company-idle-delay 0)
-  (setq company-show-numbers t)
-  (progn
-    (add-hook 'c-mode-hook 'company-mode)
-    (add-hook 'c++-mode-hook 'company-mode)))
-
-(use-package popup :ensure t)
+  (setq company-show-numbers t))
 
 (use-package undo-tree
   :ensure t
