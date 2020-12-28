@@ -2,7 +2,7 @@
 
  My personal configurations for debian distribution.
 
- - Mostly emacs
+ - Mostly emacs & OCaml
  - Useful packages
- - bash/zsh settings
- - fonts
+ - Bash/zsh settings
+ - Fonts
