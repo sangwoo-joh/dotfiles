@@ -1,9 +1,12 @@
-;; OCaml settings
-;; Before settings this, you need to install following packages via opam:
-;; > opam install tuareg merlin ocp-indent ocamlformat
+;;; ocaml --- OCaml settings
+;;; Commentary:
+;;; Before settings this, you need to install following packages via opam:
+;;; > opam install tuareg merlin ocp-indent ocamlformat
+
+;;; Code:
 
 (defun string-of-command (command)
-  "executes shell command and returns trimmed string"
+  "EXECUTE SHELL COMMAND AND RETURN TRIMMED STRING."
   (let* ((exit-code 0)
           (stdout
             (string-trim
@@ -18,15 +21,23 @@
         nil))))
 
 (defun opam/check ()
-  "check whether there is opam or not"
+  "CHECK WHETHER THERE IS OPAM OR NOT."
   (string-of-command "which opam"))
 
-(defun opam/switch ()
-  "auxiliary function to check the current switch name"
+(defun opam/switch (switch)
+  "CHANGE TO SWITCH."
+  (string-of-command (format "opam switch %s" switch)))
+
+(defun opam/switch-show ()
+  "AUXILIARY FUNCTION TO CHECK THE CURRENT SWITCH NAME."
   (string-of-command "opam switch show --safe --short"))
 
+(defun opam/switch-list ()
+  "GET ALL AVAILABLE LIST OF OPAM SWITCH."
+  (split-string (string-of-command "opam switch list --safe --short")))
+
 (defun opam/share-site-lisp-path ()
-  "get the alsolute path of opam/share"
+  "GET THE ALSOLUTE PATH OF OPAM/SHARE."
   (let ((opam/share (string-of-command "opam config var share --safe")))
     (concat opam/share "/emacs/site-lisp")))
 
@@ -35,7 +46,7 @@
 (defvar current-switch nil)
 
 (defun opam/env-update ()
-  "update opam environment with current switch"
+  "UPDATE OPAM ENVIRONMENT WITH CURRENT SWITCH."
   (let* ((env (string-of-command "opam config env --safe --sexp")))
     (dolist (var (car (read-from-string env)))
       (message "%s -> %s" (car var) (cadr var))
@@ -46,12 +57,11 @@
 
 
 (defun opam/load-site-lisp (site-lisp-path)
-  "add opam/share/emacs/site-lisp to load-path. this will load ocp-indent and ."
-
+  "ADD SITE-LISP-PATH to LOAD-PATH.  THIS WILL LOAD OCP-INDENT AND."
   (add-to-list 'load-path site-lisp-path))
 
 (defun ocaml/setup-tuareg (site-lisp-path)
-  "setup tuareg"
+  "SETUP TUAREG WITH SITE-LISP-PATH."
   (load (concat site-lisp-path "/tuareg-site-file"))
   (require 'tuareg)
   (add-to-list 'auto-mode-alist '("\\.ml[iylp]?\\'" . tuareg-mode))
@@ -62,7 +72,7 @@
     (add-hook 'tuareg-mode-hook #'prettify-symbols-mode)))
 
 (defun ocaml/setup-merlin (site-lisp-path)
-  "setup merlin"
+  "SETUP MERLIN WITH SITE-LISP-PATH."
   (require 'merlin)
   (add-hook 'tuareg-mode-hook #'merlin-mode t)
   (with-eval-after-load 'company
@@ -72,16 +82,16 @@
   (define-key tuareg-mode-map (kbd "M-,") #'merlin-pop-stack))
 
 (defun ocaml/setup-ocp-indent ()
-  "setup ocp-indent"
+  "SETUP OCP-INDENT."
   (require 'ocp-indent))
 
 (defun ocaml/setup-ocamlformat (site-lisp-path)
-  "setup ocamlformat"
+  "SETUP OCAMLFORMAT WITH SITE-LISP-PATH."
   (load (concat site-lisp-path "/ocamlformat"))
   (define-key tuareg-mode-map (kbd "C-c C-f") #'ocamlformat))
 
 (defun ocaml/setup (site-lisp-path)
-  "setup all"
+  "SETUP ALL WITH SITE-LISP-PATH."
   (opam/env-update) ;; update env vars
   (opam/load-site-lisp current-lisp-path)
   (ocaml/setup-tuareg current-lisp-path)
@@ -90,10 +100,10 @@
   (ocaml/setup-ocamlformat current-lisp-path))
 
 (defun ocaml/auto-setup ()
-  "setup all ocaml settings"
+  "SETUP ALL OCAML SETTINGS DYNAMICALLY."
   (interactive)
-  (unless (opam/check) (error "opam is not installed!"))
-  (let* ((switch (opam/switch))
+  (unless (opam/check) (error "Opam is not installed!"))
+  (let* ((switch (opam/switch-show))
           (site-lisp-path (opam/share-site-lisp-path)))
 
     (if current-switch
@@ -113,3 +123,16 @@
 
 ;; init
 (ocaml/auto-setup)
+
+(defun opam/update-switch (switch)
+  "UPDATE OPAM SWITCH."
+  (interactive)
+  (let* ((switch-available (opam/switch-list)))
+    (if (member switch switch-available)
+	(progn
+	  (opam/switch switch)
+	  (ocaml/auto-setup))
+      (progn
+	(message "Invalid switch: %s" switch)))))
+
+;;; ocaml.el ends here
