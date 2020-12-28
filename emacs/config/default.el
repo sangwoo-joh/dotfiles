@@ -9,6 +9,7 @@
     (desktop-save desktop-dirname)))
 (setq desktop-auto-save-timeout 300)
 (add-hook 'auto-save-hook 'my-desktop-save)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
