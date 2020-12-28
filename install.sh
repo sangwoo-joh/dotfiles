@@ -246,9 +246,10 @@ function install_fonts {
 function install_dot {
   # dotfiles setting
   mkdir ~/.config -p
-  mkdir ~/.config/nvim -p
 
-  cp "$PWD"/nvim/init.vim ~/.config/nvim/
+  # use symbolic link
+  ln -s "$PWD"/nvim ~/.config/nvim
+
   cp "$PWD"/tmux/.tmux.conf ~/.tmux.conf
 
   cat "$PWD"/bash/alias >> ~/.bashrc
