@@ -250,7 +250,8 @@ function install_dot {
   # use symbolic link
   ln -s "$PWD"/nvim ~/.config/nvim
 
-  cp "$PWD"/tmux/.tmux.conf ~/.tmux.conf
+  ln -s "$PWD"/tmux/.tmux.conf ~/.tmux.conf
+  ln -s "$PWD"/tmux/.tmux.color.conf ~/.tmux.color.conf
 
   cat "$PWD"/bash/alias >> ~/.bashrc
   cat "$PWD"/bash/rc >> ~/.bashrc
