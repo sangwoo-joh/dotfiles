@@ -114,20 +114,11 @@ function install_emacs {
 
   sudo apt-get install emacs-27
 
-  # emacs setting
-  mkdir ~/.emacs.d -p
-  mkdir ~/.emacs.d/themes -p
-  mkdir ~/.emacs.d/config -p
-  mkdir ~/.emacs.d/snippets/c++-mode -p
-
-  cp "$PWD"/emacs/.editorconfig ~/
-  cp "$PWD"/emacs/dracula-theme.el ~/.emacs.d/themes/
-  cp "$PWD"/emacs/init.el ~/.emacs.d/
-  cp "$PWD"/emacs/config/* ~/.emacs.d/config/
-  cp "$PWD"/emacs/snippets/c++-mode/* ~/.emacs.d/snippets/c++-mode/
+  # emacs setting - use symbolic links
+  ln -s "$PWD"/emacs ~/.emacs.d
 
   # flake8 config for emacs
-  cp "$PWD"/flake8/flake8 ~/.config/flake8
+  ln -s "$PWD"/flake8/flake8 ~/.config/flake8
 }
 
 function install_conda {
