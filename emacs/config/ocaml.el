@@ -99,7 +99,7 @@
   (ocaml/setup-ocp-indent)
   (ocaml/setup-ocamlformat current-lisp-path))
 
-(defun ocaml/auto-setup ()
+(defun ocaml/auto-load ()
   "SETUP ALL OCAML SETTINGS DYNAMICALLY."
   (interactive)
   (unless (opam/check) (error "Opam is not installed!"))
@@ -122,7 +122,7 @@
         (ocaml/setup current-lisp-path)))))
 
 ;; init
-(ocaml/auto-setup)
+(ocaml/auto-load)
 
 (defun opam/update-switch (switch)
   "UPDATE OPAM SWITCH."
@@ -131,7 +131,7 @@
     (if (member switch switch-available)
 	(progn
 	  (opam/switch switch)
-	  (ocaml/auto-setup))
+	  (ocaml/auto-load))
       (progn
 	(message "Invalid switch: %s" switch)))))
 
