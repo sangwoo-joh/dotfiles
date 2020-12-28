@@ -23,8 +23,7 @@
 ;; C-c C-p: Toggle read-only area
 ;; C-c C-k: Discard all changes and exit
 ;; C-c C-q: Exit wgrep mode
-(use-package wgrep
-  :ensure t)
+(use-package wgrep :ensure t)
 
 (use-package helpful
   :ensure t
