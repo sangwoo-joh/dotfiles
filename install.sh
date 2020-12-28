@@ -116,9 +116,6 @@ function install_emacs {
 
   # emacs setting - use symbolic links
   ln -s "$PWD"/emacs ~/.emacs.d
-
-  # flake8 config for emacs
-  ln -s "$PWD"/flake8/flake8 ~/.config/flake8
 }
 
 function install_conda {
@@ -255,6 +252,10 @@ function install_dot {
 
   cat "$PWD"/bash/alias >> ~/.bashrc
   cat "$PWD"/bash/rc >> ~/.bashrc
+
+  # python settings
+  ln -s "$PWD"/python/flake8 ~/.config/flake8
+  ln -s "$PWD"/python/pylintrc ~/.config/pylintrc
 
   # global nautilus setting
   gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'

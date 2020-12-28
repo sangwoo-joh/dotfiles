@@ -1,0 +1,7 @@
+[flake8]
+max-line-length = 100
+ignore =
+  # prefer 2-space
+  E111 # indent is not a multiple of four
+  , E121 # continuation line under-indented for hanging indent
+  , E114 # E111 for comment
