@@ -1,9 +1,7 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Package settings
-;; use use-package to automatically setup & load package & setup package in the same block
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
+;;; packages.el --- Personal helpful packages.
+;;; Commentary:
+;; Use use-package to automatically setup & load package & setup package in the same block
+;;; Code:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; category: helpful
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -181,3 +179,5 @@
   :ensure t
   :init
   (sml/apply-theme 'powerline))
+
+;;; packages.el ends here
