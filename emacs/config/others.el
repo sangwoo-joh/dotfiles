@@ -40,3 +40,10 @@
 (use-package json-mode :ensure t)
 
 (use-package rust-mode :ensure t)
+
+;; flycheck emacs
+(use-package flycheck-cask
+  :ensure t
+  :init
+  (eval-after-load 'flycheck
+    '(add-hook 'flycheck-mode-hook #'flycheck-cask-setup)))
