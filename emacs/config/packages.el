@@ -50,7 +50,7 @@
   :init
   (add-hook 'prog-mode-hook #'which-key-mode))
 
-(use-package flycheck 
+(use-package flycheck
   :ensure t
   :init (global-flycheck-mode))
 
