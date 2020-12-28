@@ -56,7 +56,8 @@
   :ensure t
   :config
   (with-eval-after-load 'flycheck
-    (flycheck-pos-tip-mode)))
+    (flycheck-pos-tip-mode))
+  (setq flycheck-pos-tip-timeout 60))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; category: auto-complete
