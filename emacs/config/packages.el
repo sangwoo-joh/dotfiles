@@ -70,7 +70,8 @@
   :ensure t
   :config
   (setq company-idle-delay 0)
-  (setq company-show-numbers t))
+  (setq company-show-numbers t)
+  (global-company-mode))
 
 (use-package undo-tree
   :ensure t
