@@ -88,6 +88,10 @@
   (load (concat site-lisp-path "ocamlformat"))
   (define-key tuareg-mode-map (kbd "C-c C-f") #'ocamlformat))
 
+(defun ocaml/setup-dune ()
+  "SETUP DUNE-MODE."
+  (require 'dune))
+
 (defun ocaml/setup (site-lisp-path)
   "SETUP ALL WITH SITE-LISP-PATH."
   (opam/env-update) ;; update env vars
@@ -95,7 +99,8 @@
   (ocaml/setup-tuareg site-lisp-path)
   (ocaml/setup-merlin site-lisp-path)
   (ocaml/setup-ocp-indent)
-  (ocaml/setup-ocamlformat site-lisp-path))
+  (ocaml/setup-ocamlformat site-lisp-path)
+  (ocaml/setup-dune))
 
 (defun ocaml/auto-load ()
   "SETUP ALL OCAML SETTINGS DYNAMICALLY."
