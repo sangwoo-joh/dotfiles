@@ -22,6 +22,7 @@
 
 ;; custom dracula theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(byte-recompile-directory "~/.emacs.d/themes" 0)
 (load-theme 'dracula t)
 
 ;; ready to load
