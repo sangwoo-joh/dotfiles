@@ -134,8 +134,7 @@
   (setq eyebrowse-mode-line-separator "; ")
   (custom-set-faces
     '(eyebrowse-mode-line-active
-       ((t (:foreground "black" :background "gold" :inherit (mode-line-emphasis))))
-       ))
+       ((t (:foreground "black" :background "gold" :inherit (mode-line-emphasis))))))
   :bind (("M-0" . eyebrowse-switch-to-window-config-0)
           ("M-1" . eyebrowse-switch-to-window-config-1)
           ("M-2" . eyebrowse-switch-to-window-config-2)
