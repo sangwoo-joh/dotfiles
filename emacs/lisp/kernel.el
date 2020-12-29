@@ -153,10 +153,7 @@
             (remove-hook 'eshell-output-filter-functions
                          'eshell-postoutput-scroll-to-bottom)))
 
-;; custom dracula theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'dracula t)
-
+;; load remainigs sequentially
 (require 'packages)
 (require 'ocaml)
 (require 'py)
