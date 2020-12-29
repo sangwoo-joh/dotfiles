@@ -26,6 +26,7 @@
 
 ;; ready to load
 (add-to-list 'load-path "~/.emacs.d/lisp")
+(byte-recompile-directory "~/.emacs.d/lisp" 0)
 (require 'kernel)
 
 ;; auto-package-update
