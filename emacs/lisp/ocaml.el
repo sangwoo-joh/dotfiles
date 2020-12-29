@@ -49,10 +49,8 @@
   "UPDATE OPAM ENVIRONMENT WITH CURRENT SWITCH."
   (let* ((env (string-of-command "opam config env --safe --sexp")))
     (dolist (var (car (read-from-string env)))
-      (message "%s -> %s" (car var) (cadr var))
       (setenv (car var) (cadr var))
       (when (string-equal (car var) "PATH")
-        (message "update PATH as %s" (cadr var))
         (setq exec-path (split-string (cadr var) path-separator))))))
 
 
