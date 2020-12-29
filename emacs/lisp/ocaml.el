@@ -91,11 +91,11 @@
 (defun ocaml/setup (site-lisp-path)
   "SETUP ALL WITH SITE-LISP-PATH."
   (opam/env-update) ;; update env vars
-  (opam/load-site-lisp current-lisp-path)
-  (ocaml/setup-tuareg current-lisp-path)
-  (ocaml/setup-merlin current-lisp-path)
+  (opam/load-site-lisp site-lisp-path)
+  (ocaml/setup-tuareg site-lisp-path)
+  (ocaml/setup-merlin site-lisp-path)
   (ocaml/setup-ocp-indent)
-  (ocaml/setup-ocamlformat current-lisp-path))
+  (ocaml/setup-ocamlformat site-lisp-path))
 
 (defun ocaml/auto-load ()
   "SETUP ALL OCAML SETTINGS DYNAMICALLY."
