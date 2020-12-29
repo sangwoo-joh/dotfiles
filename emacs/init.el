@@ -23,10 +23,6 @@
 ;; ready to load
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (require 'kernel)
-(require 'packages)
-(require 'ocaml)
-(require 'py)
-(require 'others)
 
 ;; auto-package-update
 (use-package auto-package-update

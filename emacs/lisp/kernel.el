@@ -157,6 +157,10 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'dracula t)
 
+(require 'packages)
+(require 'ocaml)
+(require 'py)
+(require 'others)
 
 (provide 'kernel)
 ;;; kernel.el ends here
