@@ -1,4 +1,4 @@
-;;; python.el --- Personal python settings.
+;;; py.el --- Personal python settings.
 ;;; Commentary:
 ;;; Code:
 (use-package elpy
@@ -7,4 +7,6 @@
 
 (with-eval-after-load 'flycheck
   (setq flycheck-python-flake8-executable "python3"))
-;;; python.el ends here
+
+(provide 'py)
+;;; py.el ends here

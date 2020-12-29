@@ -135,4 +135,5 @@
       (progn
 	(message "Invalid switch: %s" switch)))))
 
+(provide 'ocaml)
 ;;; ocaml.el ends here

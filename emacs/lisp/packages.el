@@ -171,4 +171,5 @@
   :config
   (sml/apply-theme 'powerline))
 
+(provide 'packages)
 ;;; packages.el ends here

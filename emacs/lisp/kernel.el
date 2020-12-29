@@ -1,8 +1,11 @@
-;; initial package setup
+;;; kernel.el --- Kernel of my settings
+;;; Commentary:
+;;; Code:
 
 (require 'desktop)
 (desktop-save-mode 1)
 (defun my-desktop-save ()
+  "MY DESKTOP SAVE."
   (interactive)
   ;; Don't call desktop-save-in-desktop-dir, as it prints a message.
   (if (eq (desktop-owner) (emacs-pid))
@@ -14,51 +17,52 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (defun select-next-window ()
+  "SELECT NEXT WINDOW."
   (interactive)
   (select-window (next-window (selected-window))))
 
 (defun select-previous-window ()
+  "SELECT PREVIOUS WINDOW."
   (interactive)
   (select-window (previous-window (selected-window))))
 
 (defun up-down-case-char ()
+  "TOGGLE CASE OF A CHARACTER."
   (interactive)
   (set-mark-command ())
   (forward-char 1)
-  (setq myStr (buffer-substring (region-beginning) (region-end)))
-  (if (string-equal myStr (upcase myStr))
-      (downcase-region (region-beginning) (region-end))
-    (upcase-region (region-beginning) (region-end)))
-  (backward-char 1))
+  (let* ((myStr (buffer-substring (region-beginning) (region-end))))
+    (if (string-equal myStr (upcase myStr))
+	(downcase-region (region-beginning) (region-end))
+      (upcase-region (region-beginning) (region-end)))
+    (backward-char 1)))
 
 (defun unfill-paragraph ()	  ; by Stefan Monnier (foo at acm.org)
-  "Takes a multi-line paragraph and makes it into a single line of text."
+  "TAKE A MULTI-LINE PARAGRAPH AND MAKE IT INTO A SINGLE LINE OF TEXT."
   (interactive)
   (let ((fill-column (point-max)))
     (fill-paragraph nil)))
 
 (defun eshell-clear ()		  ; by Sailor (http://www.khngai.com/)
-  "Clear the eshell buffer."
+  "CLEAR THE ESHELL BUFFER."
   (interactive)
   (let ((inhibit-read-only t))
     (erase-buffer)))
 
 (defun set-font-size (size)
-  "Set font size."
+  "SET FONT SIZE."
   (interactive "nSize: ")
   (set-face-attribute 'default nil :height (* size 11)))
 
 (display-time)
-(defun chomp-end (str)
-  (replace-regexp-in-string (rx (* (any " \t\n")) eos) "" str))
 
 (defun increment-number-at-point ()
+  "INCREASE NUMBER AT CURSOR."
   (interactive)
   (skip-chars-backward "0-9")
   (or (looking-at "[0-9]+")
       (error "No number at point"))
   (replace-match (number-to-string (1+ (string-to-number (match-string 0))))))
-(global-set-key (kbd "C-c +") 'increment-number-at-point)
 
 ;; default font settings
 (set-fontset-font "fontset-default" 'latin "Ubuntu Mono derivative Powerline")
@@ -79,21 +83,19 @@
 (tool-bar-mode -1)
 
 (setq x-alt-keysym 'meta)
-(when (eq system-type 'darwin)
-  (setq mac-command-modifier 'meta))
 
 (global-font-lock-mode 1)
 (show-paren-mode 1)
+
 (setq search-highlight t)
 (setq query-replace-highlight t)
 (setq TeX-PDF-mode t)
 (setq tramp-default-method "sshx")
 (setq password-cache-expiry nil) ;; to disable password expiration
-;; (add-to-list 'tramp-remote-process-environment "JEKYLL_ENV=production")
 
 ;; auto highlight
 (defun highlight-and-mark ()
-  "Highlight all symbols that are same with under the cursor and mark it."
+  "HIGHLIGHT ALL SYMBOLS THAT ARE SAME WITH UNDER THE CURSOR AND MARK IT."
   (interactive)
   (progn
     (highlight-symbol-at-point)
@@ -102,7 +104,7 @@
     (mark-sexp)))
 
 (defun unhighlight-all ()
-  "Remove all highlights made by `hi-lock' from the current buffer."
+  "REMOVE ALL HIGHLIGHT MADE BY `HI-LOCK' FROM THE CURRENT BUFFER."
   (interactive)
   (unhighlight-regexp t))
 
@@ -127,9 +129,18 @@
 (global-set-key (kbd "C-c M") 'bookmark-set)
 (global-set-key (kbd "C-c L") 'list-bookmarks)
 (global-set-key (kbd "C-c d") 'delete-trailing-whitespace)
+(global-set-key (kbd "C-c +") 'increment-number-at-point)
 
 (when window-system			; Disable suspend
   (global-unset-key (kbd "C-z")))
+
+;; key bindings - for macos
+(when (eq system-type 'darwin) ;; mac specific settings
+  (setq mac-option-modifier 'alt)
+  (setq mac-command-modifier 'meta)
+  ;;(global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
+  )
+
 (if (eq system-type 'darwin)
     (set-font-size 14)
   (set-font-size 12))
@@ -145,3 +156,7 @@
 ;; custom dracula theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'dracula t)
+
+
+(provide 'kernel)
+;;; kernel.el ends here
