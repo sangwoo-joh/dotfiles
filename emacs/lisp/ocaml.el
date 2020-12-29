@@ -58,8 +58,8 @@
   "ADD SITE-LISP-PATH to LOAD-PATH.  THIS WILL LOAD OCP-INDENT AND."
   (add-to-list 'load-path site-lisp-path))
 
-(defun ocaml/setup-tuareg (site-lisp-path)
-  "SETUP TUAREG WITH SITE-LISP-PATH."
+(defun ocaml/load-tuareg (site-lisp-path)
+  "LOAD TUAREG WITH SITE-LISP-PATH."
   (load (concat site-lisp-path "tuareg-site-file"))
   (require 'tuareg)
   (add-to-list 'auto-mode-alist '("\\.ml[iylp]?\\'" . tuareg-mode))
@@ -69,8 +69,8 @@
   (when (functionp 'prettify-symbols-mode) ;; works for >= emacs 24.4
     (add-hook 'tuareg-mode-hook #'prettify-symbols-mode)))
 
-(defun ocaml/setup-merlin (site-lisp-path)
-  "SETUP MERLIN WITH SITE-LISP-PATH."
+(defun ocaml/load-merlin (site-lisp-path)
+  "LOAD MERLIN WITH SITE-LISP-PATH."
   (require 'merlin)
   (add-hook 'tuareg-mode-hook #'merlin-mode t)
   (with-eval-after-load 'company
@@ -79,31 +79,31 @@
   (define-key tuareg-mode-map (kbd "M-.") #'merlin-locate)
   (define-key tuareg-mode-map (kbd "M-,") #'merlin-pop-stack))
 
-(defun ocaml/setup-ocp-indent ()
-  "SETUP OCP-INDENT."
+(defun ocaml/load-ocp-indent ()
+  "LOAD OCP-INDENT."
   (require 'ocp-indent))
 
-(defun ocaml/setup-ocamlformat (site-lisp-path)
-  "SETUP OCAMLFORMAT WITH SITE-LISP-PATH."
+(defun ocaml/load-ocamlformat (site-lisp-path)
+  "LOAD OCAMLFORMAT WITH SITE-LISP-PATH."
   (load (concat site-lisp-path "ocamlformat"))
   (define-key tuareg-mode-map (kbd "C-c C-f") #'ocamlformat))
 
-(defun ocaml/setup-dune ()
-  "SETUP DUNE-MODE."
+(defun ocaml/load-dune ()
+  "LOAD DUNE-MODE."
   (require 'dune))
 
-(defun ocaml/setup (site-lisp-path)
-  "SETUP ALL WITH SITE-LISP-PATH."
+(defun ocaml/load (site-lisp-path)
+  "LOAD ALL WITH SITE-LISP-PATH."
   (opam/env-update) ;; update env vars
   (opam/load-site-lisp site-lisp-path)
-  (ocaml/setup-tuareg site-lisp-path)
-  (ocaml/setup-merlin site-lisp-path)
-  (ocaml/setup-ocp-indent)
-  (ocaml/setup-ocamlformat site-lisp-path)
-  (ocaml/setup-dune))
+  (ocaml/load-tuareg site-lisp-path)
+  (ocaml/load-merlin site-lisp-path)
+  (ocaml/load-ocp-indent)
+  (ocaml/load-ocamlformat site-lisp-path)
+  (ocaml/load-dune))
 
 (defun ocaml/auto-load ()
-  "SETUP ALL OCAML SETTINGS DYNAMICALLY."
+  "LOAD ALL OCAML SETTINGS DYNAMICALLY."
   (interactive)
   (unless (opam/check) (error "Opam is not installed!"))
   (let* ((switch (opam/switch-show))
@@ -116,13 +116,13 @@
         (setq load-path (delete current-lisp-path load-path)) ;; unset previous load
         (setq current-lisp-path site-lisp-path)
         (setq current-switch switch)
-        (ocaml/setup current-lisp-path))
+        (ocaml/load current-lisp-path))
       ;; first init (current-* are all nil)
       (progn
         (setq current-lisp-path site-lisp-path)
         (setq current-switch switch)
         (message "Current switch: %s" current-switch)
-        (ocaml/setup current-lisp-path)))))
+        (ocaml/load current-lisp-path)))))
 
 ;; init
 (ocaml/auto-load)
