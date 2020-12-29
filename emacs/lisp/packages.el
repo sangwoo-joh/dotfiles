@@ -75,7 +75,7 @@
 
 (use-package undo-tree
   :ensure t
-  :init (global-undo-tree-mode)
+  :config (global-undo-tree-mode)
   :bind (("C-z" . undo-tree-visualize)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
