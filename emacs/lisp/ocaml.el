@@ -108,7 +108,7 @@
       ;; re-init (current-* are not nil /\ current-switch != switch)
       (unless (string-equal current-switch switch)
         (message "Reload switch: %s -> %s" current-switch switch)
-        (delete current-lisp-path load-path) ;; unset previous load
+        (setq load-path (delete current-lisp-path load-path)) ;; unset previous load
         (setq current-lisp-path site-lisp-path)
         (setq current-switch switch)
         (ocaml/setup current-lisp-path))
