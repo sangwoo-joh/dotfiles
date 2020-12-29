@@ -39,7 +39,7 @@
 (defun opam/share-site-lisp-path ()
   "GET THE ALSOLUTE PATH OF OPAM/SHARE."
   (let ((opam/share (string-of-command "opam config var share --safe")))
-    (concat opam/share "/emacs/site-lisp")))
+    (concat opam/share "/emacs/site-lisp/")))
 
 ;; cache
 (defvar current-lisp-path nil)
@@ -60,7 +60,7 @@
 
 (defun ocaml/setup-tuareg (site-lisp-path)
   "SETUP TUAREG WITH SITE-LISP-PATH."
-  (load (concat site-lisp-path "/tuareg-site-file"))
+  (load (concat site-lisp-path "tuareg-site-file"))
   (require 'tuareg)
   (add-to-list 'auto-mode-alist '("\\.ml[iylp]?\\'" . tuareg-mode))
   (setq tuareg-highlight-all-operartors t)
@@ -85,7 +85,7 @@
 
 (defun ocaml/setup-ocamlformat (site-lisp-path)
   "SETUP OCAMLFORMAT WITH SITE-LISP-PATH."
-  (load (concat site-lisp-path "/ocamlformat"))
+  (load (concat site-lisp-path "ocamlformat"))
   (define-key tuareg-mode-map (kbd "C-c C-f") #'ocamlformat))
 
 (defun ocaml/setup (site-lisp-path)
