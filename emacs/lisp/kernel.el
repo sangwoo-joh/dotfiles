@@ -3,6 +3,7 @@
 ;;; Code:
 
 (require 'desktop)
+(require 'cl-lib)
 (desktop-save-mode 1)
 (defun my-desktop-save ()
   "MY DESKTOP SAVE."
