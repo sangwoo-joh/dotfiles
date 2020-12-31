@@ -14,10 +14,10 @@
   ;; Don't call desktop-save-in-desktop-dir, as it prints a message.
   (if (eq (desktop-owner) (emacs-pid))
     (desktop-save desktop-dirname)))
-(setq desktop-auto-save-timeout 300)
 (add-hook 'auto-save-hook 'my-desktop-save)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+(setq desktop-auto-save-timeout nil)
 (setq auto-save-default nil)
 (setq auto-save-list-file-name nil)
 (setq make-backup-files nil)
