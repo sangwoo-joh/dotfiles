@@ -77,20 +77,17 @@
 (set-fontset-font "fontset-default" 'hangul "D2Coding")
 (set-face-attribute 'default nil :font "fontset-default")
 
-(setq inhibit-startup-message t)
 (set-language-environment-input-method "Korean")
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
-
 (column-number-mode t)
 (tool-bar-mode -1)
+(global-font-lock-mode t)
+(show-paren-mode)
 
+(setq inhibit-startup-message t)
 (setq x-alt-keysym 'meta)
-
-(global-font-lock-mode 1)
-(show-paren-mode 1)
-
 (setq search-highlight t)
 (setq query-replace-highlight t)
 (setq TeX-PDF-mode t)
