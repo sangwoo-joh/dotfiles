@@ -3,7 +3,6 @@
 ;;; Code:
 
 (require 'package)
-(require 'bind-key)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
@@ -11,7 +10,8 @@
 ;; use-package default
 (when (not (package-installed-p 'use-package))
   (package-refresh-contents)
-  (package-install 'use-package))
+  (package-install 'use-package)
+  (package-install 'bind-key))
 
 ;; Install exec-path-from-shell here
 (when (not (package-installed-p 'exec-path-from-shell))
