@@ -2,9 +2,12 @@
 ;;; Commentary:
 ;;; Code:
 
-(require 'desktop)
 (require 'cl-lib)
-(desktop-save-mode 1)
+
+;; desktop
+(require 'desktop)
+(desktop-save-mode t)
+
 (defun my-desktop-save ()
   "MY DESKTOP SAVE."
   (interactive)
@@ -14,6 +17,10 @@
 (setq desktop-auto-save-timeout 300)
 (add-hook 'auto-save-hook 'my-desktop-save)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(setq auto-save-default nil)
+(setq auto-save-list-file-name nil)
+(setq make-backup-files nil)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -71,10 +78,6 @@
 (set-face-attribute 'default nil :font "fontset-default")
 
 (setq inhibit-startup-message t)
-(setq auto-save-default nil)
-(setq auto-save-list-file-name nil)
-(setq make-backup-files nil)
-
 (set-language-environment-input-method "Korean")
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
