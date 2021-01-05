@@ -112,7 +112,7 @@ function install_emacs {
   # emacs >= 25
   sudo add-apt-repository ppa:kelleyk/emacs --yes
 
-  sudo apt-get install emacs-27
+  sudo apt-get install emacs27
 
   # emacs setting - use symbolic links
   ln -s "$PWD"/emacs ~/.emacs.d
