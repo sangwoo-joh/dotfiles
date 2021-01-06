@@ -122,6 +122,7 @@ function install_conda {
   wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh -O conda.sh
   chmod +x conda.sh
   ./conda.sh -b
+  rm ./conda.sh
   echo "source ~/anaconda3/etc/profile.d/conda.sh" >> ~/.bashrc
   source ~/anaconda3/etc/profile.d/conda.sh
 }
