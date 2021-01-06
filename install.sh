@@ -124,6 +124,7 @@ function install_conda {
   ./conda.sh -b
   rm ./conda.sh
   echo "source ~/anaconda3/etc/profile.d/conda.sh" >> ~/.bashrc
+  echo "source ~/anaconda3/etc/profile.d/conda.sh" >> ~/.zshrc
   source ~/anaconda3/etc/profile.d/conda.sh
 }
 
