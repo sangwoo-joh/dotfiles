@@ -13,7 +13,8 @@
   (define-key c++-mode-map (kbd "C-c ;") 'comment-line)
   (define-key c++-mode-map (kbd "C-c :") 'uncomment-region)
   (define-key c-mode-map (kbd "C-c ;") 'comment-line)
-  (define-key c-mode-map (kbd "C-c :") 'uncomment-region))
+  (define-key c-mode-map (kbd "C-c :") 'uncomment-region)
+  (setq c-basic-offset 4))
 
 (add-hook 'c-mode-hook 'set-key-c++-mode)
 (add-hook 'c++-mode-hook 'set-key-c++-mode)
