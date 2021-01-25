@@ -13,6 +13,7 @@ Options
   conda             Install Anaconda
   fonts             Install d2coding, powerline fonts
   dot               Install dotfiles
+  rtags             Install rtags
   pkg               Install packages
   zsh               Install zsh
   all               Install all above (default)
@@ -25,6 +26,7 @@ CAML=
 EMACS=
 FONTS=
 DOT=
+RTAGS=
 PKG=
 ZSH=
 
@@ -58,6 +60,11 @@ do
     dot)
       ALL=no
       DOT=yes
+      shift
+      ;;
+    rtags)
+      ALL=no
+      RTAGS=yes
       shift
       ;;
     pkg)
@@ -269,6 +276,21 @@ function install_dot {
   gsettings set org.gnome.desktop.peripherals.keyboard delay 210
 }
 
+function install_rtags {
+  # rtags
+  if [ ! -e rtags ]; then
+    git clone --recursive https://github.com/andersbakken/rtags
+  fi
+  pushd rtags
+  cmake .
+  make -j8
+  popd
+
+  export PATH=$PATH:~/.dotfiles/rtags/bin
+  echo "export PATH=\$PATH:~/.dotfiles/rtags/bin" >> ~/.bashrc
+  echo "export PATH=\$PATH:~/.dotfiles/rtags/bin" >> ~/.zshrc
+}
+
 # check all first
 if [ "$ALL" = "yes" ]; then
   #sudo apt-get install git  # git must included
@@ -301,6 +323,10 @@ fi
 
 if [ "$DOT" = "yes" ]; then
   install_dot
+fi
+
+if [ "$RTAGS" = "yes" ]; then
+  install_rtags
 fi
 
 if [ "$PKG" = "yes" ]; then

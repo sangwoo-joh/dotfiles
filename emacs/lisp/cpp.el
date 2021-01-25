@@ -21,7 +21,7 @@
 
 (use-package rtags
   :ensure t
-  :init (setq rtags-path "~/.rtags-config/bin")
+  :init (setq rtags-path "~/.dotfiles/rtags/bin")
   :bind
   ("M-." . rtags-find-symbol-at-point)
   ("M-," . rtags-location-stack-back)
