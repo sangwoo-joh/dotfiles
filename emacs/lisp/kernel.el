@@ -155,6 +155,12 @@
             (remove-hook 'eshell-output-filter-functions
                          'eshell-postoutput-scroll-to-bottom)))
 
+;; Org-mode settings
+(require 'org)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "DONE")))
+
+
 ;; load remainigs sequentially
 (require 'packages)
 (require 'ocaml)
