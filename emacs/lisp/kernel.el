@@ -160,6 +160,7 @@
 (require 'ocaml)
 (require 'py)
 (require 'others)
+(require 'cpp)
 
 (provide 'kernel)
 ;;; kernel.el ends here
