@@ -3,7 +3,9 @@
 ;;; Code:
 (use-package elpy
   :ensure t
-  :config (elpy-enable))
+  :config
+  (elpy-enable)
+  (highlight-indentation-mode -1))
 
 (with-eval-after-load 'flycheck
   (setq flycheck-python-flake8-executable "python3"))
