@@ -5,7 +5,8 @@
   :ensure t
   :config
   (elpy-enable)
-  (highlight-indentation-mode -1))
+  :init
+  (add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1))))
 
 (with-eval-after-load 'flycheck
   (setq flycheck-python-flake8-executable "python3"))
