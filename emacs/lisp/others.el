@@ -9,7 +9,8 @@
   :mode (("README\\.md$" . gfm-mode)
 	 ("\\.md$" . markdown-mode)
 	 ("\\.markdown$" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
+  :init (setq markdown-command "multimarkdown")
+  :bind ("C-c C-t C-f" . markdown-table-align))
 
 (use-package web-mode
   :ensure t
