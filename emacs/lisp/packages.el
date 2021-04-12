@@ -35,7 +35,11 @@
 
 (use-package magit
   :ensure t
-  :bind ("C-x g" . magit-status))
+  :bind
+  ("C-x g" . magit-status)
+  ("C-c C-m" . smerge-keep-upper) ;; mine
+  ("C-c C-o" . smerge-keep-lower) ;; other
+  )
 
 (use-package which-key
   :ensure t
