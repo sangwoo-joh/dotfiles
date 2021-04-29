@@ -66,9 +66,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-complete
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package autopair
+(use-package smartparens
   :ensure t
-  :config (autopair-global-mode))
+  :config (smartparens-global-mode))
 
 (use-package company
   :ensure t
