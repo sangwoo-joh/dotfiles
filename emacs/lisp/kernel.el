@@ -167,6 +167,7 @@
 (require 'py)
 (require 'others)
 (require 'cpp)
+(require 'ts)
 
 (provide 'kernel)
 ;;; kernel.el ends here
