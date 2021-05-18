@@ -55,7 +55,8 @@
     (dolist (var (car (read-from-string env)))
       (setenv (car var) (cadr var))
       (when (string-equal (car var) "PATH")
-        (setq exec-path (split-string (cadr var) path-separator))))))
+        (setq exec-path (split-string (cadr var) path-separator))))
+    (message "Update opam env path for %s" env)))
 
 
 (defun opam/load-site-lisp (site-lisp-path)
@@ -116,17 +117,17 @@
     (if current-switch
       ;; re-init (current-* are not nil /\ current-switch != switch)
       (unless (string-equal current-switch switch)
-        (message "Reload switch: %s -> %s" current-switch switch)
         (setq load-path (delete current-lisp-path load-path)) ;; unset previous load
         (setq current-lisp-path site-lisp-path)
         (setq current-switch switch)
-        (ocaml/load current-lisp-path))
+        (ocaml/load current-lisp-path)
+	(message "Reload switch: %s -> %s" current-switch switch))
       ;; first init (current-* are all nil)
       (progn
         (setq current-lisp-path site-lisp-path)
         (setq current-switch switch)
-        (message "Current switch: %s" current-switch)
-        (ocaml/load current-lisp-path)))))
+        (ocaml/load current-lisp-path)
+        (message "Current switch: %s" current-switch)))))
 
 ;; init
 (ocaml/auto-load)
