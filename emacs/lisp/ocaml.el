@@ -26,14 +26,17 @@
 
 (defun opam/switch (switch)
   "CHANGE TO SWITCH."
+  (interactive)
   (string-of-command (format "opam switch %s" switch)))
 
 (defun opam/switch-show ()
   "AUXILIARY FUNCTION TO CHECK THE CURRENT SWITCH NAME."
+  (interactive)
   (string-of-command "opam switch show --safe --short"))
 
 (defun opam/switch-list ()
   "GET ALL AVAILABLE LIST OF OPAM SWITCH."
+  (interactive)
   (split-string (string-of-command "opam switch list --safe --short")))
 
 (defun opam/share-site-lisp-path ()
@@ -47,6 +50,7 @@
 
 (defun opam/env-update ()
   "UPDATE OPAM ENVIRONMENT WITH CURRENT SWITCH."
+  (interactive)
   (let* ((env (string-of-command "opam config env --safe --sexp")))
     (dolist (var (car (read-from-string env)))
       (setenv (car var) (cadr var))
