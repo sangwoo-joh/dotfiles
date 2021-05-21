@@ -146,7 +146,7 @@
 (if (eq system-type 'darwin)
     (set-font-size 14)
   (set-font-size 12))
-(global-linum-mode 1)
+(display-line-numbers-mode 1)
 
 ;; Disable Eshell's scroll feature
 ;; from https://emacs.stackexchange.com/questions/28819/eshell-goes-to-the-bottom-of-the-page-after-executing-a-command
