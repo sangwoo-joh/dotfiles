@@ -29,7 +29,7 @@
   (interactive)
   (string-of-command (format "opam switch %s" switch)))
 
-(defun opam/switch-show ()
+(defun opam/current-switch ()
   "AUXILIARY FUNCTION TO CHECK THE CURRENT SWITCH NAME."
   (interactive)
   (string-of-command "opam switch show --safe --short"))
@@ -111,7 +111,7 @@
   "LOAD ALL OCAML SETTINGS DYNAMICALLY."
   (interactive)
   (unless (opam/check) (error "Opam is not installed!"))
-  (let* ((switch (opam/switch-show))
+  (let* ((switch (opam/current-switch))
           (site-lisp-path (opam/share-site-lisp-path)))
 
     (if current-switch
