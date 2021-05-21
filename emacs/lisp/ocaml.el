@@ -132,7 +132,7 @@
 ;; init
 (ocaml/auto-load)
 
-(defun opam/update-switch (switch)
+(defun opam/change-switch (switch)
   "UPDATE OPAM SWITCH."
   (interactive)
   (let* ((switch-available (opam/switch-list)))
