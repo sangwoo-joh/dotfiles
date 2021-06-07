@@ -1,11 +1,10 @@
 ;;; init.el --- Personal emacs settings entry point
 ;;; Commentary:
 ;;; Code:
-
-(require 'package)
-(setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
+(setq package-enable-at-startup nil)
+(require 'package)
 
 ;; use-package default
 (when (not (package-installed-p 'use-package))
