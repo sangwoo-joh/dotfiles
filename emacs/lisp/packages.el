@@ -82,6 +82,10 @@
   :config (global-undo-tree-mode)
   :bind (("C-z" . undo-tree-visualize)))
 
+(use-package projectile
+  :ensure t
+  :config (projectile-mode t))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; chore
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
