@@ -67,7 +67,8 @@
   "LOAD TUAREG WITH SITE-LISP-PATH."
   (load (concat site-lisp-path "tuareg-site-file"))
   (require 'tuareg)
-  (add-to-list 'auto-mode-alist '("\\.ml[iylp]?\\'" . tuareg-mode))
+  (add-to-list 'auto-mode-alist '("\\.ml[ip]?\\'" . tuareg-mode))
+  (add-to-list 'auto-mode-alist '("\\.ml[ly]\\'" . tuareg-menhir-mode))
   (setq tuareg-highlight-all-operartors t)
   (setq tuareg-prettify-symbols-full t)
   (setq tuareg-match-patterns-aligned t)
