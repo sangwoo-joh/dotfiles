@@ -177,5 +177,7 @@
   :config
   (sml/apply-theme 'powerline))
 
+(use-package ssh-config-mode :ensure t)
+
 (provide 'packages)
 ;;; packages.el ends here
