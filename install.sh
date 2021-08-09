@@ -187,7 +187,8 @@ function install_pkg {
        ruby ruby-dev htop openssh-server curl rsync \
        tree etckeeper gcc make cmake moreutils libtext-multimarkdown-perl \
        tar bzip2 gzip zip autoconf \
-       gnome-shell-extensions chrome-gnome-shell gnome-tweaks
+       gnome-shell-extensions chrome-gnome-shell gnome-tweaks \
+       build-essential libmysqlclient-dev
 
   git submodule init
   git submodule update
