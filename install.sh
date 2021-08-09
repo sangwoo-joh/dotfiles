@@ -153,8 +153,8 @@ function _install_rustup {
 
 function _install_rust_packages {
   cargo install dutree loc bat exa eva hexyl hyperfine mdcat titlecase bb
-  cat "alias ls=exa" >> ~/.zshrc
-  cat "alias ls=exa" >> ~/.bashrc
+  echo "alias ls=exa" >> ~/.zshrc
+  echo "alias ls=exa" >> ~/.bashrc
   ## Got hint from https://www.wezm.net/technical/2019/10/useful-command-line-tools/
   # dutree: fast du + tree
   # loc: fast line counter (order of magnitude faster than cloc)
