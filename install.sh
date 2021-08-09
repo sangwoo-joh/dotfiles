@@ -94,7 +94,7 @@ do
 done
 
 function _install_opam_packages {
-  opam install -y merlin tuareg ocp-indent ocamlformat depext base dune core utop
+  opam install -y merlin tuareg ocp-indent ocamlformat base dune core utop
 }
 
 function _install_opam_2.0 {
@@ -187,7 +187,7 @@ function install_pkg {
 
   # install my file list
   sudo apt-get install --yes m4 silversearcher-ag \
-       tmux texlive-full ko.tex-base graphviz \
+       tmux texlive-full texlive-lang-korean graphviz \
        neovim thunderbird thunderbird-locale-ko \
        ruby ruby-dev htop openssh-server curl rsync \
        tree etckeeper gcc make cmake moreutils libtext-multimarkdown-perl \
@@ -267,9 +267,9 @@ function install_dot {
   ln -s "$PWD"/python/pylintrc ~/.config/pylintrc
 
   # global nautilus setting
-  gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
-  gsettings set org.gnome.nautilus.preferences default-sort-order 'type'
-  gsettings set org.gnome.nautilus.preferences show-hidden-files false
+  #gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
+  #gsettings set org.gnome.nautilus.preferences default-sort-order 'type'
+  #gsettings set org.gnome.nautilus.preferences show-hidden-files false
 
   # global keyboard speed setting
   gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
