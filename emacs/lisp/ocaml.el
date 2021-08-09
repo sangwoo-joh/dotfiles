@@ -41,7 +41,7 @@
 
 (defun opam/share-site-lisp-path ()
   "GET THE ALSOLUTE PATH OF OPAM/SHARE."
-  (let ((opam/share (string-of-command "opam config var share --safe")))
+  (let ((opam/share (string-of-command "opam var share --safe")))
     (concat opam/share "/emacs/site-lisp/")))
 
 ;; cache
