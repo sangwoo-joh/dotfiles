@@ -199,7 +199,7 @@
   )
 
 (if (eq system-type 'darwin)
-    (set-font-size 14)
+    (set-font-size 15)
   (set-font-size 12))
 (global-display-line-numbers-mode 1)
 
