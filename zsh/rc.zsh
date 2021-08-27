@@ -14,6 +14,5 @@ if [[ $#h -gt 0 ]]; then
 fi
 
 setopt nonomatch
-source /etc/zsh_command_not_found
+# source /etc/zsh_command_not_found
 setopt NO_HUP
-
