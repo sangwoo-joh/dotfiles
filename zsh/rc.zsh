@@ -1,9 +1,9 @@
+# for .fzf
 HISTSIZE=10000000
 HISTFILESIZE=10000000
 
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(battery user host ram dir command_execution_time vcs)
 
 h=()
 if [[ -r ~/.ssh/config ]]; then
@@ -14,5 +14,5 @@ if [[ $#h -gt 0 ]]; then
 fi
 
 setopt nonomatch
-# source /etc/zsh_command_not_found
+source /etc/zsh_command_not_found  # comment out in Darwin
 setopt NO_HUP
