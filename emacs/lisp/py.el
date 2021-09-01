@@ -5,6 +5,7 @@
   :ensure t
   :config
   (elpy-enable)
+  (setq elpy-rpc-timeout nil)
   :init
   (add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1))))
 
