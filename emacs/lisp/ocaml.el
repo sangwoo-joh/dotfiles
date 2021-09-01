@@ -72,6 +72,7 @@
   (setq tuareg-highlight-all-operartors t)
   (setq tuareg-prettify-symbols-full t)
   (setq tuareg-match-patterns-aligned t)
+  (add-hook 'tuareg-mode-hook #'(lambda() (setq mode-name "🐫")))
   (when (functionp 'prettify-symbols-mode) ;; works for >= emacs 24.4
     (add-hook 'tuareg-mode-hook #'prettify-symbols-mode)))
 
