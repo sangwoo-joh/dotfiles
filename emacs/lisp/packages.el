@@ -162,6 +162,7 @@
   (setq sml/no-confirm-load-theme t)
   (setq sml/shorten-directory t)
   (setq sml/shorten-modes t)
+  (sml/apply-theme 'light)
   (sml/setup))
 
 (use-package ssh-config-mode :ensure t)
