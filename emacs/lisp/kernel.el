@@ -91,6 +91,7 @@
 (setq x-alt-keysym 'meta)
 (setq search-highlight t)
 (setq query-replace-highlight t)
+(defvar tramp-default-method)
 (setq tramp-default-method "sshx")
 (setq password-cache-expiry nil) ;; to disable password expiration
 
@@ -192,6 +193,8 @@
 
 ;; key bindings - for macos
 (when (eq system-type 'darwin) ;; mac specific settings
+  (defvar mac-option-modifier)
+  (defvar mac-command-modifier)
   (setq mac-option-modifier 'alt)
   (setq mac-command-modifier 'meta)
   ;;(global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
