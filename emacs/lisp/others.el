@@ -12,15 +12,21 @@
   :init (setq markdown-command "multimarkdown")
   :bind ("C-c C-t C-f" . markdown-table-align))
 
+(defun unify-web-mode-spacing ()
+  "Stole from https://github.com/trev-dev/emacs"
+  (setq web-mode-markup-indent-offset tab-width)
+  (setq web-mode-css-indent-offset tab-width)
+  (setq web-mode-code-indent-offset tab-width)
+  (setq web-mode-style-padding tab-width)
+  (setq web-mode-script-padding tab-width)
+  (setq web-mode-indent-style 2))
+
 (use-package web-mode
   :ensure t
-  :init
-  (setq web-mode-markup-indent-offset 2)
-  (setq web-mode-css-indent-offset 2)
-  (setq web-mode-code-indent-offset 2)
-  (setq web-mode-indent-style 2))
-(add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
+  :hook (web-mode . unify-web-mode-spacing)
+  :mode
+  ("\\.php$" . web-mode)
+  ("\\.html$" . web-mode))
 
 (use-package auctex
   :defer t
