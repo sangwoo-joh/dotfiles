@@ -3,7 +3,7 @@
 ;;; Code:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Performance Tweaks thanks to https://github.com/trev-dev/emacs
-;; Minimize gc during startup
+;; Minimize gc during startup i.e. set max threshold for triggering gc
 (setq gc-cons-threshold most-positive-fixnum)
 
 ;; Lower threshold back to 8MiB (default is 800kB)
