@@ -5,14 +5,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; helpful
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package dashboard
-  :ensure t
-  :config
-  (dashboard-setup-startup-hook)
-  (setq dashboard-banner-logo-title "Emacs, the only true, genuine, and beloved editor")
-  (setq dashboard-set-navigator t)
-  (setq dashboard-set-init-info t))
-
 ;; Usage: grep some keywords, and C-c C-p in result buffer.
 ;; After editing, just save with C-x C-s as usual file in the buffer.
 ;; Others:
