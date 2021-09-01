@@ -164,11 +164,6 @@
   (setq sml/shorten-modes t)
   (sml/setup))
 
-(use-package smart-mode-line-powerline-theme
-  :ensure t
-  :config
-  (sml/apply-theme 'powerline))
-
 (use-package ssh-config-mode :ensure t)
 
 (provide 'packages)
