@@ -22,6 +22,8 @@
 (setq auto-save-default nil)
 (setq auto-save-list-file-name nil)
 (setq make-backup-files nil)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 2)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
