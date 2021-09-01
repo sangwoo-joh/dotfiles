@@ -24,7 +24,9 @@
 
 (use-package auctex
   :defer t
-  :ensure t)
+  :ensure t
+  :config
+  (setq TeX-PDF-mode t))
 
 (use-package company-auctex
   :ensure t
