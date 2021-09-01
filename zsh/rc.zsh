@@ -16,3 +16,6 @@ fi
 setopt nonomatch
 source /etc/zsh_command_not_found  # comment out in Darwin
 setopt NO_HUP
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
