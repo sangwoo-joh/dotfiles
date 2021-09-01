@@ -76,7 +76,10 @@
   (replace-match (number-to-string (1+ (string-to-number (match-string 0))))))
 
 ;; default font settings
-(set-fontset-font "fontset-default" 'unicode "Noto Color Emoji")
+(when (eq system-type 'darwin)
+  (set-fontset-font "fontset-default" 'unicode "Apple Color Emoji"))
+(when (eq system-type 'gnu/linux)
+  (set-fontset-font "fontset-default" 'unicode "Noto Color Emoji"))
 (set-fontset-font "fontset-default" 'latin "Ubuntu Mono derivative Powerline")
 (set-fontset-font "fontset-default" 'hangul "D2Coding")
 (set-face-attribute 'default nil :font "fontset-default")
