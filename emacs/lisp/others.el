@@ -36,8 +36,7 @@
 (use-package graphviz-dot-mode
   :ensure t
   :init
-  (setq graphviz-dot-indent-width 2)
-  (setq graphviz-dot-complete-word t))
+  (setq graphviz-dot-indent-width 2))
 
 (use-package dockerfile-mode :ensure t)
 
