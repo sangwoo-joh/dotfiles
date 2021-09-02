@@ -1,8 +1,4 @@
 # dotfiles
 
- My personal configurations for debian distribution.
-
- - Mostly emacs & OCaml
- - Useful packages
- - Bash/zsh settings
- - Fonts
+ My personal configurations for Unix-like OS. Only supports for Linux
+ and Darwin.
