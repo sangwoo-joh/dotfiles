@@ -149,16 +149,27 @@
   :config
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
-(use-package smart-mode-line
+;; NOTE: after install this package, run M-x all-the-icons-install-fonts to download the actual fonts,
+;; and then run `fc-cache -f -v` for actual installation.
+(use-package all-the-icons :ensure t)
+(use-package all-the-icons-dired
+  :requires all-the-icons
   :ensure t
+  :hook (dired-mode . all-the-icons-dired-mode))
+
+(use-package doom-themes
+  :ensure t
+  :requires all-the-icons
   :config
-  ;; for ignoring y/n question.
-  ;; move custom-variables to the top of init.el is proper solution, but it's bothersome.
-  (setq sml/no-confirm-load-theme t)
-  (setq sml/shorten-directory t)
-  (setq sml/shorten-modes t)
-  (sml/apply-theme 'light)
-  (sml/setup))
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
+  (load-theme 'doom-one t)
+  (doom-themes-visual-bell-config)
+  (doom-themes-neotree-config))
+
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode t))
 
 (use-package ssh-config-mode :ensure t)
 
