@@ -16,13 +16,15 @@ let path =
 
 let run ?(pipe = false) cmd args =
   let path = path () in
-  let cmd = List.find Sys.file_exists (List.map (fun dir -> Filename.concat dir cmd) path) in
+  let cmd =
+    List.find Sys.file_exists
+      (List.map (fun dir -> Filename.concat dir cmd) path)
+  in
   let cmd = Filename.quote_command cmd args in
   if not pipe then
     Unix.(
       match system cmd with
-      | WEXITED 0 ->
-          None
+      | WEXITED 0 -> None
       | _ ->
           raise (Fatal_error (F.sprintf "Fatal: failed to run command '%s'" cmd)))
   else
@@ -40,3 +42,17 @@ let run ?(pipe = false) cmd args =
 let run_single ?(pipe = false) cmd = run ~pipe cmd []
 
 type os = Linux | Darwin | Other of string
+
+let os =
+  let os =
+    lazy
+      ( match Sys.os_type with
+      | "Unix" -> (
+        match run ~pipe:true "uname" ["-s"] with
+        | Some "Linux" -> Linux
+        | Some "Darwin" -> Darwin
+        | Some other -> Other other
+        | None -> Other "unknown" )
+      | other -> Other other )
+  in
+  fun () -> Lazy.force os
