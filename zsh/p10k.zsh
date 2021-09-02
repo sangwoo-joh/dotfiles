@@ -38,11 +38,11 @@
   autoload -Uz is-at-least && is-at-least 5.1 || return
 
   # Prompt colors.
-  local grey='242'
+  local grey='248'
   local red='1'
-  local yellow='3'
-  local blue='4'
-  local magenta='5'
+  local yellow='11'
+  local blue='39'
+  local violet='213'
   local cyan='6'
   local white='7'
 
@@ -86,7 +86,7 @@
   typeset -g POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
 
   # Magenta prompt symbol if the last command succeeded.
-  typeset -g POWERLEVEL9K_PROMPT_CHAR_OK_{VIINS,VICMD,VIVIS}_FOREGROUND=$magenta
+  typeset -g POWERLEVEL9K_PROMPT_CHAR_OK_{VIINS,VICMD,VIVIS}_FOREGROUND=$violet
   # Red prompt symbol if the last command failed.
   typeset -g POWERLEVEL9K_PROMPT_CHAR_ERROR_{VIINS,VICMD,VIVIS}_FOREGROUND=$red
   # Default prompt symbol.
@@ -125,7 +125,7 @@
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=$blue
 
   # Grey Git prompt. This makes stale prompts indistinguishable from up-to-date ones.
-  typeset -g POWERLEVEL9K_VCS_FOREGROUND=$magenta
+  typeset -g POWERLEVEL9K_VCS_FOREGROUND=$violet
 
   # Disable async loading indicator to make directories that aren't Git repositories
   # indistinguishable from large Git repositories without known state.
