@@ -209,7 +209,7 @@
 
 (if (eq system-type 'darwin)
     (set-font-size 15)
-  (set-font-size 12))
+  (set-font-size 13))
 (global-display-line-numbers-mode 1)
 
 ;; Disable Eshell's scroll feature
