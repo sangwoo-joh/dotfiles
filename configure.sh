@@ -1,5 +1,7 @@
 #!/bin/sh
 
+mkdir -p ~/.config
+
 WD=$(cd $(dirname "$0"); pwd -P)
 ln -s "$WD"/zsh "$HOME"/.zsh
 
