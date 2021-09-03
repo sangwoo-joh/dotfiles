@@ -135,7 +135,15 @@ module Brew = Make_installer (struct
 
   let options = []
 
-  let packages = [""]
+  let packages =
+    [ "ruby"
+    ; "tmux"
+    ; "m4"
+    ; "bzip2"
+    ; "gzip"
+    ; "the_silver_searcher"
+    ; "htop"
+    ; "tree" ]
 end)
 
 module Apt = Make_installer (struct
