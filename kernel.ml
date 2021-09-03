@@ -134,7 +134,7 @@ module Brew = Make_installer (struct
 
   let install = "install"
 
-  let yes = Some "--yes"
+  let yes = None
 
   let packages = [""]
 end)
