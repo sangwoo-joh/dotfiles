@@ -28,7 +28,7 @@ setopt NO_HUP
 export PATH=$PATH:~/.cargo/bin
 
 if [ $(uname -s) = Darwin ]; then
-    export PATH=$PATH:/opt/brew/bin
+    export PATH="/opt/brew/bin:/opt/brew/sbin:$PATH"
 fi
 
 
