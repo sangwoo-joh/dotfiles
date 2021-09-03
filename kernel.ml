@@ -90,7 +90,10 @@ let run ?(pipe = false) cmd args =
 
 let run_single ?(pipe = false) cmd = run ~pipe cmd []
 
-type os = Linux | Darwin | Other of string
+(** only support two os..
+    also, no support for package managers other than apt (e.g. pacman, yum, dnf, zypper, ...)
+*)
+type os = Linux | Darwin
 
 let os =
   lazise (fun () ->
@@ -99,9 +102,10 @@ let os =
         match run ~pipe:true "uname" ["-s"] with
         | Some "Linux" -> Linux
         | Some "Darwin" -> Darwin
-        | Some other -> Other other
-        | None -> Other "unknown" )
-      | other -> Other other )
+        | Some other ->
+            raise (Fatal_error (F.sprintf "Not supported os: %s" other))
+        | None -> raise (Fatal_error "Unknown operating system") )
+      | other -> raise (Fatal_error (F.sprintf "Not supported os: %s" other)) )
 
 
 module type Package_intf = sig
