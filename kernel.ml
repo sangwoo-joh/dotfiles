@@ -214,4 +214,7 @@ let links =
 
 
 let link () =
-  LinkMap.iter (fun source target -> Unix.symlink source target) links
+  LinkMap.iter
+    (fun source target ->
+      if not (Sys.file_exists target) then Unix.symlink source target )
+    links
