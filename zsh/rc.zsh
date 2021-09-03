@@ -35,3 +35,4 @@ fi
 [[ ! -f ~/.zsh/p10k.zsh ]] || source ~/.zsh/p10k.zsh
 [[ ! -f ~/.zsh/ocaml.zsh ]] || source ~/.zsh/ocaml.zsh
 [[ ! -f ~/.zsh/alias.zsh ]] || source ~/.zsh/alias.zsh
+[[ ! -f ~/.config/z/z.sh ]] || source ~/.config/z/z.sh
