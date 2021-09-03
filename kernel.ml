@@ -44,16 +44,18 @@ let canonicalize path =
   else canonical_form
 
 
+let lazise f =
+  let raw = lazy (f ()) in
+  fun () -> Lazy.force raw
+
+
 let path =
-  let path =
-    lazy
-      (let raw_path =
-         try Unix.getenv "PATH"
-         with Not_found -> raise (Fatal_error "Impossible: PATH does not set")
-       in
-       String.split_on_char ':' raw_path )
-  in
-  fun () -> Lazy.force path
+  lazise (fun () ->
+      let raw_path =
+        try Unix.getenv "PATH"
+        with Not_found -> raise (Fatal_error "Impossible: PATH does not set")
+      in
+      String.split_on_char ':' raw_path )
 
 
 let run ?(pipe = false) cmd args =
@@ -86,9 +88,8 @@ let run_single ?(pipe = false) cmd = run ~pipe cmd []
 type os = Linux | Darwin | Other of string
 
 let os =
-  let os =
-    lazy
-      ( match Sys.os_type with
+  lazise (fun () ->
+      match Sys.os_type with
       | "Unix" -> (
         match run ~pipe:true "uname" ["-s"] with
         | Some "Linux" -> Linux
@@ -96,5 +97,3 @@ let os =
         | Some other -> Other other
         | None -> Other "unknown" )
       | other -> Other other )
-  in
-  fun () -> Lazy.force os
