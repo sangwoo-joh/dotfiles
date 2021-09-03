@@ -143,7 +143,9 @@ module Brew = Make_installer (struct
     ; "gzip"
     ; "the_silver_searcher"
     ; "htop"
-    ; "tree" ]
+    ; "tree"
+    ; "emacs-plus@28"
+    ; "--with-native-comp" ]
 end)
 
 module Apt = Make_installer (struct
