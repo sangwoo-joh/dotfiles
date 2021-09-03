@@ -2,6 +2,48 @@ module F = Format
 
 exception Fatal_error of string
 
+module List = struct
+  include List
+
+  let is_empty = function
+    | [] -> true
+    | _ -> false
+end
+
+(** Make path canonical.
+    Stole this implementation from Python's posixpath.normpath
+*)
+let canonicalize path =
+  let empty = "" in
+  let dir_cur = "." in
+  let dir_parent = ".." in
+  let dir_sep = '/' in
+  let is_relative = String.get path 0 <> dir_sep in
+  let components = String.split_on_char dir_sep (String.trim path) in
+  let new_components = ref [] in
+  let rec loop = function
+    | [] -> ()
+    | comp :: tl ->
+        if comp = dir_cur || comp = empty then ()
+        else if
+          comp <> dir_parent
+          || (is_relative && List.is_empty !new_components)
+          || (not (List.is_empty !new_components))
+             && List.hd !new_components = dir_parent
+        then new_components := comp :: !new_components
+        else if not (List.is_empty !new_components) then
+          new_components := List.tl !new_components ;
+        loop tl
+  in
+  loop components ;
+  let canonical_form =
+    String.concat Filename.dir_sep (List.rev !new_components)
+  in
+  if not is_relative then "/" ^ canonical_form
+  else if canonical_form = empty then dir_cur
+  else canonical_form
+
+
 let path =
   let path =
     lazy
