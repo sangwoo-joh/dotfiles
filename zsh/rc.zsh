@@ -1,9 +1,17 @@
-# for .fzf
+source ~/.zsh/antigen.zsh
+
+antigen use oh-my-zsh
+antigen bundle git
+antigen bundle pip
+antigen bundle docker
+antigen bundle command-not-found
+antigen theme romkatv/powerlevel10k
+antigen apply
+
 HISTSIZE=10000000
 HISTFILESIZE=10000000
 
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 h=()
 if [[ -r ~/.ssh/config ]]; then
@@ -17,5 +25,13 @@ setopt nonomatch
 source /etc/zsh_command_not_found  # comment out in Darwin
 setopt NO_HUP
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export PATH=$PATH:~/.cargo/bin
+
+if [ $(uname -s) = Darwin ]; then
+    export PATH=$PATH:/opt/brew/bin
+fi
+
+
+[[ ! -f ~/.zsh/p10k.zsh ]] || source ~/.zsh/p10k.zsh
+[[ ! -f ~/.zsh/ocaml.zsh ]] || source ~/.zsh/ocaml.zsh
+[[ ! -f ~/.zsh/alias.zsh ]] || source ~/.zsh/alias.zsh
