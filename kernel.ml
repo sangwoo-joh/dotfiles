@@ -111,8 +111,8 @@ module type Package_intf = sig
   val install : string
   (** package install command e.g. install or get *)
 
-  val yes : string option
-  (** --yes option if exists *)
+  val options : string list
+  (** additional options e.g. --yes or --verbose *)
 
   val packages : string list
   (** a list of packages to install *)
@@ -122,9 +122,8 @@ module Make_installer (Package : Package_intf) = struct
   let install () =
     ignore (check_executable Package.manager) ;
     let args =
-      match Package.yes with
-      | None -> Package.install :: Package.packages
-      | Some y -> Package.install :: y :: Package.packages
+      (* the order of options does not matter *)
+      Package.install :: List.rev_append Package.options Package.packages
     in
     ignore (run Package.manager args)
 end
@@ -134,7 +133,7 @@ module Brew = Make_installer (struct
 
   let install = "install"
 
-  let yes = None
+  let options = []
 
   let packages = [""]
 end)
@@ -144,7 +143,7 @@ module Apt = Make_installer (struct
 
   let install = "install"
 
-  let yes = Some "--yes"
+  let options = ["--yes"]
 
   let packages =
     [ "m4"
@@ -175,7 +174,7 @@ module Opam = Make_installer (struct
 
   let install = "install"
 
-  let yes = Some "-y"
+  let options = ["-y"]
 
   let packages =
     [ "merlin"
@@ -193,7 +192,7 @@ module Cargo = Make_installer (struct
 
   let install = "install"
 
-  let yes = None
+  let options = []
 
   let packages = ["dutree"; "loc"; "bat"; "exa"; "eva"; "hyperfine"; "bb"]
 end)
