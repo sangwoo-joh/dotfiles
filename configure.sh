@@ -23,6 +23,10 @@ case $DISTRO in
         ;;
 esac
 
+# cargo
+curl https://sh.rustup.rs -sSf | sh
+source ~/.cargo/env
+
 # ocaml
 /bin/sh -c "sh <(curl -fsSL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)"
 opam init
