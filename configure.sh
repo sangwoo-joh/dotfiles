@@ -25,6 +25,9 @@ case $DISTRO in
         ;;
 esac
 
+# z here
+git clone --recursive https://github.com/rupa/z.git ~/.config/z
+
 # cargo
 curl https://sh.rustup.rs -sSf | sh
 source ~/.cargo/env
