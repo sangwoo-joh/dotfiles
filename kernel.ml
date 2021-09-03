@@ -102,3 +102,116 @@ let os =
         | Some other -> Other other
         | None -> Other "unknown" )
       | other -> Other other )
+
+
+module type Package_intf = sig
+  val manager : string
+  (** main package manager command for the package manager *)
+
+  val install : string
+  (** package install command e.g. install or get *)
+
+  val yes : string option
+  (** --yes option if exists *)
+
+  val packages : string list
+  (** a list of packages to install *)
+end
+
+module Make_installer (Package : Package_intf) = struct
+  let install () =
+    ignore (check_executable Package.manager) ;
+    let args =
+      match Package.yes with
+      | None -> Package.install :: Package.packages
+      | Some y -> Package.install :: y :: Package.packages
+    in
+    ignore (run Package.manager args)
+end
+
+module Brew = Make_installer (struct
+  let manager = "brew"
+
+  let install = "install"
+
+  let yes = Some "--yes"
+
+  let packages = [""]
+end)
+
+module Apt = Make_installer (struct
+  let manager = "apt"
+
+  let install = "install"
+
+  let yes = Some "--yes"
+
+  let packages =
+    [ "m4"
+    ; "silversearcher-ag"
+    ; "tmux"
+    ; "tree"
+    ; "ruby"
+    ; "htop"
+    ; "openssh-server"
+    ; "graphviz"
+    ; "rsync"
+    ; "tar"
+    ; "bzip2"
+    ; "gzip"
+    ; "zip"
+    ; "autoconf"
+    ; "make"
+    ; "gcc"
+    ; "cmake"
+    ; "etckeeper"
+    ; "moreutils"
+    ; "build-essential"
+    ; "libmysqlclient-dev" ]
+end)
+
+module Opam = Make_installer (struct
+  let manager = "opam"
+
+  let install = "install"
+
+  let yes = Some "-y"
+
+  let packages =
+    [ "merlin"
+    ; "tuareg"
+    ; "ocp-indent"
+    ; "ocamlformat"
+    ; "dune"
+    ; "base"
+    ; "core"
+    ; "utop" ]
+end)
+
+module Cargo = Make_installer (struct
+  let manager = "cargo"
+
+  let install = "install"
+
+  let yes = None
+
+  let packages = ["dutree"; "loc"; "bat"; "exa"; "eva"; "hyperfine"; "bb"]
+end)
+
+module LinkMap = Map.Make (String)
+
+let links =
+  let here = Unix.getcwd () in
+  let join target = canonicalize (Filename.concat here target) in
+  LinkMap.(
+    empty
+    |> add (join "emacs") "~/.emacs.d"
+    |> add (join "nvim") "~/.config/nvim"
+    |> add (join "tmux/.tmux.conf") "~/.tmux.conf"
+    |> add (join "tmux/.tmux.color.conf") "~/.tmux.color.conf"
+    |> add (join "python/flake8") "~/.config/flake8"
+    |> add (join "python/pylintrc") "~/.config/pylintrc")
+
+
+let link () =
+  LinkMap.iter (fun source target -> Unix.symlink source target) links
