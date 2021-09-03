@@ -25,7 +25,7 @@ setopt nonomatch
 source /etc/zsh_command_not_found  # comment out in Darwin
 setopt NO_HUP
 
-export PATH=$PATH:~/.cargo/bin
+source ~/.cargo/env
 
 if [ $(uname -s) = Darwin ]; then
     export PATH="/opt/brew/bin:/opt/brew/sbin:$PATH"
