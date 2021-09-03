@@ -15,6 +15,7 @@ case $DISTRO in
         export PATH=$PATH:/opt/homebrew/bin
         brew update
         brew install gpatch git
+        brew tap d12prosted/emacs-plus
         ;;
     *)
         echo "$DISTRO: Not Supported"
