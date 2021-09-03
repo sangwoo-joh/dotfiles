@@ -58,12 +58,17 @@ let path =
       String.split_on_char ':' raw_path )
 
 
-let run ?(pipe = false) cmd args =
-  let path = path () in
-  let cmd =
+let check_executable cmd =
+  try
+    let path = path () in
     List.find Sys.file_exists
-      (List.map (fun dir -> Filename.concat dir cmd) path)
-  in
+      (List.map (fun dir -> canonicalize (Filename.concat dir cmd)) path)
+  with Not_found ->
+    raise (Fatal_error (F.sprintf "Fatal: executable '%s' is not in PATH." cmd))
+
+
+let run ?(pipe = false) cmd args =
+  let cmd = check_executable cmd in
   let cmd = Filename.quote_command cmd args in
   if not pipe then
     Unix.(
