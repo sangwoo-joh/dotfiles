@@ -239,6 +239,39 @@ let link () =
     links
 
 
+(** TODO: install fonts *)
+let fonts () =
+  (* mkdir -p ~/.local/share/fonts
+     git submodule init & update
+     pushd d2codingfont &&   unzip D2Coding-Ver1.3.2-20180524.zip && mv D2Coding/*.ttf ~/.local/share/fonts/ && popd
+     pushd powerline && ./install.sh && popd
+
+     fc-cache -f -v
+  *)
+  ()
+
+
+(** TODO: linux auxiliaries *)
+let linux_auxiliaries () =
+  (* global keyboard speed setting
+     gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
+     gsettings set org.gnome.desktop.peripherals.keyboard delay 210
+     # change zsh as default shell
+     chsh -s $(which zsh)
+  *)
+  ()
+
+
+(** TODO: about condas.. just download at the last step is ok *)
+let get_conda () =
+  (*
+  wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh -O conda.sh
+  chmod +x conda.sh
+
+*)
+  ()
+
+
 let setup () =
   (* install packages *)
   ( match os () with
