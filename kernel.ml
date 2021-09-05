@@ -229,7 +229,8 @@ let links =
     |> add (join "tmux/.tmux.conf") "~/.tmux.conf"
     |> add (join "tmux/.tmux.color.conf") "~/.tmux.color.conf"
     |> add (join "python/flake8") "~/.config/flake8"
-    |> add (join "python/pylintrc") "~/.config/pylintrc")
+    |> add (join "python/pylintrc") "~/.config/pylintrc"
+    |> add (join "git/config") "~/.gitconfig")
 
 
 let link () =

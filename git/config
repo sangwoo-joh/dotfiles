@@ -1,0 +1,8 @@
+[core]
+	pager = less -F -X
+[user]
+	name = Sangwoo Joh
+	email = work.sangwoo.joh@gmail.com
+[oh-my-zsh]
+	hide-dirty = 1
+	hide-status = 1
