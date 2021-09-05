@@ -212,9 +212,8 @@ module Cargo = Make_installer (struct
     match os () with
     | Linux -> ["dutree"; "loc"; "bat"; "exa"; "eva"; "hyperfine"; "bb"]
     | Darwin ->
-        ["dutree"; "loc"; "bat"; "exa"; "eva"; "hyperfine"]
         (* Can't compile bb in Darwin *)
-    | _ -> assert false
+        ["dutree"; "loc"; "bat"; "exa"; "eva"; "hyperfine"]
 end)
 
 module LinkMap = Map.Make (String)
