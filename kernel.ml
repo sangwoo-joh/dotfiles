@@ -237,3 +237,14 @@ let link () =
     (fun source target ->
       if not (Sys.file_exists target) then Unix.symlink source target )
     links
+
+
+let setup () =
+  (* install packages *)
+  ( match os () with
+  | Linux -> Apt.install ()
+  | Darwin -> Brew.install () ) ;
+  Opam.install () ;
+  Cargo.install () ;
+  (* link configs *)
+  link ()
