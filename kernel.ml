@@ -180,7 +180,8 @@ module Apt = Make_installer (struct
     ; "etckeeper"
     ; "moreutils"
     ; "build-essential"
-    ; "libmysqlclient-dev" ]
+    ; "libmysqlclient-dev"
+    ; "zsh" ]
 end)
 
 module Opam = Make_installer (struct
