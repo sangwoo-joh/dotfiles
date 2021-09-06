@@ -2,3 +2,6 @@
 #use "topfind";;
 #require "unix";;
 #use "kernel.ml";;
+
+
+let () = setup ()
