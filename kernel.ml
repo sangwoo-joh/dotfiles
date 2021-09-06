@@ -259,6 +259,8 @@ let linux_auxiliaries () =
      gsettings set org.gnome.desktop.peripherals.keyboard delay 210
      # change zsh as default shell
      chsh -s $(which zsh)
+     git clone https://github.com/junegunn/fzf ~/.fzf
+     cd ~/.fzf && ./install
   *)
   ()
 

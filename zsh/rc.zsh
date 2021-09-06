@@ -36,3 +36,4 @@ fi
 [[ ! -f ~/.zsh/ocaml.zsh ]] || source ~/.zsh/ocaml.zsh
 [[ ! -f ~/.zsh/alias.zsh ]] || source ~/.zsh/alias.zsh
 [[ ! -f ~/.config/z/z.sh ]] || source ~/.config/z/z.sh
+[[ ! -f ~/.fzf.zsh ]] || source ~/.fzf.zsh
