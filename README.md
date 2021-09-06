@@ -1,9 +1,11 @@
 # dotfiles
 
  My personal configurations for Unix-like OS. Only supports for Linux
- and Darwin.
+ (with Apt package manager) and Darwin.
 
-## How to run
+## How to install
+
+ Recommend to clone this project into `~/.dotfiles`
 
 ```bash
 ./configure.sh
