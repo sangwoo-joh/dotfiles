@@ -4,6 +4,7 @@ mkdir -p ~/.config
 
 WD=$(cd $(dirname "$0"); pwd -P)
 ln -s "$WD"/zsh "$HOME"/.zsh
+ln -s "$WD"/zsh/rc.zsh "$HOME"/.zshrc
 
 # package update
 DISTRO=$(uname -s)
