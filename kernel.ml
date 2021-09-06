@@ -220,7 +220,7 @@ end)
 module LinkMap = Map.Make (String)
 
 let links =
-  let here = canonicalize (Filename.dirname Sys.argv.(0)) in
+  let here = canonicalize (Filename.dirname __FILE__) in
   let join target = canonicalize (Filename.concat here target) in
   LinkMap.(
     empty
