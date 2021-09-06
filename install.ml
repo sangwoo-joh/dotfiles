@@ -1,7 +1,7 @@
 #!/usr/bin/env ocaml
 #use "topfind";;
 #require "unix";;
-#use "kernel.ml";;
+#use ".kernel.ml";;
 
 
 let () = setup ()
