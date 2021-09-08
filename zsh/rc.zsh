@@ -22,13 +22,15 @@ if [[ $#h -gt 0 ]]; then
 fi
 
 setopt nonomatch
-source /etc/zsh_command_not_found  # comment out in Darwin
+
 setopt NO_HUP
 
 source ~/.cargo/env
 
 if [ $(uname -s) = Darwin ]; then
     export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+else
+    source /etc/zsh_command_not_found
 fi
 
 
