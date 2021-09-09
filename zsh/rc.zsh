@@ -28,7 +28,7 @@ setopt NO_HUP
 source ~/.cargo/env
 
 if [ $(uname -s) = Darwin ]; then
-    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+    eval $(/opt/homebrew/bin/brew shellenv)
 else
     source /etc/zsh_command_not_found
 fi
