@@ -39,3 +39,8 @@ fi
 [[ ! -f ~/.zsh/alias.zsh ]] || source ~/.zsh/alias.zsh
 [[ ! -f ~/.config/z/z.sh ]] || source ~/.config/z/z.sh
 [[ ! -f ~/.fzf.zsh ]] || source ~/.fzf.zsh
+
+# conditional rtags
+if [ -f ~/.dotfiles/rtags ]; then
+    export PATH=$PATH:~/.dotfiles/rtags/bin
+fi
