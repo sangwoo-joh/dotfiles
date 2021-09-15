@@ -41,6 +41,6 @@ fi
 [[ ! -f ~/.fzf.zsh ]] || source ~/.fzf.zsh
 
 # conditional rtags
-if [ -f ~/.dotfiles/rtags ]; then
+if [ -d ~/.dotfiles/rtags ]; then
     export PATH=$PATH:~/.dotfiles/rtags/bin
 fi
