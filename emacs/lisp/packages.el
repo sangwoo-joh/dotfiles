@@ -173,5 +173,10 @@
 
 (use-package ssh-config-mode :ensure t)
 
+(use-package emojify
+  :ensure t
+  :hook (after-init . global-emojify-mode)
+  :bind (("C-S-i" . emojify-insert-emoji)))
+
 (provide 'packages)
 ;;; packages.el ends here
