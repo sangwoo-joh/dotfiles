@@ -106,10 +106,15 @@
 	 ("C-c C-<" . mc/mark-all-like-this)))
 
 ;; This is much better then changing one by one by multiple-cursors (C->)
+;; After iedit-mode is on (by C-C C-e),
+;; <tab>, S-<tab>, M->, M-<: navigation
+;; M-;: toggle
+;; M-N: numbering
+;; M-R: replace
+;; M-D: delete
 (use-package iedit
   :ensure t
-  :bind (("C-C C-e" . iedit-mode)
-          ("C-C C-q" . iedit-quit)))
+  :bind (("C-C C-e" . iedit-mode)))
 
 (use-package switch-window
   :ensure t
