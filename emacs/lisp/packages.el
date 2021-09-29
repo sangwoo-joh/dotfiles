@@ -83,9 +83,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package ag :ensure t)
 
+;; This is much better then searching one by one by C-s
 (use-package swiper
   :ensure t
-  :bind (("C-c C-s" . swiper)))
+  :bind (("C-c C-s" . swiper-thing-at-point)))
 
 (use-package expand-region
   :ensure t
@@ -104,6 +105,7 @@
 	 ("C-<" . mc/mark-previous-like-this)
 	 ("C-c C-<" . mc/mark-all-like-this)))
 
+;; This is much better then changing one by one by multiple-cursors (C->)
 (use-package iedit
   :ensure t
   :bind (("C-C C-e" . iedit-mode)
