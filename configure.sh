@@ -11,7 +11,7 @@ DISTRO=$(uname -s)
 case $DISTRO in
     Linux)
         sudo apt-get update
-        sudo apt-get install m4 zip bubblewrap git --yes
+        sudo apt-get install m4 zip bubblewrap curl build-essential --yes
         ;;
     Darwin)
         /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -31,13 +31,14 @@ git clone --recursive https://github.com/rupa/z.git ~/.config/z
 
 # cargo
 curl https://sh.rustup.rs -sSf | sh
-source ~/.cargo/env
+. ~/.cargo/env
 
 # ocaml
-/bin/sh -c "sh <(curl -fsSL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)"
+bash -c "sh <(curl -fsSL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)"
 opam init
 eval $(opam env)
 opam update
 opam switch create kernel ocaml-base-compiler.4.12.0
-
+eval $(opam env --switch=kernel)
+opam install ocamlfind
 # ready to go
