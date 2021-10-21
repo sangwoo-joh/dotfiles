@@ -58,6 +58,15 @@ let path =
       String.split_on_char ':' raw_path )
 
 
+let home =
+  lazise (fun () ->
+      let raw_home =
+        try Unix.getenv "HOME"
+        with Not_found -> raise (Fatal_error "Impossible: HOME is not set")
+      in
+      raw_home )
+
+
 let check_executable cmd =
   try
     let path = path () in
@@ -222,15 +231,16 @@ module LinkMap = Map.Make (String)
 let links =
   let here = canonicalize (Filename.dirname __FILE__) in
   let join target = canonicalize (Filename.concat here target) in
+  let ( ~/ ) d = canonicalize (Filename.concat (home ()) d) in
   LinkMap.(
     empty
-    |> add (join "emacs") "~/.emacs.d"
-    |> add (join "nvim") "~/.config/nvim"
-    |> add (join "tmux/.tmux.conf") "~/.tmux.conf"
-    |> add (join "tmux/.tmux.color.conf") "~/.tmux.color.conf"
-    |> add (join "python/flake8") "~/.config/flake8"
-    |> add (join "python/pylintrc") "~/.config/pylintrc"
-    |> add (join "git/config") "~/.gitconfig")
+    |> add (join "emacs") ~/".emacs.d"
+    |> add (join "nvim") ~/".config/nvim"
+    |> add (join "tmux/.tmux.conf") ~/".tmux.conf"
+    |> add (join "tmux/.tmux.color.conf") ~/".tmux.color.conf"
+    |> add (join "python/flake8") ~/".config/flake8"
+    |> add (join "python/pylintrc") ~/".config/pylintrc"
+    |> add (join "git/config") ~/".gitconfig")
 
 
 let link () =
