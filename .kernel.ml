@@ -53,7 +53,7 @@ let path =
   lazise (fun () ->
       let raw_path =
         try Unix.getenv "PATH"
-        with Not_found -> raise (Fatal_error "Impossible: PATH does not set")
+        with Not_found -> raise (Fatal_error "Impossible: PATH is not set")
       in
       String.split_on_char ':' raw_path )
 
