@@ -38,7 +38,7 @@ bash -c "sh <(curl -fsSL https://raw.githubusercontent.com/ocaml/opam/master/she
 opam init
 eval $(opam env)
 opam update
-opam switch create kernel ocaml-base-compiler.4.12.0
+opam switch create kernel ocaml-base-compiler.4.13.1
 eval $(opam env --switch=kernel)
 opam install ocamlfind
 # ready to go
