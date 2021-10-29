@@ -141,7 +141,7 @@
 (global-set-key (kbd "C-c +") 'increment-number-at-point)
 
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
-(setq save-abbrevs 'silent)
+(setq save-abbrevs 'silently)
 (define-abbrev-table 'global-abbrev-table
   '(("greekalpha" "α")
     ("greekbeta" "β")
