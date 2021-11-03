@@ -83,7 +83,9 @@
   (add-hook 'tuareg-mode-hook #'merlin-mode t)
   (add-hook 'merlin-mode-hook #'company-mode)
   (define-key tuareg-mode-map (kbd "M-.") #'merlin-locate)
-  (define-key tuareg-mode-map (kbd "M-,") #'merlin-pop-stack))
+  (define-key tuareg-mode-map (kbd "M-,") #'merlin-pop-stack)
+  (define-key tuareg-mode-map (kbd "C-c C-s") nil)
+  (define-key tuareg-mode-map (kbd "C-c C-e") nil))
 
 (defun ocaml/load-ocp-indent ()
   "LOAD OCP-INDENT."
