@@ -25,6 +25,8 @@
   (define-key c++-mode-map (kbd "C-c C-t") 'rtags-symbol-type)
   (define-key c++-mode-map (kbd "C-c C-r") 'rtags-rename-symbol)
   (define-key c++-mode-map (kbd "C-c a")  'rtags-references-tree)
+  (define-key c++-mode-map (kbd "C-c C-s") nil)
+  (define-key c++-mode-map (kbd "C-c C-e") nil)
 
   (define-key c-mode-map (kbd "C-c ;") 'comment-line)
   (define-key c-mode-map (kbd "C-c :") 'uncomment-region)
@@ -35,6 +37,8 @@
   (define-key c-mode-map (kbd "C-c C-t") 'rtags-symbol-type)
   (define-key c-mode-map (kbd "C-c C-r") 'rtags-rename-symbol)
   (define-key c-mode-map (kbd "C-c a")  'rtags-references-tree)
+  (define-key c-mode-map (kbd "C-c C-s") nil)
+  (define-key c-mode-map (kbd "C-c C-e") nil)
   (setq c-basic-offset 4))
 
 (add-hook 'c-mode-hook 'set-key-c++-mode)
