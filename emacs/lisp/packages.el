@@ -186,5 +186,7 @@
   :hook (after-init . global-emojify-mode)
   :bind (("C-S-i" . emojify-insert-emoji)))
 
+(use-package fzf :ensure t)
+
 (provide 'packages)
 ;;; packages.el ends here
