@@ -9,7 +9,7 @@
 
 ```bash
 apt update && apt install git
-git clone https://github.com/sangwoo-joh/dotfiles ~/.dotfiles
+git clone https://github.com/sangwoo-joh/dotfiles ~/.dotfiles --recursive
 cd ~/.dotfiles
 ./configure.sh
 ./install.ml
