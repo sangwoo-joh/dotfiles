@@ -188,5 +188,16 @@
 
 (use-package fzf :ensure t)
 
+;; git-timemachine https://gitlab.com/pidu/git-timemachine
+;; n, p: visit next, previous historic version
+;; w: copy the abbreviated hash of the current historic version
+;; W: copy the full hash ...
+;; g: visit n-th revision
+;; t: visit revision by selected commit message
+;; q: exit
+;; b: run magit-blame on the currently visited revision (if magit available)
+;; c: show current commit using magit (if magit available)
+(use-package git-timemachine :ensure t)
+
 (provide 'packages)
 ;;; packages.el ends here
