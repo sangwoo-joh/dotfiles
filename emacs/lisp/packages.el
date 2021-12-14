@@ -199,5 +199,7 @@
 ;; c: show current commit using magit (if magit available)
 (use-package git-timemachine :ensure t)
 
+(use-package centered-window :ensure t
+  :bind (("C-M-l" . centered-window-mode)))
 (provide 'packages)
 ;;; packages.el ends here
