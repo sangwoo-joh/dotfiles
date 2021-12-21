@@ -7,3 +7,6 @@
 [submodule "emacs/emacs-doom-themes"]
 	path = emacs/emacs-doom-themes
 	url = https://github.com/sangwoo-joh/emacs-doom-themes
+[submodule "emacs/yasnippet-snippets"]
+	path = emacs/yasnippet-snippets
+	url = https://github.com/sangwoo-joh/yasnippet-snippets
