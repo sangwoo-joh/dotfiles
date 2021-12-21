@@ -78,6 +78,14 @@
   :ensure t
   :config (projectile-mode t))
 
+(use-package yasnippet-snippets :ensure t)
+(use-package yasnippet-classic-snippets :ensure t)
+(use-package yasnippet
+  :ensure t
+  :config (yas-global-mode t)
+  :bind (("C-c y n" . yas-new-snippet)
+         ("C-c y i" . yas-insert-snippet)
+         ("C-c y v" . yas-visit-snippet-file)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; chore
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
