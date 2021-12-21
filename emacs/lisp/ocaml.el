@@ -99,7 +99,8 @@
 
 (defun ocaml/load-dune ()
   "LOAD DUNE-MODE."
-  (require 'dune))
+  (require 'dune)
+  (add-to-list 'auto-mode-alist '("dune-project" . dune-mode)))
 
 (defun ocaml/load (site-lisp-path)
   "LOAD ALL WITH SITE-LISP-PATH."
