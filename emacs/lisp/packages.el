@@ -60,7 +60,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package smartparens
   :ensure t
-  :config (smartparens-global-mode))
+  :config
+  (smartparens-global-mode)
+  (sp-with-modes 'tuareg-mode
+    (sp-local-pair "module" "end")
+    (sp-local-pair "sig" "end")
+    (sp-local-pair "'" nil :actions nil)
+    (sp-local-pair "`" nil :actions nil)))
 
 (use-package company
   :ensure t
