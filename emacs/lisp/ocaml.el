@@ -85,7 +85,8 @@
   (define-key tuareg-mode-map (kbd "M-.") #'merlin-locate)
   (define-key tuareg-mode-map (kbd "M-,") #'merlin-pop-stack)
   (define-key tuareg-mode-map (kbd "C-c C-s") nil)
-  (define-key tuareg-mode-map (kbd "C-c C-e") nil))
+  (define-key tuareg-mode-map (kbd "C-c C-e") nil)
+  (setq merlin-locate-in-new-window 'never))
 
 (defun ocaml/load-ocp-indent ()
   "LOAD OCP-INDENT."
