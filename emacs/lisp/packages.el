@@ -82,8 +82,6 @@
   :ensure nil
   :load-path "~/.emacs.d/yasnippet-snippets")
 
-(use-package yasnippet-classic-snippets :ensure t)
-
 (use-package yasnippet
   :ensure t
   :config (yas-global-mode t)
