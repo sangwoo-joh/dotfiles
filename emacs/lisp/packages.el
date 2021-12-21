@@ -65,6 +65,8 @@
   (sp-with-modes 'tuareg-mode
     (sp-local-pair "module" "end")
     (sp-local-pair "sig" "end")
+    (sp-local-pair "(*" "*)")
+    (sp-local-pair "{|" "|}")
     (sp-local-pair "'" nil :actions nil)
     (sp-local-pair "`" nil :actions nil)))
 
