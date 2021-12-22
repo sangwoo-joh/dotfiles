@@ -55,6 +55,17 @@
     (flycheck-pos-tip-mode))
   (setq flycheck-pos-tip-timeout 60))
 
+(use-package grammarly
+  :ensure t
+  :config
+  (setq grammarly-username "work.sangwoo.joh@gmail.com")
+  (setq grammarly-password "" )  ;; This should be private
+  )
+
+(use-package flycheck-grammarly
+  :ensure t
+  :config (setq flycheck-grammarly-check-time 0.8))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-complete
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
