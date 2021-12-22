@@ -13,7 +13,7 @@
   (interactive)
   ;; Don't call desktop-save-in-desktop-dir, as it prints a message.
   (if (eq (desktop-owner) (emacs-pid))
-    (desktop-save desktop-dirname)))
+      (desktop-save desktop-dirname)))
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'kill-emacs-hook 'my-desktop-save)
@@ -44,7 +44,7 @@
   (forward-char 1)
   (let* ((myStr (buffer-substring (region-beginning) (region-end))))
     (if (string-equal myStr (upcase myStr))
-	(downcase-region (region-beginning) (region-end))
+	      (downcase-region (region-beginning) (region-end))
       (upcase-region (region-beginning) (region-end)))
     (backward-char 1)))
 

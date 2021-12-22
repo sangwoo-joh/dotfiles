@@ -8,14 +8,14 @@
 (defun string-of-command (command)
   "EXECUTE SHELL COMMAND AND RETURN TRIMMED STRING."
   (let* ((exit-code 0)
-          (stdout
-            (string-trim
-              (with-output-to-string
-                (setq exit-code
-                  (with-current-buffer standard-output
-                    (process-file shell-file-name nil t nil shell-command-switch command)))))))
+         (stdout
+          (string-trim
+           (with-output-to-string
+             (setq exit-code
+                   (with-current-buffer standard-output
+                     (process-file shell-file-name nil t nil shell-command-switch command)))))))
     (if (= exit-code 0)
-      stdout
+        stdout
       (progn
         (lwarn 'sw/ocaml-setting :warning "Command(%s) failure: %d" command exit-code)
         nil))))
@@ -117,16 +117,16 @@
   (interactive)
   (unless (opam/check) (error "Opam is not installed!"))
   (let* ((switch (opam/current-switch))
-          (site-lisp-path (opam/share-site-lisp-path)))
+         (site-lisp-path (opam/share-site-lisp-path)))
 
     (if current-switch
-      ;; re-init (current-* are not nil /\ current-switch != switch)
-      (unless (string-equal current-switch switch)
-        (setq load-path (delete current-lisp-path load-path)) ;; unset previous load
-        (setq current-lisp-path site-lisp-path)
-        (setq current-switch switch)
-        (ocaml/load current-lisp-path)
-	(message "Reload switch: %s -> %s" current-switch switch))
+        ;; re-init (current-* are not nil /\ current-switch != switch)
+        (unless (string-equal current-switch switch)
+          (setq load-path (delete current-lisp-path load-path)) ;; unset previous load
+          (setq current-lisp-path site-lisp-path)
+          (setq current-switch switch)
+          (ocaml/load current-lisp-path)
+	        (message "Reload switch: %s -> %s" current-switch switch))
       ;; first init (current-* are all nil)
       (progn
         (setq current-lisp-path site-lisp-path)
@@ -142,11 +142,11 @@
   (interactive)
   (let* ((switch-available (opam/switch-list)))
     (if (member switch switch-available)
-	(progn
-	  (opam/switch switch)
-	  (ocaml/auto-load))
+	      (progn
+	        (opam/switch switch)
+	        (ocaml/auto-load))
       (progn
-	(message "Invalid switch: %s" switch)))))
+	      (message "Invalid switch: %s" switch)))))
 
 (provide 'ocaml)
 ;;; ocaml.el ends here

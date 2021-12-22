@@ -120,14 +120,14 @@
   :ensure t
   :config (global-hungry-delete-mode)
   :bind (("S-<backspace>" . hungry-delete-backward)
-	 ("S-<delete>" . hungry-delete-forward)))
+	       ("S-<delete>" . hungry-delete-forward)))
 
 (use-package multiple-cursors
   :ensure t
   :bind (("C-S-c C-S-c" . mc/edit-lines)
-	 ("C->" . mc/mark-next-like-this)
-	 ("C-<" . mc/mark-previous-like-this)
-	 ("C-c C-<" . mc/mark-all-like-this)))
+	       ("C->" . mc/mark-next-like-this)
+	       ("C-<" . mc/mark-previous-like-this)
+	       ("C-c C-<" . mc/mark-all-like-this)))
 
 ;; This is much better then changing one by one by multiple-cursors (C->)
 ;; After iedit-mode is on (by C-C C-e),
@@ -145,32 +145,32 @@
   :config
   (setq switch-window-shortcut-style 'qwerty)
   (setq switch-window-qwerty-shortcuts
-	'("a" "s" "d" "f" "j" "k" "l" ";" "q" "w" "e" "r" "i" "o" "z" "x" "c" "v"))
+	      '("a" "s" "d" "f" "j" "k" "l" ";" "q" "w" "e" "r" "i" "o" "z" "x" "c" "v"))
   :bind (("C-x o" . switch-window)
-	 ("C-x 1" . switch-window-then-maximize)
-	 ("C-x 2" . switch-window-then-split-below)
-	 ("C-x 3" . switch-window-then-split-right)
-	 ("C-x 0" . switch-window-then-delete)
-	 ("C-x 4 d" . switch-window-then-dired)
-	 ("C-x 4 f" . switch-window-then-find-file)
-	 ;; ("C-x 4 m" . switch-window-then-compose-mail)
-	 ;; ("C-x 4 r" . switch-window-then-find-file-read-only)
-	 ("C-x 4 0" . switch-window-then-kill-buffer)))
+	       ("C-x 1" . switch-window-then-maximize)
+	       ("C-x 2" . switch-window-then-split-below)
+	       ("C-x 3" . switch-window-then-split-right)
+	       ("C-x 0" . switch-window-then-delete)
+	       ("C-x 4 d" . switch-window-then-dired)
+	       ("C-x 4 f" . switch-window-then-find-file)
+	       ;; ("C-x 4 m" . switch-window-then-compose-mail)
+	       ;; ("C-x 4 r" . switch-window-then-find-file-read-only)
+	       ("C-x 4 0" . switch-window-then-kill-buffer)))
 
 (use-package eyebrowse
   :ensure t
   :config
   (eyebrowse-mode t)
   :bind (("M-0" . eyebrowse-switch-to-window-config-0)
-          ("M-1" . eyebrowse-switch-to-window-config-1)
-          ("M-2" . eyebrowse-switch-to-window-config-2)
-          ("M-3" . eyebrowse-switch-to-window-config-3)
-          ("M-4" . eyebrowse-switch-to-window-config-4)
-          ("M-5" . eyebrowse-switch-to-window-config-5)
-          ("M-6" . eyebrowse-switch-to-window-config-6)
-          ("M-7" . eyebrowse-switch-to-window-config-7)
-          ("M-8" . eyebrowse-switch-to-window-config-8)
-          ("M-9" . eyebrowse-switch-to-window-config-9)))
+         ("M-1" . eyebrowse-switch-to-window-config-1)
+         ("M-2" . eyebrowse-switch-to-window-config-2)
+         ("M-3" . eyebrowse-switch-to-window-config-3)
+         ("M-4" . eyebrowse-switch-to-window-config-4)
+         ("M-5" . eyebrowse-switch-to-window-config-5)
+         ("M-6" . eyebrowse-switch-to-window-config-6)
+         ("M-7" . eyebrowse-switch-to-window-config-7)
+         ("M-8" . eyebrowse-switch-to-window-config-8)
+         ("M-9" . eyebrowse-switch-to-window-config-9)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; aesthetic

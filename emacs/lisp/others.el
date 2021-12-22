@@ -7,8 +7,8 @@
   :ensure t
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md$" . gfm-mode)
-	 ("\\.md$" . markdown-mode)
-	 ("\\.markdown$" . markdown-mode))
+	       ("\\.md$" . markdown-mode)
+	       ("\\.markdown$" . markdown-mode))
   :init (setq markdown-command "multimarkdown")
   :bind ("C-c C-t C-f" . markdown-table-align))
 
