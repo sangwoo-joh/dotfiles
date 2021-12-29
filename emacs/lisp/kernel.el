@@ -223,6 +223,7 @@
 
 ;; Org-mode settings
 (require 'org)
+(define-key org-mode-map (kbd "C-+") #'org-insert-heading)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "DONE")))
 
