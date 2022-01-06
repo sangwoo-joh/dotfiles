@@ -15,6 +15,7 @@
   (if (eq (desktop-owner) (emacs-pid))
       (desktop-save desktop-dirname)))
 
+(setq require-final-newline t)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'kill-emacs-hook 'my-desktop-save)
 
