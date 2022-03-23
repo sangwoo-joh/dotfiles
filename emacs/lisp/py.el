@@ -18,5 +18,8 @@
 (with-eval-after-load 'flycheck
   (setq flycheck-python-flake8-executable "python3"))
 
+(org-babel-do-load-languages
+ 'org-babel-load-languages '((python . t)))
+
 (provide 'py)
 ;;; py.el ends here
