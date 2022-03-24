@@ -16,7 +16,8 @@
   (add-hook 'elpy-mode-hook #'python-hook))
 
 (with-eval-after-load 'flycheck
-  (setq flycheck-python-flake8-executable "python3"))
+  (setq flycheck-python-flake8-executable "python3")
+  (setq flycheck-flake8rc "~/.config/flake8"))
 
 (org-babel-do-load-languages
  'org-babel-load-languages '((python . t)))
