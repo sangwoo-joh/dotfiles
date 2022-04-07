@@ -42,13 +42,5 @@
 (native-compile-async "~/.emacs.d/lisp" 'recursively)
 (require 'kernel)
 
-;; auto-package-update
-(use-package auto-package-update
-  :ensure t
-  :config
-  (setq auto-package-update-delete-old-versions t)
-  (setq auto-package-update-interval 30)
-  (auto-package-update-maybe))
-
 (provide 'init)
 ;;; init.el ends here
