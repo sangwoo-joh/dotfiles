@@ -10,9 +10,12 @@
   (progn
     (let* ((start (search-backward "["))
            (end (search-forward "]"))
-           (title (buffer-substring (+ start 1) (- end 1)))
-           (title (replace-regexp-in-string "[^a-zA-Z0-9]" "-" title))
-           (title (downcase title)))
+           (title
+            (downcase
+             (replace-regexp-in-string
+              "[^a-zA-Z0-9]"
+              "-"
+              (buffer-substring (+ start 1) (- end 1))))))
       (goto-char (match-end 0))
       (insert (format "(%s)" title))
       )))
