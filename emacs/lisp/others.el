@@ -7,16 +7,15 @@
 (defun fill-markdown-link-at-point ()
   "FILL MARKDOWN LINK IN PARENTHESES FROM BRACKET."
   (interactive)
-  (save-excursion
-    (progn
-      (let* ((start (search-backward "["))
-             (end (search-forward "]"))
-             (title (buffer-substring (+ start 1) (- end 1)))
-             (title (replace-regexp-in-string "[^a-zA-Z0-9]" "-" title))
-             (title (downcase title)))
-        (goto-char (match-end 0))
-        (insert (format "(%s)" title))
-        ))))
+  (progn
+    (let* ((start (search-backward "["))
+           (end (search-forward "]"))
+           (title (buffer-substring (+ start 1) (- end 1)))
+           (title (replace-regexp-in-string "[^a-zA-Z0-9]" "-" title))
+           (title (downcase title)))
+      (goto-char (match-end 0))
+      (insert (format "(%s)" title))
+      )))
 
 (use-package markdown-mode
   :ensure t
