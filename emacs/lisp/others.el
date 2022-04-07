@@ -20,6 +20,22 @@
       (insert (format "(%s)" title))
       )))
 
+(defun fill-markdown-link-at-point-as-leetcode-url ()
+  "FILL MARKDOWN LINK IN PARENTHESES FROM BRACKET."
+  (interactive)
+  (progn
+    (let* ((start (search-backward "["))
+           (end (search-forward "]"))
+           (title
+            (downcase
+             (replace-regexp-in-string
+              "[^a-zA-Z0-9]"
+              "-"
+              (buffer-substring (+ start 1) (- end 1))))))
+      (goto-char (match-end 0))
+      (insert (format "(https://leetcode.com/problems/%s/)" title))
+      )))
+
 (use-package markdown-mode
   :ensure t
   :commands (markdown-mode gfm-mode)
@@ -29,7 +45,8 @@
   :init (setq markdown-command "multimarkdown")
   :bind
   ("C-c C-t C-f" . markdown-table-align)
-  ("C-c C-c C-l" . fill-markdown-link-at-point)
+  ("C-c C-c C-l" . fill-markdown-link-at-point-as-leetcode-url)
+  ("C-c C-c C-r" . fill-markdown-link-at-point)
   )
 
 (defun unify-web-mode-spacing ()
