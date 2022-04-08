@@ -73,7 +73,9 @@
 
 (use-package undo-tree
   :ensure t
-  :config (global-undo-tree-mode)
+  :config
+  (global-undo-tree-mode)
+  (setq undo-tree-history-directory-alist '(("." . "~/.undo-tree/")))
   :bind (("C-z" . undo-tree-visualize)))
 
 (use-package projectile
