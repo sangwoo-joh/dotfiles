@@ -36,6 +36,18 @@
       (insert (format "(https://leetcode.com/problems/%s/)" title))
       )))
 
+(defun fill-markdown-title-from-jekyll ()
+  "FILL MARKDOWN TITLE FROM JEKYLL TITLE."
+  (interactive)
+  (progn
+    (let* ((title (save-excursion
+                    (goto-char 1)
+                    (string-trim
+                     (buffer-substring-no-properties
+                      (re-search-forward "^title:")
+                      (line-end-position))))))
+      (insert (format "# [%s]" title)))))
+
 (use-package markdown-mode
   :ensure t
   :commands (markdown-mode gfm-mode)
@@ -46,6 +58,7 @@
   :bind
   ("C-c C-t C-f" . markdown-table-align)
   ("C-c C-c C-l" . fill-markdown-link-at-point-as-leetcode-url)
+  ("C-c C-c C-t" . fill-markdown-title-from-jekyll)
   ("C-c C-c C-r" . fill-markdown-link-at-point)
   )
 
