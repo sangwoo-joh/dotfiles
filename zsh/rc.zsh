@@ -5,6 +5,7 @@ antigen bundle git
 antigen bundle pip
 antigen bundle docker
 antigen bundle command-not-found
+antigen bundle zsh-users/zsh-syntax-highlighting
 antigen theme romkatv/powerlevel10k
 antigen apply
 
