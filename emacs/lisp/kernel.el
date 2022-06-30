@@ -240,7 +240,7 @@
 (defun display-ansi-colors ()
   (interactive)
   (let ((inhibit-read-only t))
-    (ansi-color-apply-on-region (point-min) (point-max))))
+    (ansi-color-apply-on-region (point-min) (point-max) t)))
 (global-set-key (kbd "C-c C-c C-a") 'display-ansi-colors)
 
 ;; load remainigs sequentially
