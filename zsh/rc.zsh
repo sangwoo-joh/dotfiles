@@ -12,8 +12,6 @@ antigen apply
 HISTSIZE=10000000
 HISTFILESIZE=10000000
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
 h=()
 if [[ -r ~/.ssh/config ]]; then
    h=($h ${${${(@M)${(f)"$(cat ~/.ssh/config)"}:#Host *}#Host }:#*[*?]*})
