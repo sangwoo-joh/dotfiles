@@ -235,6 +235,14 @@
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 (setq recentf-max-saved-items 50)
 
+;; ansi color
+(require 'ansi-color)
+(defun display-ansi-colors ()
+  (interactive)
+  (let ((inhibit-read-only t))
+    (ansi-color-apply-on-region (point-min) (point-max))))
+(global-set-key (kbd "C-c C-c C-a") 'display-ansi-colors)
+
 ;; load remainigs sequentially
 (require 'packages)
 (require 'ocaml)
