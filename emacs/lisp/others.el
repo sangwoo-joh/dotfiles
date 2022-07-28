@@ -20,6 +20,21 @@
       (insert (format "(%s)" title))
       )))
 
+(defun create-empty-markdown-file-at-point ()
+  "CREATE EMPTY MARKDOWN FILE AT POINT."
+  (interactive)
+  (progn
+    (let* ((start (search-backward "("))
+           (end (search-forward ")"))
+           (title
+            (buffer-substring (+ start 1) (- end 1)))
+           (mdfile (format "%s.md" title)))
+      (goto-char (match-end 0))
+      (when (not (file-exists-p mdfile))
+        (with-temp-buffer (write-file mdfile)))
+      (find-file mdfile)
+      )))
+
 (defun fill-markdown-link-at-point-as-leetcode-url ()
   "FILL MARKDOWN LINK IN PARENTHESES FROM BRACKET."
   (interactive)
@@ -60,6 +75,7 @@
   ("C-c C-c C-l" . fill-markdown-link-at-point-as-leetcode-url)
   ("C-c C-c C-t" . fill-markdown-title-from-jekyll)
   ("C-c C-c C-r" . fill-markdown-link-at-point)
+  ("C-c C-c C-f" . create-empty-markdown-file-at-point)
   )
 
 (defun unify-web-mode-spacing ()
