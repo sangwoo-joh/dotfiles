@@ -7,81 +7,81 @@
 (defun get-leetcode-title ()
   "GET LEETCODE TITLE IN INDEX PAGE"
   (interactive)
-  (progn
-    (save-excursion
-      (let* ((start (search-backward "["))
-             (end (search-forward "]")))
-        (buffer-substring-no-properties (+ start 1) (- end 1))))))
+  (save-excursion
+    (goto-char (line-end-position))
+    (let* ((start (search-backward "["))
+           (end (search-forward "]")))
+      (buffer-substring-no-properties (+ start 1) (- end 1)))))
 
 (defun normalize-title-as-link-text (title)
   "NORMALIZE TITLE AS LINK TEXT"
   (interactive)
   (downcase
    (replace-regexp-in-string "[^a-zA-Z0-9]" "-"
-    (replace-regexp-in-string "[,'.()]" "" title))))
+                             (replace-regexp-in-string "[,'.()]" "" title))))
+
+(defun leetcode-problem-link (problem)
+  "CREATE LEETCODE PROBLEM LINK"
+  (interactive)
+  (format "https://leetcode.com/problems/%s/" problem))
 
 (defun markdown-title-with-leetcode-link (title link)
   "CREATE MARKDOWN H1 TITLE WITH LEETCODE LINK"
   (interactive)
-  (progn
-    (let* ((url (format "https://leetcode.com/problems/%s/" link)))
-      (format "# [%s](%s)" title url))))
+  (let* ((url (leetcode-problem-link link)))
+    (format "# [%s](%s)" title url)))
 
 (defun ready-leetcode-markdown (title link)
   "1. COPY .template.md AS link-text.md, 2. SET TITLE AND LINK. THIS MUST BE CALLED"
   (interactive)
-  (progn
-    (let* ((mdfile (format "%s.md" link))
-           (title-text (markdown-title-with-leetcode-link title link)))
-      (if (not (file-exists-p mdfile))
-          ;; if file not exist, copy template & set title
-          (progn
-            (copy-file ".template.md" mdfile)
-            (find-file mdfile)
-            (goto-char 1)
-            (re-search-forward "^title:")
-            (insert " ")
-            (insert title)
-            (end-of-buffer)
-            (insert title-text))
-        ;; else, just open
-        (find-file mdfile)))))
+  (let* ((mdfile (format "%s.md" link))
+         (title-text (markdown-title-with-leetcode-link title link)))
+    (if (file-exists-p mdfile)
+        ;; if exists, just open it
+        (find-file mdfile)
+      ;; otherwise, create file from template and set titles
+      (copy-file ".template.md" mdfile)
+      (find-file mdfile)
+      (goto-char 1)
+      (re-search-forward "^title:")
+      (insert " ")
+      (insert title)
+      (goto-char (point-max))
+      (insert title-text))))
 
-(defun ready-to-leetcode (&optional remain)
+(defun ready-to-leetcode (&optional remain )
   "GET READY TO LEETCODE!"
   (interactive)
-  (progn
-    (save-excursion
-      (goto-char (line-end-position))
-      (let* ((title (get-leetcode-title))
-             (link (normalize-title-as-link-text title))
-             (line-text
-              (buffer-substring-no-properties
-               (line-beginning-position)
-               (line-end-position))))
-        (if (string-match-p link line-text)
-            (progn
-              (message "link exists")
-              (string-match "(.*)" line-text)
-              (let* ((matched
-                      (substring line-text
-                                 (+ (match-beginning 0) 1)
-                                 (- (match-end 0) 1)))
-                     (matched
-                      (substring matched
-                                 0
-                                 (string-match "#" matched))))
-                ;; sanitize existing link text
-                (setq link matched)))
-            (insert (format "(%s)" link)))
-        (unless remain
-          (ready-leetcode-markdown title link))))))
+  (save-excursion
+    (goto-char (line-end-position))
+    (let* ((title (get-leetcode-title))
+           (link (normalize-title-as-link-text title))
+           (line-text
+            (buffer-substring-no-properties
+             (line-beginning-position)
+             (line-end-position))))
+      (if (string-match-p link line-text)
+          (progn
+            (message "link exists")
+            (string-match "(.*)" line-text)
+            (let* ((matched
+                    (substring line-text
+                               (+ (match-beginning 0) 1)
+                               (- (match-end 0) 1)))
+                   (matched
+                    (substring matched
+                               0
+                               (string-match "#" matched))))
+              ;; sanitize existing link text
+              (setq link matched)))
+        (insert (format "(%s)" link)))
+      (unless remain
+        (ready-leetcode-markdown title link)))))
 
 (defun fill-link ()
   "JUST FILL LINK"
   (interactive)
   (ready-to-leetcode t))
-
 
 (use-package markdown-mode
   :ensure t
