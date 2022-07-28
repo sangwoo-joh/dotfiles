@@ -49,32 +49,38 @@
       (goto-char (point-max))
       (insert title-text))))
 
-(defun ready-to-leetcode (&optional remain )
+(defun ready-to-leetcode (&optional remain out-link)
   "GET READY TO LEETCODE!"
   (interactive)
   (save-excursion
-    (goto-char (line-end-position))
+    (xref-push-marker-stack)
     (let* ((title (get-leetcode-title))
            (link (normalize-title-as-link-text title))
            (line-text
             (buffer-substring-no-properties
              (line-beginning-position)
              (line-end-position))))
-      (if (string-match-p link line-text)
+      (if (not (string-match-p link line-text))
+          ;; if link not exists, just insert.
+          ;; in case of inserting out link, change link as outlink
           (progn
-            (message "link exists")
-            (string-match "(.*)" line-text)
-            (let* ((matched
-                    (substring line-text
-                               (+ (match-beginning 0) 1)
-                               (- (match-end 0) 1)))
-                   (matched
-                    (substring matched
-                               0
-                               (string-match "#" matched))))
-              ;; sanitize existing link text
-              (setq link matched)))
-        (insert (format "(%s)" link)))
+            (goto-char (line-end-position))
+            (insert (format "(%s)"
+                            (if out-link (leetcode-problem-link link) link))))
+        ;; otherwise, check existing link and update
+        (message "link exists")
+        (string-match "(.*)" line-text)
+        (let* ((matched
+                (substring line-text
+                           (+ (match-beginning 0) 1)
+                           (- (match-end 0) 1)))
+               (matched
+                (substring matched
+                           0
+                           (string-match "#" matched))))
+          ;; sanitize existing link text
+          (setq link matched)))
+
       (unless remain
         (ready-leetcode-markdown title link)))))
 
@@ -82,6 +88,11 @@
   "JUST FILL LINK"
   (interactive)
   (ready-to-leetcode t))
+
+(defun fill-out-link ()
+  "FILL OUTGOING LINK"
+  (interactive)
+  (ready-to-leetcode t t))
 
 (use-package markdown-mode
   :ensure t
@@ -92,9 +103,9 @@
   :init (setq markdown-command "multimarkdown")
   :bind
   ("C-c C-t C-f" . markdown-table-align)
+  ("C-c C-c C-l" . fill-out-link)
   ("C-c C-c C-r" . fill-link)
-  ("C-c C-c C-f" . ready-to-leetcode)
-  )
+  ("M-." . ready-to-leetcode))
 
 (defun unify-web-mode-spacing ()
   "Stole from https://github.com/trev-dev/emacs"
