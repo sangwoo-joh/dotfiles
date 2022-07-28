@@ -51,13 +51,31 @@
   "GET READY TO LEETCODE!"
   (interactive)
   (progn
-    (let* ((title (get-leetcode-title))
-           (link (normalize-title-as-link-text title))
-           (line-text (buffer-substring-no-properties (line-beginning-position) (line-end-position))))
-      (when (not (string-match-p link line-text))
-        (insert (format "(%s)" link)))
-      (when (not remain)
-        (ready-leetcode-markdown title link)))))
+    (save-excursion
+      (goto-char (line-end-position))
+      (let* ((title (get-leetcode-title))
+             (link (normalize-title-as-link-text title))
+             (line-text
+              (buffer-substring-no-properties
+               (line-beginning-position)
+               (line-end-position))))
+        (if (string-match-p link line-text)
+            (progn
+              (message "link exists")
+              (string-match "(.*)" line-text)
+              (let* ((matched
+                      (substring line-text
+                                 (+ (match-beginning 0) 1)
+                                 (- (match-end 0) 1)))
+                     (matched
+                      (substring matched
+                                 0
+                                 (string-match "#" matched))))
+                ;; sanitize existing link text
+                (setq link matched)))
+            (insert (format "(%s)" link)))
+        (unless remain
+          (ready-leetcode-markdown title link))))))
 
 (defun fill-link ()
   "JUST FILL LINK"
