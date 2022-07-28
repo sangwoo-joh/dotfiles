@@ -42,12 +42,14 @@
       ;; otherwise, create file from template and set titles
       (copy-file ".template.md" mdfile)
       (find-file mdfile)
-      (goto-char 1)
+      (goto-char (point-min))
       (re-search-forward "^title:")
       (insert " ")
       (insert title)
       (goto-char (point-max))
-      (insert title-text))))
+      (insert "\n")
+      (insert title-text)
+      (save-buffer))))
 
 (defun ready-to-leetcode (&optional remain out-link)
   "GET READY TO LEETCODE!"
