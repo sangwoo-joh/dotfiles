@@ -4,64 +4,66 @@
 (use-package yaml-mode :ensure t)
 
 
-(defun fill-markdown-link-at-point ()
-  "FILL MARKDOWN LINK IN PARENTHESES FROM BRACKET."
+(defun get-leetcode-title ()
+  "GET LEETCODE TITLE IN INDEX PAGE"
   (interactive)
   (progn
-    (let* ((start (search-backward "["))
-           (end (search-forward "]"))
-           (title
-            (downcase
-             (replace-regexp-in-string
-              "[^a-zA-Z0-9]"
-              "-"
-              (buffer-substring (+ start 1) (- end 1))))))
-      (goto-char (match-end 0))
-      (insert (format "(%s)" title))
-      )))
+    (save-excursion
+      (let* ((start (search-backward "["))
+             (end (search-forward "]")))
+        (buffer-substring-no-properties (+ start 1) (- end 1))))))
 
-(defun create-empty-markdown-file-at-point ()
-  "CREATE EMPTY MARKDOWN FILE AT POINT."
+(defun normalize-title-as-link-text (title)
+  "NORMALIZE TITLE AS LINK TEXT"
   (interactive)
-  (progn
-    (let* ((start (search-backward "("))
-           (end (search-forward ")"))
-           (title
-            (buffer-substring (+ start 1) (- end 1)))
-           (mdfile (format "%s.md" title)))
-      (goto-char (match-end 0))
-      (when (not (file-exists-p mdfile))
-        (with-temp-buffer (write-file mdfile)))
-      (find-file mdfile)
-      )))
+  (downcase
+   (replace-regexp-in-string "[^a-zA-Z0-9]" "-"
+    (replace-regexp-in-string "[,'.()]" "" title))))
 
-(defun fill-markdown-link-at-point-as-leetcode-url ()
-  "FILL MARKDOWN LINK IN PARENTHESES FROM BRACKET."
+(defun markdown-title-with-leetcode-link (title link)
+  "CREATE MARKDOWN H1 TITLE WITH LEETCODE LINK"
   (interactive)
   (progn
-    (let* ((start (search-backward "["))
-           (end (search-forward "]"))
-           (title
-            (downcase
-             (replace-regexp-in-string
-              "[^a-zA-Z0-9]"
-              "-"
-              (buffer-substring (+ start 1) (- end 1))))))
-      (goto-char (match-end 0))
-      (insert (format "(https://leetcode.com/problems/%s/)" title))
-      )))
+    (let* ((url (format "https://leetcode.com/problems/%s/" link)))
+      (format "# [%s](%s)" title url))))
 
-(defun fill-markdown-title-from-jekyll ()
-  "FILL MARKDOWN TITLE FROM JEKYLL TITLE."
+(defun ready-leetcode-markdown (title link)
+  "1. COPY .template.md AS link-text.md, 2. SET TITLE AND LINK. THIS MUST BE CALLED"
   (interactive)
   (progn
-    (let* ((title (save-excursion
-                    (goto-char 1)
-                    (string-trim
-                     (buffer-substring-no-properties
-                      (re-search-forward "^title:")
-                      (line-end-position))))))
-      (insert (format "# [%s]" title)))))
+    (let* ((mdfile (format "%s.md" link))
+           (title-text (markdown-title-with-leetcode-link title link)))
+      (if (not (file-exists-p mdfile))
+          ;; if file not exist, copy template & set title
+          (progn
+            (copy-file ".template.md" mdfile)
+            (find-file mdfile)
+            (goto-char 1)
+            (re-search-forward "^title:")
+            (insert " ")
+            (insert title)
+            (end-of-buffer)
+            (insert title-text))
+        ;; else, just open
+        (find-file mdfile)))))
+
+(defun ready-to-leetcode (&optional remain)
+  "GET READY TO LEETCODE!"
+  (interactive)
+  (progn
+    (let* ((title (get-leetcode-title))
+           (link (normalize-title-as-link-text title))
+           (line-text (buffer-substring-no-properties (line-beginning-position) (line-end-position))))
+      (when (not (string-match-p link line-text))
+        (insert (format "(%s)" link)))
+      (when (not remain)
+        (ready-leetcode-markdown title link)))))
+
+(defun fill-link ()
+  "JUST FILL LINK"
+  (interactive)
+  (ready-to-leetcode t))
+
 
 (use-package markdown-mode
   :ensure t
@@ -72,10 +74,8 @@
   :init (setq markdown-command "multimarkdown")
   :bind
   ("C-c C-t C-f" . markdown-table-align)
-  ("C-c C-c C-l" . fill-markdown-link-at-point-as-leetcode-url)
-  ("C-c C-c C-t" . fill-markdown-title-from-jekyll)
-  ("C-c C-c C-r" . fill-markdown-link-at-point)
-  ("C-c C-c C-f" . create-empty-markdown-file-at-point)
+  ("C-c C-c C-r" . fill-link)
+  ("C-c C-c C-f" . ready-to-leetcode)
   )
 
 (defun unify-web-mode-spacing ()
