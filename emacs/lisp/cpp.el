@@ -4,9 +4,7 @@
 ;;; Code:
 
 ;; for C++
-(use-package clang-format
-  :ensure t
-  :bind (("C-c C-f" . clang-format-buffer)))
+(use-package clang-format :ensure t)
 
 (use-package rtags
   :ensure t
@@ -23,6 +21,7 @@
   (define-key c++-mode-map (kbd "M-," ) 'rtags-location-stack-back)
   (define-key c++-mode-map (kbd "C-,") 'rtags-location-stack-foward)
   (define-key c++-mode-map (kbd "C-c C-t") 'rtags-symbol-type)
+  (define-key c++-mode-map (kbd "C-c C-f") 'clang-format-buffer)
   (define-key c++-mode-map (kbd "C-c C-r") 'rtags-rename-symbol)
   (define-key c++-mode-map (kbd "C-c a")  'rtags-references-tree)
   (define-key c++-mode-map (kbd "C-c C-s") nil)
@@ -35,6 +34,7 @@
   (define-key c-mode-map (kbd "M-," ) 'rtags-location-stack-back)
   (define-key c-mode-map (kbd "C-,") 'rtags-location-stack-foward)
   (define-key c-mode-map (kbd "C-c C-t") 'rtags-symbol-type)
+  (define-key c-mode-map (kbd "C-c C-f") 'clang-format-buffer)
   (define-key c-mode-map (kbd "C-c C-r") 'rtags-rename-symbol)
   (define-key c-mode-map (kbd "C-c a")  'rtags-references-tree)
   (define-key c-mode-map (kbd "C-c C-s") nil)
