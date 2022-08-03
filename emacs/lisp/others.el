@@ -104,10 +104,11 @@
 	       ("\\.markdown$" . markdown-mode))
   :init (setq markdown-command "multimarkdown")
   :bind
-  ("C-c C-t C-f" . markdown-table-align)
-  ("C-c C-c C-l" . fill-out-link)
-  ("C-c C-c C-r" . fill-link)
-  ("M-." . ready-to-leetcode))
+  (:map markdown-mode-map
+        ("C-c C-t C-f" . markdown-table-align)
+        ("C-c C-c C-l" . fill-out-link)
+        ("C-c C-c C-r" . fill-link)
+        ("M-." . ready-to-leetcode)))
 
 (defun unify-web-mode-spacing ()
   "Stole from https://github.com/trev-dev/emacs"
