@@ -229,12 +229,6 @@
 (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "DONE")))
 
 
-;; recent file mode
-(require 'recentf)
-(recentf-mode t)
-(global-set-key (kbd "C-x C-r") 'recentf-open-files)
-(setq recentf-max-saved-items 50)
-
 ;; ansi color
 (require 'ansi-color)
 (defun display-ansi-colors ()

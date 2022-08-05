@@ -199,7 +199,9 @@
   :hook (after-init . global-emojify-mode)
   :bind (("C-S-i" . emojify-insert-emoji)))
 
-(use-package fzf :ensure t)
+(use-package fzf
+  :ensure t
+  :bind (("C-x C-r" . fzf)))
 
 ;; git-timemachine https://gitlab.com/pidu/git-timemachine
 ;; n, p: visit next, previous historic version
