@@ -97,6 +97,7 @@
 ;; chore
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package ag :ensure t)
+(use-package wgrep-ag :ensure t)
 
 ;; This is much better then searching one by one by C-s
 (use-package swiper
