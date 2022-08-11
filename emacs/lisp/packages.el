@@ -31,7 +31,7 @@
   ("C-x g" . magit-status)
   ("C-c C-u" . smerge-keep-upper) ;; mine
   ("C-c C-l" . smerge-keep-lower) ;; other
-  )
+  ("C-c m" . magit-blame))
 
 (use-package which-key
   :ensure t
