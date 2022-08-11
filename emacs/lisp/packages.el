@@ -97,7 +97,8 @@
 ;; chore
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package ag :ensure t)
-(use-package wgrep-ag :ensure t)
+(use-package wgrep-ag :ensure t
+  :bind (:map ag-mode-map ("C-c C-e" . wgrep-save-all-buffers)))
 
 ;; This is much better then searching one by one by C-s
 (use-package swiper
