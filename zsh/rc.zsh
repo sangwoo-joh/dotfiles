@@ -43,3 +43,28 @@ fi
 if [ -d ~/.dotfiles/rtags ]; then
     export PATH=$PATH:~/.dotfiles/rtags/bin
 fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/sangwoo-joh/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/sangwoo-joh/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/sangwoo-joh/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/sangwoo-joh/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+export CXXFLAGS="-I/opt/homebrew/opt/llvm/include"
+eval "$(rbenv init - zsh)"
+alias ls=ls
+source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+alias ls=exa
+source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+chruby ruby-3.1.1
