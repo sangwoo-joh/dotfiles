@@ -71,6 +71,7 @@
   (setq company-show-numbers t)
   (global-company-mode))
 
+;; in undo-tree-visualize-mode, you can toggle the diff snippet using `d' key
 (use-package undo-tree
   :ensure t
   :config
