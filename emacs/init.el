@@ -35,6 +35,10 @@
   (package-install 'exec-path-from-shell))
 (exec-path-from-shell-initialize)
 
+;; set custom.el
+(setq custom-file (concat (file-name-as-directory user-emacs-directory) "custom.el"))
+(message "Set custom file: %s" custom-file)
+
 ;; ready to load
 (message "Native compile ...")
 (add-to-list 'load-path "~/.emacs.d/lisp")
