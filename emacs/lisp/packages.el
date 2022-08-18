@@ -104,7 +104,7 @@
 ;; This is much better then searching one by one by C-s
 (use-package swiper
   :ensure t
-  :bind (("C-c C-s" . swiper-thing-at-point)))
+  :bind (("C-c C-a" . swiper-thing-at-point)))
 
 (use-package expand-region
   :ensure t
